@@ -6,9 +6,10 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userid = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    user = db.relationship("User")
+    user = db.relationship("User", back_populates="posts")
     image_url = db.Column(db.String(600), nullable=False)
     description = db.Column(db.String(2200))
+    comments = db.relationship("Comment", back_populates="post")
 
     def to_dict(self):
         return {

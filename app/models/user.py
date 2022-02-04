@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(150))
     avatar_url = db.Column(db.String(600))
     hashed_password = db.Column(db.String(255), nullable=False)
+    posts = db.relationship("Post", back_populates="user")
+    comments = db.relationship("Comment",  back_populates="user")
 
     @property
     def password(self):
