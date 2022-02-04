@@ -4,18 +4,18 @@ from app.models import db, Comment
 
 def seed_comments():
     comment1 = Comment(
-        userId=1,
-        postId=3,
+        userid=1,
+        postid=3,
         content= 'I will checkout you page :)'
     )
     comment2 = Comment(
         userid=2,
-        postId=1,
+        postid=1,
         content= 'Beautiful!!!! <3'
     )
     comment3 = Comment(
         userid=3,
-        postId=2,
+        postid=2,
         content= 'Cactus are overrated.'
     )
     db.session.add(comment1)
