@@ -1,0 +1,22 @@
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding: 1rem 1rem;
+  border: 1px solid black;
+  border-bottom: 0;
+}
+.post-img {
+  padding: 100px 0;
+}
+.post-topbar {
+  display: flex;
+  justify-content: space-between;
+}
