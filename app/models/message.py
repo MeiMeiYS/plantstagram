@@ -8,8 +8,8 @@ class Message(db.Model):
     userid = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     user = db.relationship("User", foreign_keys=[
         userid], uselist=False)
-    receiverId = db.Column(
+    receiverid = db.Column(
         db.Integer, db.ForeignKey("users.id"), nullable=False)
     receiver = db.relationship("User", foreign_keys=[
-                               receiverId], uselist=False)
+                               receiverid], uselist=False)
     content = db.Column(db.String(1000), nullable=False)
