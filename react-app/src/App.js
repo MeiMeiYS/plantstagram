@@ -31,20 +31,24 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path="/login" exact={true}>
+        <Route path="/accounts/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/accounts/sign-up" exact={true}>
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
+        {/* follower following list */}
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+        {/* profile page */}
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
+        <ProtectedRoute path="/create/select" exact={true}>
           <CreatePost />
+        </ProtectedRoute>
+        <ProtectedRoute path="/" exact={true}>
           <Feed />
         </ProtectedRoute>
       </Switch>

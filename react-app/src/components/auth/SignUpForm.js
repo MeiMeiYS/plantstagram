@@ -10,6 +10,7 @@ const SignUpForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -40,6 +41,8 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+
 
   if (user) {
     return <Redirect to="/" />;
