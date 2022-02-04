@@ -2,6 +2,8 @@ from .db import db
 
 follows = db.Table(
     "follows",
-    db.Column("userId", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-    db.Column("followedId", db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    db.Column("userid", db.Integer, db.ForeignKey(
+        "users.id"), primary_key=True),
+    db.Column("followedid", db.Integer, db.ForeignKey(
+        "users.id"), primary_key=True)
 )
