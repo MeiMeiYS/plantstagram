@@ -16,7 +16,7 @@ export default function Feed() {
     <div className="feed-container">
       <h1>Feed!</h1>
       {posts ? (
-        posts.map((post) => <Post post={post} />)
+        Object.keys(posts).map((key) => <Post post={posts[key]} />)
       ) : (
         <p>no posts have loaded</p>
       )}

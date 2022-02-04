@@ -30,8 +30,7 @@ export const deletePostById = (id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(removePostById(data.id));
+    dispatch(removePostById(id));
   }
 };
 
@@ -58,17 +57,20 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
-const initialState = { posts: [] };
+const initialState = { posts: {} };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_POST:
       return {
-        posts: [action.post, ...state.posts],
+        posts: { [action.post.id]: action.post, ...state.posts },
       };
     case REMOVE_POST:
-      const newState = state;
-      delete newState.posts[action.id];
-      return newState;
+      const newPosts = { ...state.posts };
+      delete newPosts[action.id];
+      return {
+        ...state,
+        posts: newPosts,
+      };
     default:
       return state;
   }
