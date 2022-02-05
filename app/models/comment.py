@@ -10,3 +10,12 @@ class Comment(db.Model):
     postid = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
     post = db.relationship("Post", back_populates="comments")
     content = db.Column(db.String(2200), nullable=False)
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userid': self.userid,
+            'postid': self.postid,
+            'content': self.content,
+            'updated_at': self.updated_at
+        }
