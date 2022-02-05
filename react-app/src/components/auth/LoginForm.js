@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./auth.css";
+import logo from "../../images/logo6.png";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,14 +33,17 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <div className="login_div">
+    <div className="login_logo">
+      <img src={logo} alt="Logo" className="login_img"></img>
+    </div>
+    <form onSubmit={onLogin} className="login_form">
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
@@ -48,7 +53,6 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
@@ -59,6 +63,7 @@ const LoginForm = () => {
         <button type='submit'>Login</button>
       </div>
     </form>
+    </div>
   );
 };
 
