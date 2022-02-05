@@ -1,1 +1,14 @@
-/* TODO Add site wide styles */
+:root {
+    --background-bright: #ffffff;
+    --background-dark: #fafafa;
+    --main-text: #262626;
+    --highligh-links: #3795f6;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
