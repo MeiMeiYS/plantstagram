@@ -1,17 +1,27 @@
-.login_div {
+.login_container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 400px;
-    width: 300px;
-    
+    width: 350px;
+    background-color: #fff;
+    border: 0.5px solid #dbdbdb;
+    align-items: center;
+    margin: 0 0 10px;
+    padding: 10px 0;
 }
 
 
-.login_img{
-    height:100px;
+.signup_img{
+    height:80px;
     width: 200px;
+    margin-bottom: 20px;
+}
+
+.login_img{
+    height:80px;
+    width: 200px;
+    margin-bottom: 50px;
 }
 
 form.login_form{
@@ -19,5 +29,118 @@ form.login_form{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 250px;
+    height: 350px;
+}
+
+form.signup_form{
+     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 350px;
+}
+
+.signup_form input {
+    width: 80%;
+    font-size: 14px;
+    background-color: transparent;
+    margin-bottom: 15px;
+    padding: 0px;
+    margin:10px;
+    color:rgb(80, 79, 79);
+    line-height: 30px;
+    border: 0.8px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.login_form input {
+    width: 80%;
+    font-size: 16px;
+    background-color: transparent;
+    margin-bottom: 15px;
+    padding: 0px;
+    margin:10px;
+    color:rgb(80, 79, 79);
+    line-height: 48px;
+    border: 0.8px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.login_btn{
+    width: 88%;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    line-height: 50px;
+    border-radius: 8px;
+    border:none;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to right,#3ba2f7 0%, #3ba2f7 50%, #3ba2f7 100%);
+}
+
+.signup_btn{
+    width: 88%;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    line-height: 38px;
+    border-radius: 8px;
+    border:none;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to right,#3ba2f7 0%, #3ba2f7 50%, #3ba2f7 100%);
+}
+
+.addition{
+  display: flex;
+  justify-content: center;
+  color:rgb(109, 107, 107);
+  font-size: 16px;
+  line-height: 50px;
+  width: 350px;
+  border: 0.5px solid #dbdbdb;
+  margin-top: 30px;
+
+}
+
+.link{
+    padding-left: 5px;
+    color:rgb(109, 107, 107);
+    font-size: 14px;
+}
+
+.demo{
+    width: 88%;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    line-height: 50px;
+    border:none;
+    color: #3ba2f7
+}
+
+.login-or {
+    margin: 10px 40px 18px;
+    display: flex;
+    align-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+.login-line {
+    height: 1px;
+    width: 110px;
+    background-color: #dbdbdb;
+}
+
+.l-or {
+    color: #8e8e8e;
+    font-size: 13px;
+    font-weight: 500;
 }
