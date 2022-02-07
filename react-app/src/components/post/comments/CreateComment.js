@@ -26,7 +26,6 @@ export default function CreateComment({ postid }) {
         ))}
       </div>
       <div>
-        <label htmlFor="content">Content</label>
         <input
           name="content"
           type="content"

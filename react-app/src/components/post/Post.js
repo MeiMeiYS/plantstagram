@@ -29,7 +29,7 @@ export default function Post({ post }) {
   return (
     <div className="post-container">
       <div className="post-topbar">
-        <div>User id: {post.userid}</div>
+        <div>User: {post.user.username}</div>
         <div>Post id: {post.id}</div>
         <Button
           aria-controls="simple-menu"
