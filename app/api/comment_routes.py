@@ -1,27 +1,21 @@
 from flask_login import current_user, login_user, logout_user, login_required
 from flask import Blueprint, jsonify, session, request
-from forms import PostForm
+from app.forms.comment_form import CommentForm
+from app.forms import PostForm
 from app.models import Post, Comment, db
-router = Blueprint('posts', __name__)
+router = Blueprint('comments', __name__)
 
 
-@router.route("/", methods=["GET"])
-def get_posts():
-    post = Post.query.all()
-    # this hasn't been converted to JSONable data
-    return post
-
-
-@router.route("/<int:id>", methods=["GET"])
-def get_single_post(postid):
-    post = Post.query.get(postid)
-    return post.to_dict()
+# @router.route("/<int:id>", methods=["GET"])
+# def get_single_comment(postid):
+#     post = Post.query.get(postid)
+#     return post.to_dict()
 
 
 @router.route("/new", methods=["POST"])
 @login_required
-def new_post():
-    form = PostForm()
+def new_comment():
+    form = CommentForm()
     user = current_user.to_dict()
     if form.validate_on_submit():
         pass
@@ -31,7 +25,7 @@ def new_post():
 
 @router.route("/<int:id>", methods=["DELETE"])
 @login_required
-def del_post(postid):
+def del_comment(postid):
     post = Post.get_id(postid)
     user = current_user.to_dict()
     if(post.userid == user.id):
