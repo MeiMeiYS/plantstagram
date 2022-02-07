@@ -23,7 +23,7 @@ export const updateProfile = (userId, data) => async (dispatch) => {
     if (response.ok) {
         console.log('yesssssss')
         const user = await response.json();
-        console.log('~~~~~~~~~~~~~~~~~')
+        console.log('~~~~~~~~~~~~~~~~~~')
         console.log(user)
     }
     else {
