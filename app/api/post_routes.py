@@ -41,12 +41,12 @@ def new_post():
 
 @router.route("/<int:id>", methods=["DELETE"])
 @login_required
-def del_post(postid):
-    post = Post.get_id(postid)
+def del_post(id):
+    post = Post.query.get(id)
     user = current_user.to_dict()
-    if(post.userid == user.id):
-        # delete the post
-        pass
+    if(post.userid == user["id"]):
+        db.session.delete(post)
+        db.session.commit()
+        return "success"
     else:
-        # this isnt your post???
-        pass
+        return "fail"

@@ -18,9 +18,11 @@ class Post(db.Model):
                            onupdate=func.now(), server_default=func.now())
 
     def to_dict(self):
+        commentsArr = [v.to_dict() for v in self.comments]
         return {
             'id': self.id,
             'userid': self.userid,
+            'comments': commentsArr,
             'image_url': self.image_url,
             'description': self.description,
             'updated_at': self.updated_at
