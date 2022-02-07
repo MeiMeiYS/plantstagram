@@ -41,7 +41,7 @@ form.signup_form{
 }
 
 .signup_form input {
-    width: 80%;
+    width: 88%;
     font-size: 14px;
     background-color: transparent;
     margin-bottom: 15px;
@@ -76,7 +76,7 @@ form.signup_form{
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 50px;
+    line-height: 40px;
     border-radius: 8px;
     border:none;
     color: rgb(255, 255, 255);
@@ -84,12 +84,12 @@ form.signup_form{
 }
 
 .signup_btn{
-    width: 88%;
+    width: 80%;
     cursor: pointer;
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 38px;
+    line-height: 40px;
     border-radius: 8px;
     border:none;
     color: rgb(255, 255, 255);
@@ -120,7 +120,7 @@ form.signup_form{
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 50px;
+    line-height: 40px;
     border:none;
     color: #3ba2f7
 }

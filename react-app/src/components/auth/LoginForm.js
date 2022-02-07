@@ -16,6 +16,8 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    const email = 'demo@aa.io';
+    const password = 'password';
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
