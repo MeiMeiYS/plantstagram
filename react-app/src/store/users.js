@@ -12,7 +12,7 @@ const editCurrentUser = (user) => ({
 })
 
 export const updateProfile = (userId, data) => async (dispatch) => {
-    const response = await fetch(`api/users/${userId}/edit`, {
+    const response = await fetch(`/api/users/${userId}/edit`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json",
