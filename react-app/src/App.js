@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import LogoutButton from './components/auth/LogoutButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <LogoutButton />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -1,8 +1,11 @@
 :root {
     --background-bright: #ffffff;
     --background-dark: #fafafa;
+    --background-input: #efefef;
+    --text-input: #8e8e8e;
     --main-text: #262626;
     --highligh-links: #3795f6;
+    --border: #dbdbdb;
 }
 
 
