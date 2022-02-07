@@ -5,6 +5,8 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import { useDispatch } from "react-redux";
 import { deletePostById } from "../../store/posts";
+import CreateComment from "./comments/CreateComment";
+import Comment from "./comments/Comment";
 
 export default function Post({ post }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
@@ -54,6 +56,19 @@ export default function Post({ post }) {
           <div className="date-txt">
             {Date(post.updated_at).toLocaleString()}
           </div>
+          <div>
+            <div>Comments:</div>
+            <div>
+              {post.comments.map((c) => {
+                return (
+                  <div>
+                    <Comment key={c} comment={c} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <CreateComment postid={post.id} />
         </div>
       </div>
     </div>
