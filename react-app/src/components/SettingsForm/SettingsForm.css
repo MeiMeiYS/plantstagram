@@ -1,0 +1,12 @@
+.user-settings {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-settings .setting-sidebar {
+    border: 1px solid black
+}
+
+.user-settings .setting-main-form {
+    border: 1px solid black
+}

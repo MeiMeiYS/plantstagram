@@ -12,6 +12,7 @@ import CreatePost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
 import LogoutButton from './components/auth/LogoutButton';
+import SettingsForm from "./components/SettingsForm/";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,12 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <LogoutButton />
           <Feed />
+        </ProtectedRoute>
+        <ProtectedRoute path="/accounts/edit" exact={true}>
+          <SettingsForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/accounts/password/change" exact={true}>
+          <SettingsForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
