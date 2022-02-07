@@ -1,10 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './BtnGroup.css'
+import UserMenu from './UserMenu';
 import anonymous_user from '../../images/anonymous_user.jpeg'
-
+import { useEffect, useState, useRef } from 'react';
 const BtnGroup = () => {
 
+  const [showUserMenu, setShowUserMenu] = useState(false)
+
+  const handleDropDownmenu = () => {
+    setShowUserMenu(preState => !preState)
+
+  }
   return (
       <>
         <div>
@@ -37,10 +44,12 @@ const BtnGroup = () => {
             </button>
         </div>
         <div>
-            <button>
+            <button onClick={handleDropDownmenu}>
                 <img alt='anonymous user' src={anonymous_user}></img>
             </button>
+            {showUserMenu ? <UserMenu /> : null}
         </div>
+
       </>
   );
 }

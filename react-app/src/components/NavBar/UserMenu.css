@@ -1,0 +1,25 @@
+.user-drop-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 111px;
+    width: 230px;
+    /* background-color: var(--background-bright); */
+    background-color: #F5F5DC;
+    position: fixed;
+    top: 54px;
+    right: 0;
+    /*to-do set media query for left/right position */
+    border-radius: 6px;
+    overflow: hidden;
+    color: black;
+    padding: 0px;
+}
+.user-drop-down div {
+    display: flex;
+    border: black 1px solid;
+    flex-direction: column;
+    width: 100%;
+    height: 37px;
+}
