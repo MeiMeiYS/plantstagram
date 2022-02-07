@@ -1,1 +1,19 @@
 /* TODO Add site wide styles */
+
+/* nav bar- ffffff search bar- efefef button- 3ba2f7 dark background- fafafa text- 262626 */
+
+/* form {
+    background-color: #fafafa;
+    color: #262626;
+} */
+
+button {
+    color: #3ba2f7;
+}
+
+#root {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
