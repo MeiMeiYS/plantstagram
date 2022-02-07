@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 400px;
+    height: 420px;
     width: 350px;
     background-color: #fff;
     border: 0.5px solid #dbdbdb;
@@ -15,13 +15,13 @@
 .signup_img{
     height:80px;
     width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .login_img{
     height:80px;
     width: 200px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 form.login_form{
@@ -41,7 +41,7 @@ form.signup_form{
 }
 
 .signup_form input {
-    width: 80%;
+    width: 88%;
     font-size: 14px;
     background-color: transparent;
     margin-bottom: 15px;
@@ -56,14 +56,14 @@ form.signup_form{
 }
 
 .login_form input {
-    width: 80%;
+    width: 88%;
     font-size: 16px;
     background-color: transparent;
     margin-bottom: 15px;
     padding: 0px;
     margin:10px;
     color:rgb(80, 79, 79);
-    line-height: 48px;
+    line-height: 40px;
     border: 0.8px solid rgb(197, 197, 197);
     border-radius: 8px;
     padding-left: 15px;
@@ -76,7 +76,7 @@ form.signup_form{
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 50px;
+    line-height: 40px;
     border-radius: 8px;
     border:none;
     color: rgb(255, 255, 255);
@@ -101,7 +101,7 @@ form.signup_form{
   justify-content: center;
   color:rgb(109, 107, 107);
   font-size: 16px;
-  line-height: 50px;
+  line-height: 40px;
   width: 350px;
   border: 0.5px solid #dbdbdb;
   margin-top: 30px;
@@ -120,7 +120,7 @@ form.signup_form{
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 50px;
+    line-height: 48px;
     border:none;
     color: #3ba2f7
 }
