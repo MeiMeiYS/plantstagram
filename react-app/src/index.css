@@ -1,3 +1,20 @@
+:root {
+    --background-bright: #ffffff;
+    --background-dark: #fafafa;
+    --background-input: #efefef;
+    --text-input: #8e8e8e;
+    --main-text: #262626;
+    --highligh-links: #3795f6;
+    --border: #dbdbdb;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
 /* TODO Add site wide styles */
 
 /* nav bar- ffffff search bar- efefef button- 3ba2f7 dark background- fafafa text- 262626 */
