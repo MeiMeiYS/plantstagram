@@ -25,6 +25,7 @@ export const updateProfile = (userId, data) => async (dispatch) => {
         const user = await response.json();
         console.log('~~~~~~~~~~~~~~~~~~')
         console.log(user)
+        dispatch(editCurrentUser(user))
     }
     else {
         console.log('noooooooo')
@@ -37,9 +38,11 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
       case ADD_USER:
-        // return { user: action.payload };
+        return { ...state, user: action.payload };
       case EDIT_CURRENT_USER:
-        // return { user: null };
+        const allUsers = {...state}
+        allUsers[action.payload.id] = action.payload
+        return allUsers
       default:
         return state;
     }
