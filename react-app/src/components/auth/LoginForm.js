@@ -14,6 +14,16 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const email = "demo@aa.io"
+    const password = "password"
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -67,7 +77,7 @@ const LoginForm = () => {
           <div className="login-line"></div>
         </div>
         {!user &&
-        <button className='demo' onClick={e=>onLogin(e)}><nav>Log in as demo</nav></button>
+        <button className='demo' onClick={e=>onDemo(e)}><nav>Log in as demo</nav></button>
         }
          <div className='addition'>
             Don't have a account?
