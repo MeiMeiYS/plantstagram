@@ -10,10 +10,10 @@ const SettingsForm = () => {
         <div className='user-settings'>
             <div className='setting-sidebar'>
                 <div>
-                    <NavLink exact to='/accounts/edit' >Edit Profile</NavLink>
+                    <NavLink exact to='/accounts/edit' activeClassName='active-user-setting-navbar'>Edit Profile</NavLink>
                 </div>
                 <div>
-                    <NavLink exact to='/accounts/password/change' >Change Password</NavLink>
+                    <NavLink exact to='/accounts/password/change' activeClassName='active-user-setting-navbar'>Change Password</NavLink>
                 </div>
             </div>
             <div className='setting-main-form'>
