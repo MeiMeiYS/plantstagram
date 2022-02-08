@@ -38,11 +38,12 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
       case ADD_USER:
+          //to do
         return { ...state, user: action.payload };
       case EDIT_CURRENT_USER:
-        const allUsers = {...state}
-        allUsers[action.payload.id] = action.payload
-        return allUsers
+        const newState = Object.assign({}, state);
+        newState[action.payload.id] = action.payload
+        return newState;
       default:
         return state;
     }
