@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './BtnGroup.css'
 import UserMenu from './UserMenu';
-import anonymous_user from '../../images/anonymous_user.jpeg'
+import anonymous_user from '../../images/anonymous_user.jpeg';
 import { useEffect, useState, useRef } from 'react';
 const BtnGroup = () => {
 

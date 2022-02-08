@@ -4,8 +4,9 @@
     --background-input: #efefef;
     --text-input: #8e8e8e;
     --main-text: #262626;
-    --highligh-links: #3795f6;
+    --highligh-links: #8ba78d;
     --border: #dbdbdb;
+    --border-focus: #262626;
 }
 
 
@@ -24,9 +25,9 @@
     color: #262626;
 } */
 
-button {
+/* button {
     color: #3ba2f7;
-}
+} */
 
 #root {
     display:flex;
@@ -37,4 +38,8 @@ button {
 
 body {
     background-color: var(--background-dark);
+}
+
+.hidden {
+    display: none;
 }
