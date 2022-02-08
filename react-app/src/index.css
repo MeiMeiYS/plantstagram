@@ -1,5 +1,4 @@
 :root {
-<<<<<<< HEAD
     --background-bright: #ffffff;
     --background-dark: #FAFAFA;
     --background-input: #efefef;
@@ -8,15 +7,6 @@
     --highligh-links: #8ba78d;
     --border: #dbdbdb;
     --border-focus: #262626;
-=======
-  --background-bright: #ffffff;
-  --background-dark: #fafafa;
-  --background-input: #efefef;
-  --text-input: #8e8e8e;
-  --main-text: #262626;
-  --highligh-links: #3795f6;
-  --border: #dbdbdb;
->>>>>>> master
 }
 
 * {
@@ -34,15 +24,9 @@
     color: #262626;
 } */
 
-<<<<<<< HEAD
-/* button {
-    color: #3ba2f7;
-} */
-=======
 button {
   color: var(--highlight-links);
 }
->>>>>>> master
 
 #root {
   display: flex;
