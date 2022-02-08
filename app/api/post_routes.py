@@ -1,8 +1,10 @@
+from tokenize import Number
 from flask_login import current_user, login_user, logout_user, login_required
 from flask import Blueprint, jsonify, session, request
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm
 from app.models import Post, User, db
+from app.models.comment import Comment
 router = Blueprint('posts', __name__)
 
 
@@ -45,8 +47,9 @@ def del_post(id):
     post = Post.query.get(id)
     user = current_user.to_dict()
     if(post.userid == user["id"]):
+        db.session.query(Comment).filter(Comment.postId == id).delete()
         db.session.delete(post)
         db.session.commit()
-        return "success"
+        return "success", 200
     else:
-        return "fail"
+        return "fail", 401

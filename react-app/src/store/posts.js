@@ -64,6 +64,7 @@ export const loadFeed = () => async (dispatch) => {
     }
   }
 };
+
 export const deletePostById = (id) => async (dispatch) => {
   const response = await fetch(`/api/posts/${id}`, {
     method: "DELETE",
@@ -97,6 +98,7 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+
 const initialState = { posts: {} };
 export default function reducer(state = initialState, action) {
   switch (action.type) {

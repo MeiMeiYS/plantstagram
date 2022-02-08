@@ -9,9 +9,13 @@
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  padding: 1rem 1rem;
+  /* padding: 1rem 1rem; */
   border: 1px solid black;
   border-bottom: 0;
+  margin: 10px 0px;
+  width: 60rem;
+  height: 30rem;
+  justify-content: space-between;
 }
 .post-img {
   padding: 100px 0;
@@ -19,4 +23,18 @@
 .post-topbar {
   display: flex;
   justify-content: space-between;
+}
+
+.comment-box {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.comment-input {
+  border: 0;
+}
+.date-txt {
+  padding: 10px 0px;
 }

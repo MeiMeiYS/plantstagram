@@ -19,22 +19,26 @@ export default function CreateComment({ postid }) {
     setContent(e.target.value);
   };
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <input
-          name="content"
-          type="content"
-          placeholder="Comment your thoughts..."
-          value={content}
-          onChange={updateContent}
-        />
-        <button type="submit">Send</button>
-      </div>
+    <form className="comment-box" onSubmit={onSubmit}>
+      {errors.length > 0 && (
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+      )}
+
+      <input
+        className="comment-input"
+        name="content"
+        type="content"
+        placeholder="Add a comment..."
+        value={content}
+        onChange={updateContent}
+      />
+      <button className="btn-text" type="submit">
+        Post
+      </button>
     </form>
   );
 }

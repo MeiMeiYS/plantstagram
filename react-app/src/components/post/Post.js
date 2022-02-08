@@ -12,6 +12,7 @@ export default function Post({ post }) {
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const dispatch = useDispatch();
+  const timestamp = new Date(post.updated_at);
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -53,21 +54,12 @@ export default function Post({ post }) {
       <div>
         <div className="desc">{post.description}</div>
         <div>
-          <div className="date-txt">
-            {Date(post.updated_at).toLocaleString()}
-          </div>
           <div>
-            <div>Comments:</div>
-            <div>
-              {post.comments.map((c) => {
-                return (
-                  <div>
-                    <Comment key={c} comment={c} />
-                  </div>
-                );
-              })}
-            </div>
+            {post.comments.map((c) => {
+              return <Comment key={c} comment={c} />;
+            })}
           </div>
+          <div className="date-txt">{timestamp.toDateString()}</div>
           <CreateComment postid={post.id} />
         </div>
       </div>

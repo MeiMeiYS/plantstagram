@@ -1,9 +1,10 @@
 import React from "react";
-
+import "../post.css";
 export default function Comment({ comment }) {
   return (
     <div>
-      "{comment.content}" by {comment.user.username}
+      <span className="comment-name">{comment.user.username}: </span>
+      <span className="comment-content">{comment.content}</span>
     </div>
   );
 }

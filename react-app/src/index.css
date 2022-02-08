@@ -1,1 +1,15 @@
 /* TODO Add site wide styles */
+:root {
+  --accent: rgb(37, 165, 37);
+}
+.btn-text {
+  border: 0;
+  background: 0;
+  color: var(--accent);
+}
+.btn-text:hover {
+  filter: brightness(90%);
+}
+input:focus {
+  outline: 0;
+}
