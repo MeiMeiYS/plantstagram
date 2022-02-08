@@ -45,6 +45,21 @@ export const createComment = (postid, content) => async (dispatch) => {
   }
 };
 
+export const likePostById = (postid) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${postid}/like`, {
+    method: "POST",
+  });
+
+  if (response.ok) {
+    // data is returned updated post
+    const data = await response.json();
+    dispatch(addPost(data));
+    return null;
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 const addPost = (post) => ({
   type: ADD_POST,
   post,
@@ -64,6 +79,7 @@ export const loadFeed = () => async (dispatch) => {
     }
   }
 };
+
 export const deletePostById = (id) => async (dispatch) => {
   const response = await fetch(`/api/posts/${id}`, {
     method: "DELETE",
@@ -97,6 +113,7 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+
 const initialState = { posts: {} };
 export default function reducer(state = initialState, action) {
   switch (action.type) {

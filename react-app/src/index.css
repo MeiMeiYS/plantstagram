@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
     --background-bright: #ffffff;
     --background-dark: #FAFAFA;
     --background-input: #efefef;
@@ -7,14 +8,22 @@
     --highligh-links: #8ba78d;
     --border: #dbdbdb;
     --border-focus: #262626;
+=======
+  --background-bright: #ffffff;
+  --background-dark: #fafafa;
+  --background-input: #efefef;
+  --text-input: #8e8e8e;
+  --main-text: #262626;
+  --highligh-links: #3795f6;
+  --border: #dbdbdb;
+>>>>>>> master
 }
 
-
 * {
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
 /* TODO Add site wide styles */
 
@@ -25,19 +34,36 @@
     color: #262626;
 } */
 
+<<<<<<< HEAD
 /* button {
     color: #3ba2f7;
 } */
+=======
+button {
+  color: var(--highlight-links);
+}
+>>>>>>> master
 
 #root {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 body {
-    background-color: var(--background-dark);
+  background-color: var(--background-dark);
+}
+.btn-text {
+  border: 0;
+  background: 0;
+  color: var(--highlight-links);
+}
+.btn-text:hover {
+  filter: brightness(90%);
+}
+input:focus {
+  outline: 0;
 }
 
 .hidden {

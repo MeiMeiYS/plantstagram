@@ -1,3 +1,4 @@
+from app.models.postlike import PostLike
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -15,6 +16,27 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     posts = db.relationship("Post", back_populates="user")
     comments = db.relationship("Comment",  back_populates="user")
+    liked = db.relationship(
+        'PostLike',
+        foreign_keys='PostLike.userid',
+        backref='user', lazy='dynamic')
+
+    def like_post(self, post):
+        if not self.has_liked_post(post):
+            like = PostLike(userid=self.id, postid=post.id)
+            db.session.add(like)
+
+    def unlike_post(self, post):
+        if self.has_liked_post(post):
+            PostLike.query.filter_by(
+                userid=self.id,
+                postid=post.id).delete()
+
+    def has_liked_post(self, post):
+        return PostLike.query.filter(
+            PostLike.userid == self.id,
+            PostLike.postid == post.id).count() > 0
+
     @property
     def password(self):
         return self.hashed_password
