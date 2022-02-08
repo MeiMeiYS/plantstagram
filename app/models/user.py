@@ -21,6 +21,18 @@ class User(db.Model, UserMixin):
         foreign_keys='PostLike.userid',
         backref='user', lazy='dynamic')
 
+    followers = db.relationship(
+        "Follow",
+        foreign_keys="Follow.followid",
+        backref="user", lazy="dynamic"
+    )
+
+    following = db.relationship(
+        "Follow",
+        foreign_keys="Follow.userid",
+        backref="user", lazy="dynamic"
+    )
+
     def like_post(self, post):
         if not self.has_liked_post(post):
             like = PostLike(userid=self.id, postid=post.id)
@@ -37,6 +49,34 @@ class User(db.Model, UserMixin):
             PostLike.userid == self.id,
             PostLike.postid == post.id).count() > 0
 
+    def follow_user(self, user):
+        if not self.has_followed_user(user):
+            follow = Follow(userid=self.id, followid=user.id)
+            db.session.add(follow)
+
+    def unfollow_user(self, user):
+        if self.has_followed_user(user):
+            Follow.query.filter_by(
+                userid==self.id,
+                followid==user.id).delete()
+
+    def has_followed_user(self, user):
+        return Follow.query.filter(
+            Follow.userid == self.id,
+            Follow.followid == user.id).count() > 0
+    
+    def get_followers(self):
+        followers = Follow.query.filter(
+            Follow.followid == self.id
+        ).all()
+        return followers
+
+    def get_following(self):
+        following = Follow.query.filter(
+            Follow.userid == self.id
+        ).all()
+        return following
+
     @property
     def password(self):
         return self.hashed_password
@@ -52,5 +92,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'following': self.get_following().count(),
+            'followers': self.get_followers().count()
         }
