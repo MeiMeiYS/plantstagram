@@ -15,6 +15,7 @@ class Comment(db.Model):
         return {
             'id': self.id,
             'userid': self.userid,
+            'user': self.user.to_dict(),
             'content': self.content,
             # 'updated_at': self.updated_at TODO
         }
