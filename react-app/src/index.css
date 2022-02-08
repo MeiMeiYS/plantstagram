@@ -1,11 +1,46 @@
-/* TODO Add site wide styles */
 :root {
-  --accent: rgb(37, 165, 37);
+  --background-bright: #ffffff;
+  --background-dark: #fafafa;
+  --background-input: #efefef;
+  --text-input: #8e8e8e;
+  --main-text: #262626;
+  --highligh-links: #3795f6;
+  --border: #dbdbdb;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+/* TODO Add site wide styles */
+
+/* nav bar- ffffff search bar- efefef button- 3ba2f7 dark background- fafafa text- 262626 */
+
+/* form {
+    background-color: #fafafa;
+    color: #262626;
+} */
+
+button {
+  color: var(--highlight-links);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+body {
+  background-color: var(--background-dark);
 }
 .btn-text {
   border: 0;
   background: 0;
-  color: var(--accent);
+  color: var(--highlight-links);
 }
 .btn-text:hover {
   filter: brightness(90%);

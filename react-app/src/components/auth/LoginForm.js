@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import "./auth.css";
+import logo from "../../images/logo6.png";
+import { Link } from "react-router-dom";
+import * as sessionActions from '../../store/session';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -9,6 +13,16 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
+  const onDemo = async (e) => {
+    e.preventDefault();
+    const email = "demo@aa.io"
+    const password = "password"
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+  };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -31,14 +45,16 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <div className="login_container">
+    <img src={logo} alt="Logo" className="login_img"></img>
+    <div className="login_form_container">
+    <form onSubmit={onLogin} className="login_form">
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className="login_input">
         <input
           name='email'
           type='text'
@@ -46,9 +62,6 @@ const LoginForm = () => {
           value={email}
           onChange={updateEmail}
         />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
@@ -56,9 +69,23 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+        </div>
+        <button type='submit' className="login_btn">Log In</button>
+        <div className="login-or">
+          <div className="login-line"></div>
+          <div className="l-or">OR</div>
+          <div className="login-line"></div>
+        </div>
+        {!user &&
+        <button className='demo' onClick={e=>onDemo(e)}><nav>Log in as demo</nav></button>
+        }
+         <div className='addition'>
+            Don't have a account?
+            <Link className='link' to="/accounts/sign-up">Sign Up</Link>
+          </div>
+      </form>
+    </div>
+    </div>
   );
 };
 

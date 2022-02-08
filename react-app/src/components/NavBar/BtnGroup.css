@@ -1,0 +1,32 @@
+.nav-bar-btns > div {
+    display: inline-block;
+    padding: 0 0 0 24px;
+}
+
+
+.nav-bar-btns div button {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.nav-bar-btns div button img {
+    height: 100%;
+    width: 100%;
+}
+
+.active-link {
+    display: none;
+}
+
+.active-nav .active-link {
+    display: inline-block;
+}
+
+.active-nav .none-active-link{
+    display: none;
+}

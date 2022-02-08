@@ -1,0 +1,33 @@
+.search-bar-container {
+    height: 36px;
+    width: 268px;
+    border-radius: 8px;
+    padding: 0 16px;
+    background-color: var(--background-input);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar-container svg {
+    margin-right: 9px;
+}
+
+.search-bar-container input {
+    color: var(--main-text);
+    width: 100%;
+    height: 100%;
+    line-height: 18px;
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+}
+
+.search-bar-container input::placeholder {
+    color: var(--text-input);
+}
+
+.search-bar-container input:focus {
+    outline: none;
+}

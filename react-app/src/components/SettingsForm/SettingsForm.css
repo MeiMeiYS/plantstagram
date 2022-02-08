@@ -1,0 +1,48 @@
+.user-settings {
+    display: flex;
+    flex-direction: row;
+}
+
+.user-settings .setting-sidebar {
+    border: 1px solid var(--border);
+    width: 236px;
+    background-color: var(--background-bright);
+
+}
+
+.user-settings .setting-sidebar > div {
+    padding: 16px 16px 16px 30px;
+}
+
+.user-settings .setting-sidebar > div > a{
+    color: var(--main-text);
+    text-decoration: none;
+}
+
+/* Below is for Content ------------------------------------------------------------------ */
+
+.active-user-setting-navbar{
+    font-weight: 600;
+}
+
+.user-settings .setting-main-form {
+    border: 1px solid var(--border);
+    width: 822px;
+    background-color: var(--background-bright);
+}
+
+.edit-profile-form > div > input ,
+.edit-profile-form > div > textarea{
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0 6px;
+    width: 355px;
+}
+
+.edit-profile-form > div > input {
+    height: 32px;
+}
+
+.edit-profile-form > div > textarea {
+    height: 60px;
+}

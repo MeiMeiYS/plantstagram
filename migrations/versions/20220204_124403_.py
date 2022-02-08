@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 19a1ca9625e0
-Revises: 
+Revises:
 Create Date: 2022-02-04 12:44:03.210846
 
 """
@@ -31,18 +31,18 @@ def upgrade():
     sa.UniqueConstraint('username')
     )
     op.create_table('follows',
-    sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('followedId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['followedId'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('userId', 'followedId')
+    sa.Column('userid', sa.Integer(), nullable=False),
+    sa.Column('followedid', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['followedid'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['userid'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('userid', 'followedid')
     )
     op.create_table('messages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userid', sa.Integer(), nullable=False),
-    sa.Column('receiverId', sa.Integer(), nullable=False),
+    sa.Column('receiverid', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=1000), nullable=False),
-    sa.ForeignKeyConstraint(['receiverId'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['receiverid'], ['users.id'], ),
     sa.ForeignKeyConstraint(['userid'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -57,24 +57,24 @@ def upgrade():
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userid', sa.Integer(), nullable=False),
-    sa.Column('postId', sa.Integer(), nullable=False),
+    sa.Column('postid', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(length=2200), nullable=False),
-    sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
+    sa.ForeignKeyConstraint(['postid'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['userid'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('post_likes',
-    sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('postId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
-    sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('userId', 'postId')
+    sa.Column('userid', sa.Integer(), nullable=False),
+    sa.Column('postid', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['postid'], ['posts.id'], ),
+    sa.ForeignKeyConstraint(['userid'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('userid', 'postid')
     )
     op.create_table('tags',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('postId', sa.Integer(), nullable=True),
+    sa.Column('postid', sa.Integer(), nullable=True),
     sa.Column('hashtag', sa.String(length=20), nullable=False),
-    sa.ForeignKeyConstraint(['postId'], ['posts.id'], ),
+    sa.ForeignKeyConstraint(['postid'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
