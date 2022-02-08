@@ -15,10 +15,31 @@ def get_posts():
     return {"posts": postsArr}
 
 
-@router.route("/<int:id>", methods=["GET"])
+@router.route("/<int:postid>", methods=["GET"])
 def get_single_post(postid):
     post = Post.query.get(postid)
     return post.to_dict()
+
+
+@router.route("/<int:postid>/like", methods=["POST"])
+def like_post(postid):
+    post = Post.query.get(postid)
+    user = current_user
+    if(user.has_liked_post(post)):
+        user.unlike_post(post)
+    else:
+        user.like_post(post)
+    db.session.commit()
+    return post.to_dict()
+
+
+# @router.route("/<int:postid>/unlike", methods=["POST"])
+# def unlike_post(postid):
+#     post = Post.query.get(postid)
+#     user = current_user
+#     user.unlike_post(post)
+#     db.session.commit()
+#     return post.to_dict()
 
 
 @router.route("/new", methods=["POST"])

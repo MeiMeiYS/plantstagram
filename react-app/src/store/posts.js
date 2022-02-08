@@ -45,6 +45,21 @@ export const createComment = (postid, content) => async (dispatch) => {
   }
 };
 
+export const likePostById = (postid) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${postid}/like`, {
+    method: "POST",
+  });
+
+  if (response.ok) {
+    // data is returned updated post
+    const data = await response.json();
+    dispatch(addPost(data));
+    return null;
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 const addPost = (post) => ({
   type: ADD_POST,
   post,
