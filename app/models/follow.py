@@ -1,9 +1,10 @@
 from .db import db
 
-follows = db.Table(
-    "follows",
-    db.Column("userid", db.Integer, db.ForeignKey(
-        "users.id"), primary_key=True),
-    db.Column("followedid", db.Integer, db.ForeignKey(
-        "users.id"), primary_key=True)
-)
+class Follow(db.Model):
+    __tablename__ = "follows"
+
+    id = db.Column(db.Integer, primary_key=True)
+    userid = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    followid = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    # user = db.relationship("User", back_populates="followers")
+    # following = db.relationship("User", back_populates="following")

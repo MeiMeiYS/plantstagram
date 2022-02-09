@@ -8,7 +8,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
@@ -39,7 +39,6 @@ def editUser(id):
         db.session.commit()
         return user.to_dict()
     except exc.SQLAlchemyError as e:
-
         return {'errors': ['Bad data:', '* Your input data is too long.']}, 400
 
 
@@ -60,3 +59,29 @@ def changePassword(id):
         return user.to_dict()
     else:
         return {'errors': ['* Password incorrect.']}, 401
+
+@user_routes.route('/<int:followid>/follow', methods=["POST"])
+def follow_user(followid):
+    following = Follow.query.get(followid)
+    user = current_user
+    if user.has_followed_user(following):
+        user.unfollow_user(following)
+    else:
+        user.follow_user(following)
+    db.session.commit()
+    return user.to_dict()
+
+@user_routes.route('/<int:userid>/following')
+def get_following(userid):
+    user = User.query.get(userid)
+    following_id_list = [entry.followid for entry in user.get_following()]
+    following_list = user.get_follow_list(following_id_list)
+    return {"user_following_dict": following_list}
+
+@user_routes.route('/<int:userid>/followers')
+def get_followers(userid):
+    user = User.query.get(userid)
+    followers_id_list = [entry.userid for entry in user.get_followers()]
+    followers_list = user.get_follow_list(followers_id_list)
+
+    return {"user_follower_dict": followers_list}
