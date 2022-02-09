@@ -10,7 +10,7 @@ router = Blueprint('posts', __name__)
 
 @router.route("/feed", methods=["GET"])
 def get_posts():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.updated_at).all()
     postsArr = [p.to_dict() for p in posts]
     return {"posts": postsArr}
 
