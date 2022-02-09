@@ -1,6 +1,8 @@
 .user-settings {
     display: flex;
     flex-direction: row;
+    margin-top: 30px;
+    min-height: calc(100vh - 60px - 30px - 120px);
 }
 
 .user-settings .setting-sidebar {
@@ -10,39 +12,194 @@
 
 }
 
-.user-settings .setting-sidebar > div {
+.user-settings .setting-sidebar > div > a {
+    display: block;
     padding: 16px 16px 16px 30px;
-}
-
-.user-settings .setting-sidebar > div > a{
+    height: 52px;
+    width: 100%;
     color: var(--main-text);
     text-decoration: none;
 }
 
-/* Below is for Content ------------------------------------------------------------------ */
-
 .active-user-setting-navbar{
     font-weight: 600;
+    border-left: 2px solid var(--main-text);
 }
+
+/* Below is for Content ------------------------------------------------------------------ */
 
 .user-settings .setting-main-form {
     border: 1px solid var(--border);
+    border-left: none;
     width: 822px;
     background-color: var(--background-bright);
+    padding: 32px 0;
 }
 
-.edit-profile-form > div > input ,
-.edit-profile-form > div > textarea{
+.edit-profile-form > div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.change-password-form > div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.edit-profile-form .setting-user-row,
+.change-password-form .setting-user-row {
+    height: 45px;
+    margin-bottom: 25px;
+}
+
+.edit-profile-form .setting-set-left,
+.change-password-form .setting-set-left {
+    display: inline-block;
+    height: 26px;
+    width: 194px;
+    padding: 0 32px;
+    text-align: right;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-top: 6px;
+}
+
+.edit-profile-form .setting-set-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-profile-form .setting-username-display {
+    font-size: 20px;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.change-password-form .setting-username-display {
+    font-size: 24px;
+    line-height: 38px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    position: relative;
+    top: 2px;
+}
+
+.edit-profile-form #chnage-profile-picture {
+    background-color: transparent;
+    color: var(--highligh-links);
+    height: 18px;
+    /* width: 100%; */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    margin-top: -10px;
+}
+
+.edit-profile-form .setting-profile-img-container,
+.change-password-form .setting-profile-img-container {
+    height: 38px;
+    width: 38px;
+    overflow: hidden;
+    margin-left: auto;
+}
+
+.edit-profile-form .setting-profile-img-container img,
+.change-password-form .setting-profile-img-container img {
+    height: 100%;
+    width: 100%;
+
+}
+
+.edit-profile-form input,
+.edit-profile-form textarea,
+.change-password-form input {
+    padding: 0 10px;
     border: 1px solid var(--border);
     border-radius: 3px;
-    padding: 0 6px;
     width: 355px;
+    font-size: 16px;
+    line-height: 18px;
 }
 
-.edit-profile-form > div > input {
+.edit-profile-form input:focus,
+.edit-profile-form textarea:focus,
+.change-password-form input:focus {
+    outline: none;
+    border: 1px solid var(--border-focus);
+}
+
+.edit-profile-form input {
     height: 32px;
+    padding: 0 10px;
 }
 
-.edit-profile-form > div > textarea {
+.edit-profile-form textarea {
     height: 60px;
+    padding: 6px 10px;
+}
+
+.change-password-form input {
+    height: 40px;
+    padding: 0 10px;
+}
+
+.edit-profile-form .setting-input-guideline {
+    display: block;
+    width: 355px;
+    color: var(--text-input);
+    font-weight: 400;
+    line-height: 14px;
+    font-size: 12px;
+}
+
+.edit-profile-form .setting-error-container,
+.change-password-form .setting-error-container {
+    position: relative;
+    left: 194px;
+    color: tomato;
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    /* width: 355px; */
+}
+
+.edit-profile-form button.setting-submit,
+.change-password-form button.setting-submit {
+    background-color: var(--highligh-links);
+    color: var(--background-bright);
+    height: 30px;
+    width: 68px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 9px;
+    position: relative;
+    left: 194px;
+}
+
+.edit-profile-form button.setting-submit:disabled,
+.change-password-form button.setting-submit:disabled {
+    opacity: 0.3
+}
+
+.edit-profile-form .setting-success,
+.change-password-form .setting-success {
+    font-weight: 400;
+    line-height: 14px;
+    font-size: 14px;
+    color: var(--highligh-links);
+    position: relative;
+    left: 205px;
 }

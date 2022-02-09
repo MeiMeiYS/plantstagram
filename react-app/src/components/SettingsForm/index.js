@@ -2,9 +2,24 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './SettingsForm.css'
 import EditProfile from './EditProfile';
+import ChangePassword from './ChangePassword';
 
 const SettingsForm = () => {
 
+    const pathname = window.location.pathname
+    const [ showEditProfile, setShowEditProfile ] = useState(false);
+    const [ showChangePassword, setShowChangePassword ] = useState(false);
+
+    useEffect(() => {
+        if (pathname === '/accounts/edit') {
+            setShowEditProfile(true)
+            setShowChangePassword(false)
+        }
+        if (pathname === '/accounts/password/change') {
+            setShowChangePassword(true)
+            setShowEditProfile(false)
+        }
+    }, [pathname])
 
     return (
         <div className='user-settings'>
@@ -17,7 +32,8 @@ const SettingsForm = () => {
                 </div>
             </div>
             <div className='setting-main-form'>
-                <EditProfile />
+                {showEditProfile ? <EditProfile /> : null}
+                {showChangePassword ? <ChangePassword /> : null}
             </div>
         </div>
     )
