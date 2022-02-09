@@ -1,4 +1,5 @@
 from app.models.postlike import PostLike
+from app.models.follow import Follow
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -23,14 +24,14 @@ class User(db.Model, UserMixin):
 
     followers = db.relationship(
         "Follow",
-        foreign_keys="Follow.followid",
+        foreign_keys="Follow.userid",
         backref="user", lazy="dynamic"
     )
 
     following = db.relationship(
         "Follow",
-        foreign_keys="Follow.userid",
-        backref="user", lazy="dynamic"
+        foreign_keys="Follow.followid",
+        backref="following", lazy="dynamic"
     )
 
     def like_post(self, post):
@@ -64,18 +65,18 @@ class User(db.Model, UserMixin):
         return Follow.query.filter(
             Follow.userid == self.id,
             Follow.followid == user.id).count() > 0
-    
-    def get_followers(self):
-        followers = Follow.query.filter(
-            Follow.followid == self.id
-        ).all()
-        return followers
 
-    def get_following(self):
-        following = Follow.query.filter(
-            Follow.userid == self.id
-        ).all()
-        return following
+    # def get_followers(self):
+    #     followers = Follow.query.filter(
+    #         Follow.followid == self.id
+    #     ).all()
+    #     return followers
+
+    # def get_following(self):
+    #     following = Follow.query.filter(
+    #         Follow.userid == self.id
+    #     ).all()
+    #     return following
 
     @property
     def password(self):
@@ -89,10 +90,21 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+
+        following = Follow.query.filter(
+            Follow.userid == self.id
+        ).all()
+
+        followers = Follow.query.filter(
+            Follow.followid == self.id
+        ).all()
+
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'following': self.get_following().count(),
-            'followers': self.get_followers().count()
+            'following_count': len(following),
+            'followers_count': len(followers),
+            'followers_list': {u.user.to_dict() for u in followers},
+            'following_list': {u.user.to_dict() for u in following}
         }

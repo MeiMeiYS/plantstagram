@@ -45,21 +45,13 @@ def follow_user(followid):
 @user_routes.route('/<int:userid>/following')
 def get_following(userid):
     user = User.query.get(userid)
-    following_list = user.get_following()
-    print(following)
-    return following_list
+    following_list = [f'{entry.followid}' for entry in user.get_following()]
+
+    return {"following": following_list}
 
 @user_routes.route('/<int:userid>/followers')
 def get_followers(userid):
     user = User.query.get(userid)
-    followers_list = user.get_followers()
-    return followers_list
+    followers_list = [f'{entry.userid}' for entry in user.get_followers()]
 
-
-
-
-
-
-
-
-
+    return {"followers": followers_list}
