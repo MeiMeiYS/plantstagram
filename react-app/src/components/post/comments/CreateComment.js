@@ -29,6 +29,7 @@ export default function CreateComment({ postid }) {
       )}
 
       <input
+        required
         className="comment-input"
         name="content"
         type="content"
