@@ -49,9 +49,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
         {/* profile page */}
-        <Profile />
+
           {/* <User /> */}
           <NavBar />
+            <Profile />
           {/* profile page */}
           <Footer />
         </ProtectedRoute>
