@@ -22,17 +22,17 @@ class User(db.Model, UserMixin):
         foreign_keys='PostLike.userid',
         backref='user', lazy='dynamic')
 
-    followers = db.relationship(
+    followed = db.relationship(
         "Follow",
         foreign_keys="Follow.userid",
         backref="user", lazy="dynamic"
     )
 
-    following = db.relationship(
-        "Follow",
-        foreign_keys="Follow.followid",
-        backref="following", lazy="dynamic"
-    )
+    # following = db.relationship(
+    #     "Follow",
+    #     foreign_keys="Follow.followid",
+    #     backref="following", lazy="dynamic"
+    # )
 
     def like_post(self, post):
         if not self.has_liked_post(post):
@@ -66,17 +66,24 @@ class User(db.Model, UserMixin):
             Follow.userid == self.id,
             Follow.followid == user.id).count() > 0
 
-    # def get_followers(self):
-    #     followers = Follow.query.filter(
-    #         Follow.followid == self.id
-    #     ).all()
-    #     return followers
+    def get_followers(self):
+        followers = Follow.query.filter(
+            Follow.followid == self.id
+        ).all()
+        return followers
 
-    # def get_following(self):
-    #     following = Follow.query.filter(
-    #         Follow.userid == self.id
-    #     ).all()
-    #     return following
+    def get_following(self):
+        following = Follow.query.filter(
+            Follow.userid == self.id
+        ).all()
+        return following
+
+    def get_follow_list(self, id_list):
+        follow_list = {}
+        for id in id_list:
+            user = User.query.get(id)
+            follow_list[id] = {"username": user.username, "name": user.name, "avatar_url": user.avatar_url}
+        return follow_list
 
     @property
     def password(self):
@@ -105,6 +112,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'following_count': len(following),
             'followers_count': len(followers),
-            'followers_list': {u.user.to_dict() for u in followers},
-            'following_list': {u.user.to_dict() for u in following}
+            # 'followers_list': {u.user.to_dict() for u in followers},
+            # 'following_list': {u.user.to_dict() for u in following}
         }
