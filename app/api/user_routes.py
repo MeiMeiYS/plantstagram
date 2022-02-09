@@ -30,5 +30,3 @@ def editUser(id):
     db.session.commit()
 
     return user.to_dict()
-
-
