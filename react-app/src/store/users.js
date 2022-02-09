@@ -3,13 +3,21 @@ const EDIT_CURRENT_USER = "users/EDIT_CURRENT_USER";
 
 const addUser = (user) => ({
     type: ADD_USER,
-    payload: user
+    payload: user,
 })
 
 const editCurrentUser = (user) => ({
     type: EDIT_CURRENT_USER,
     payload: user
 })
+
+export const addUserObj = (userid) => async(dispatch) => {
+    const response = await fetch(`/api/users/${userid}`);
+    if (response.ok) {
+        const user = await response.json();
+        dispatch(addUser(user));
+    }
+}
 
 export const updateProfile = (userId, data) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}/edit`, {
@@ -36,12 +44,12 @@ export const updateProfile = (userId, data) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
+    const newState = Object.assign({}, state);
     switch (action.type) {
       case ADD_USER:
-          //to do
-        return { ...state, user: action.payload };
+        newState[action.payload.id] = action.payload;
+        return newState;
       case EDIT_CURRENT_USER:
-        const newState = Object.assign({}, state);
         newState[action.payload.id] = action.payload
         return newState;
       default:

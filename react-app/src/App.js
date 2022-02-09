@@ -13,6 +13,7 @@ import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
 import LogoutButton from './components/auth/LogoutButton';
 import SettingsForm from "./components/SettingsForm/";
+import Profile from './components/profile/Profile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +46,8 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
         {/* profile page */}
-          <User />
+        <Profile />
+          {/* <User /> */}
         </ProtectedRoute>
         <ProtectedRoute path="/create/select" exact={true}>
           <CreatePost />
