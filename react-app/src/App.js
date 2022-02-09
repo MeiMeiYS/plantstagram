@@ -11,8 +11,8 @@ import { authenticate } from "./store/session";
 import CreatePost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
-import LogoutButton from './components/auth/LogoutButton';
 import SettingsForm from "./components/SettingsForm/";
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,34 +31,53 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path="/accounts/login" exact={true}>
           <LoginForm />
+          <Footer />
         </Route>
         <Route path="/accounts/sign-up" exact={true}>
           <SignUpForm />
+          <Footer />
         </Route>
+
         <ProtectedRoute path="/users" exact={true}>
-        {/* follower following list */}
-          <UsersList />
+          <NavBar />
+          {/* follower following list */}
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
-        {/* profile page */}
-          <User />
+          <NavBar />
+          {/* profile page */}
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/create/select" exact={true}>
           <CreatePost />
         </ProtectedRoute>
+        <ProtectedRoute path="/direct/inbox" exact={true}>
+          <NavBar />
+          {/* direct message */}
+          <Footer />
+        </ProtectedRoute>
+        <ProtectedRoute path="/explore" exact={true}>
+          <NavBar />
+          {/* explore */}
+          <Footer />
+        </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <LogoutButton />
+          <NavBar />
           <Feed />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/accounts/edit" exact={true}>
+          <NavBar />
           <SettingsForm />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/accounts/password/change" exact={true}>
+          <NavBar />
           <SettingsForm />
+          <Footer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
