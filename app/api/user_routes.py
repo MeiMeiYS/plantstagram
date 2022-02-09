@@ -37,7 +37,6 @@ def editUser(id):
         user.username = data['username']
         user.bio = data['bio']
         db.session.commit()
-
         return user.to_dict()
     except exc.SQLAlchemyError as e:
 
