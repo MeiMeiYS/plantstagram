@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import './BtnGroup.css'
 import UserMenu from './UserMenu';
-import anonymous_user from '../../images/anonymous_user.jpeg'
-import { useEffect, useState, useRef } from 'react';
+import anonymous_user from '../../images/anonymous_user.jpeg';
+import { useState } from 'react';
 const BtnGroup = () => {
 
   const [showUserMenu, setShowUserMenu] = useState(false)
@@ -12,6 +12,7 @@ const BtnGroup = () => {
     setShowUserMenu(preState => !preState)
 
   }
+
   return (
       <>
         <div>
@@ -44,10 +45,10 @@ const BtnGroup = () => {
             </button>
         </div>
         <div>
-            <button onClick={handleDropDownmenu}>
+            <button className='nav-avatar-btn' onClick={handleDropDownmenu} id={`${ showUserMenu && "border-up-avatar" }`}>
                 <img alt='anonymous user' src={anonymous_user}></img>
             </button>
-            {showUserMenu ? <UserMenu /> : null}
+            {showUserMenu ? <UserMenu showUserMenu={showUserMenu} setShowUserMenu={setShowUserMenu}/> : null}
         </div>
 
       </>

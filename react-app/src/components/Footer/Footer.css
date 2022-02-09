@@ -1,0 +1,46 @@
+footer {
+    /* background-color: thistle; */
+    width: 100vw;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    /* background-color: thistle; */
+}
+
+footer > div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+footer > div > div {
+    display: flex;
+    flex-direction: row;
+    margin: 0 20px;
+}
+
+footer p {
+    color: var(--text-input);
+    line-height: 26px;
+    vertical-align: baseline;
+    font-size: 14px;
+    margin-right: 3px;
+}
+
+footer i {
+    color: var(--text-input);
+}
+
+footer button {
+    border: none;
+    background-color: transparent;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+footer i:hover {
+    color: var(--main-text);
+}

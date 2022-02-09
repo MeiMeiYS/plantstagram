@@ -108,10 +108,12 @@ class User(db.Model, UserMixin):
 
         return {
             'id': self.id,
+            'name': self.name,
             'username': self.username,
             'email': self.email,
             'following_count': len(following),
             'followers_count': len(followers),
             # 'followers_list': {u.user.to_dict() for u in followers},
             # 'following_list': {u.user.to_dict() for u in following}
+            'bio': self.bio
         }

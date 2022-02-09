@@ -41,11 +41,13 @@ export const updateProfile = (userId, data) => async (dispatch) => {
 }
 
 
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
     const newState = Object.assign({}, state);
     switch (action.type) {
+
       case ADD_USER:
         newState[action.payload.id] = action.payload;
         return newState;
