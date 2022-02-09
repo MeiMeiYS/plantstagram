@@ -1,12 +1,14 @@
 .nav-bar-btns > div {
     display: inline-block;
     padding: 0 0 0 24px;
+    position: relative;
+    height: 28px;
 }
 
 
 .nav-bar-btns div button {
-    height: 24px;
-    width: 24px;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     overflow: hidden;
     border: none;
@@ -29,4 +31,14 @@
 
 .active-nav .none-active-link{
     display: none;
+}
+
+#border-up-avatar {
+    padding: 2px;
+    border: 2px solid var(--highligh-links);
+}
+
+.nav-avatar-btn {
+    position: relative;
+    bottom: 2px;
 }
