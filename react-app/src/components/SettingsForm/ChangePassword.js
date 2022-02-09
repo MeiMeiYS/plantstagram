@@ -27,12 +27,10 @@ const ChangePassword = () => {
         e.preventDefault();
         if (newPassword !== confirmPassword) {
             setErrorMessages(['* Please make sure both passwords match.']);
-            console.log(errorMessages)
             return
         }
         if (oldPassword === newPassword) {
             setErrorMessages(['* New password cannot be the same as old password.']);
-            console.log(errorMessages)
             return
         }
         const data = {

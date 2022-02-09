@@ -53,3 +53,17 @@ input:focus {
 .hidden {
     display: none;
 }
+
+.background-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,.85);
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}

@@ -66,7 +66,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
-          <Feed />
+          {/* <Feed /> */}
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/accounts/edit" exact={true}>
