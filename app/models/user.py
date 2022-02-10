@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         "Follow",
         foreign_keys="Follow.followid",
-        backref="following", lazy="select"
+        backref="followee", lazy="select"
     )
 
     def like_post(self, post):
@@ -110,7 +110,8 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'following_count': len(self.following),
             'followers_count': len(self.followers),
-            # 'followers_list': [f.user.username for f in self.followers],
-            # 'following_list': [f.followedUser.username for f in self.following],
+            # next two lines do work as intended but creates more queries
+            # 'followers_list': [f.follower.username for f in self.followers],
+            # 'following_list': [f.followee.username for f in self.following],
             'bio': self.bio
         }
