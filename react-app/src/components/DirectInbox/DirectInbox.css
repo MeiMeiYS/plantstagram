@@ -1,0 +1,117 @@
+.direct-inbox {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    min-height: calc(100vh - 60px - 30px - 120px);
+}
+
+/* ---------------side bar----------------------- */
+
+.direct-inbox .direct-inbox-sidebar {
+    border: 1px solid var(--border);
+    width: 349px;
+    background-color: var(--background-bright);
+}
+
+.direct-inbox .direct-inbox-sidebar .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+}
+
+.direct-inbox .direct-inbox-sidebar .header p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.direct-inbox .direct-inbox-sidebar .chat-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 72px;
+    width: 100%;
+    padding: 8px 20px;
+}
+
+.direct-inbox .direct-inbox-sidebar .chat-user:hover {
+    background-color: var(--background-dark);
+}
+
+.direct-inbox .direct-inbox-sidebar .chat-user.active {
+    background-color: var(--background-input);
+}
+
+.direct-inbox .direct-inbox-sidebar .chat-user .avatar {
+    height: 56px;
+    width: 56px;
+    background-color: tomato;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.direct-inbox .direct-inbox-sidebar .chat-user .username {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* ---------------main content----------------------- */
+
+.direct-inbox .direct-inbox-main-content {
+    border: 1px solid var(--border);
+    border-left: none;
+    width: 822px;
+    background-color: var(--background-bright);
+    padding: 32px 0;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background-color: thistle; */
+}
+
+.direct-inbox .direct-inbox-main-content .default-display img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display p {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 15px;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display span {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-input);
+    margin-bottom: 25px;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display button {
+    color: var(--background-bright);
+    background-color: var(--highligh-links);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 5px 9px;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display button:active {
+    background-color: #a7bfa8;
+}
