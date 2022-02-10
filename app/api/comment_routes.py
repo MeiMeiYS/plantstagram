@@ -37,11 +37,12 @@ def new_comment(postid):
 @router.route("/comments/<int:commentid>", methods=["DELETE"])
 @login_required
 def del_comment(commentid):
-    comment = Comment.get_id(commentid)
+    comment = Comment.query.get(commentid)
     user = current_user.to_dict()
     if(comment.userid == user["id"]):
+        post = Post.query.get(comment.postid)
         db.session.delete(comment)
         db.session.commit()
-        return "success"
+        return post.to_dict(), 200
     else:
-        return "fail"
+        return "fail", 401
