@@ -71,7 +71,6 @@ export default function Post({ post }) {
           >
             <svg
               aria-label="More options"
-              class="_8-yf5 "
               color="#262626"
               fill="#262626"
               height="24"
@@ -104,7 +103,6 @@ export default function Post({ post }) {
             >
               <svg
                 aria-label="Unlike"
-                class="_8-yf5 "
                 color="#ed4956"
                 fill="#ed4956"
                 height="24"

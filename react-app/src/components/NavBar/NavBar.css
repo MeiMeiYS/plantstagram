@@ -1,4 +1,4 @@
-.nav-bar-strip {
+.nav-bar-strip#top-nav {
     background-color: var(--background-bright);
     display: flex;
     flex-direction: row;

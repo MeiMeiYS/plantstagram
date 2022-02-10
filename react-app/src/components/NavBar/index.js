@@ -7,7 +7,7 @@ import logo6 from '../../images/logo6.png'
 
 const NavBar = () => {
   return (
-    <nav className='nav-bar-strip' >
+    <nav id='top-nav' className='nav-bar-strip' >
       <div className='nav-bar-container'>
         <div className='nav-bar-logo'>
           <NavLink className='logo-link' exact to={`/`}>

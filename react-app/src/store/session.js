@@ -112,7 +112,6 @@ export const updateProfile = (userId, data) => async (dispatch) => {
 
   if (response.ok) {
       const user = await response.json();
-      console.log(user)
       dispatch(editCurrentUser(user))
       return user
   } else {
