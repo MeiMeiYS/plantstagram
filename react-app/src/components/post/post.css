@@ -12,7 +12,7 @@
   /* padding: 1rem 1rem; */
   border: 1px solid var(--border);
   border-bottom: 0;
-  margin: 10px 10px;
+  margin: 8px 8px;
   width: 614px;
   /* width: 100%; */
   /* height: 30rem; */
@@ -29,7 +29,7 @@
 .post-topbar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 16px;
+  padding: 16px 16px;
   background-color: var(--background-bright);
 }
 
@@ -49,7 +49,7 @@
   flex-grow: 1;
 }
 .date-txt {
-  margin-top: 16px;
+  margin-top: 8px;
   filter: contrast(1%);
 }
 .post-user {
@@ -62,7 +62,7 @@
   padding: 0px 10px;
 }
 .post-bottom {
-  padding: 18px 16px;
+  padding: 8px 16px;
   background-color: var(--background-bright);
 }
 .bold {
@@ -74,7 +74,7 @@
 .like-div {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
 }
 .disabled {
   filter: brightness(150%);
@@ -87,7 +87,7 @@
 }
 
 .instagram-heart:focus {
-  animation-duration: 1000ms;
+  animation-duration: 1500ms;
   animation-name: like-heart-animation;
   animation-timing-function: ease-in-out;
 }
