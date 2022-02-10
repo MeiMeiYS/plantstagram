@@ -13,7 +13,7 @@ const Profile = () => {
     const settingBtn = useRef();
 
     const handleFollowers = (e) => {
-       return <FollowersModal />
+    //    return <FollowersModal />
     }
     useEffect(() => {
         if (!userId) {
