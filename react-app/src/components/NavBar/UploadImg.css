@@ -44,10 +44,12 @@
     font-size: 22px;
     font-weight: 300;
     line-height: 26px;
-    margin-top: 10px;
+    margin: 10px 0 0;
 }
 
 .upload-img-UI-container .upload-img .select-upload-img-btn {
+    /* this is a label tag */
+    display: block;
     background-color: var(--highligh-links);
     color: var(--background-bright);
     border: none;
@@ -64,6 +66,24 @@
 
 .upload-img-UI-container .upload-img .select-upload-img-btn:active {
     background-color: #a7bfa8;
+}
+
+#upload-img-input {
+    display: none;
+}
+
+/* preview image */
+.preview-image {
+    height: 80%;
+    width: 90%;
+    background-color: tomato;
+    overflow: hidden;
+}
+
+.preview-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 /* --------------bottom form----------------------- */

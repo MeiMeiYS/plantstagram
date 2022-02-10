@@ -1,6 +1,6 @@
-import firebase from 'firebase/app';
 import { initializeApp } from 'firebase/app';
-import 'firebase/storage'
+import { getStorage } from "firebase/storage";
+// import 'firebase/storage'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -11,9 +11,11 @@ const firebaseConfig = {
     messagingSenderId: "757849142425",
     appId: "1:757849142425:web:5774154b3b70eeb2d0b408",
     measurementId: "G-CG2KWR58K6"
-  };
+};
 
-initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
+export const storage = getStorage(app)
 
-const storage = firebase.storage();
-export { storage, firebase as default };
+
+// const storage = firebase.storage();
+// export { storage, firebase as default };
