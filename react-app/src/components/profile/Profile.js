@@ -3,26 +3,41 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import  { addUserObj } from '../../store/users';
 import './profile.css'
-import FollowerModal from './FollowersModal';
+import FollowModal from './FollowModal';
+// import { getFollowers } from '../../store/followers';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user);
+    // const followers = useSelector(state => state.followers);
+    // console.log(followers, "@@@@@@@@@@@@@@@@");
     const { userId } = useParams();
-    console.log("from the begginng of the profile")
+    const [showFollowers, setShowFollowers] = useState(false);
+    const [followers, setFollowers] = useState({})
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
 
-    const handleFollowers = (e) => {
-    //    return <FollowersModal />
+    console.log(followers, "AAAAAAAAAAAAAA");
+    const handleOpenFollowers = (e) => {
+        setShowFollowers(prestate => !prestate);
+
     }
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const followerResponse = await fetch(`/api/users/${userId}/followers`);
+    //         const followerList = await followerResponse.json()
+    //         setFollowers(followerList);
+    //     })()
+    // }, [userId])
+
     useEffect(() => {
         if (!userId) {
           return;
         }
         (async () => {
-          const response = await fetch(`/api/users/${userId}`);
-          const user = await response.json();
+          const userResponse = await fetch(`/api/users/${userId}`);
+          const user = await userResponse.json();
           dispatch(addUserObj(userId))
           setProfileUser(user);
         })();
@@ -31,7 +46,6 @@ const Profile = () => {
       if (!profileUser) {
         return null;
       }
-    console.log("COUNTTTTTTTTTT", profileUser);
     // const profileUser1 = useSelector(state => state.users.userId)
     const name = profileUser.name;
     const username = profileUser.username;
@@ -45,9 +59,12 @@ const Profile = () => {
 
     return (
         <>
-            <div className="background-overlay">
-                <FollowerModal/>
-            </div>
+            { showFollowers &&
+                <div className="background-overlay">
+                    <FollowModal userId={userId} followers={followers} showFollowers={showFollowers} setShowFollowers={setShowFollowers}/>
+                </div>
+            }
+
             <div className="profile_container">
                 <div className="profile_img">
                     <img className="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg" alt="Profile Image"/>
@@ -64,8 +81,8 @@ const Profile = () => {
                     </div>
                     <div className='count_info'>
                         <span>{postCount} posts</span>
-                        <span onClick={handleFollowers}>{followerCount} followers</span>
-                        <span>{followingCount} following</span>
+                        <button onClick={handleOpenFollowers}>{followerCount} followers</button>
+                        <button>{followingCount} following</button>
                     </div>
                     <h2>{name}</h2>
                     <div className='bio'>

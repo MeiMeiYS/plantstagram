@@ -82,7 +82,7 @@ class User(db.Model, UserMixin):
         follow_list = {}
         for id in id_list:
             user = User.query.get(id)
-            follow_list[id] = {"username": user.username, "name": user.name, "avatar_url": user.avatar_url}
+            follow_list[id] = {"id": user.id, "username": user.username, "name": user.name, "avatar_url": user.avatar_url}
         return follow_list
 
     @property

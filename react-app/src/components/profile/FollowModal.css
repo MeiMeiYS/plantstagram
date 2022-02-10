@@ -1,0 +1,27 @@
+.follow-modal {
+    background-color: var(--background-bright);
+    height: 75vh;
+    width: 500px;
+    max-height: 565px;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    height: 42px;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.follower-info-container {
+    display: flex;
+    flex-direction: row;
+    color: red;
+}
