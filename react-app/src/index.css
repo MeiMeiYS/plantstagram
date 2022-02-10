@@ -1,18 +1,19 @@
 :root {
-    --background-bright: #ffffff;
-    --background-dark: #FAFAFA;
-    --background-input: #efefef;
-    --text-input: #8e8e8e;
-    --main-text: #262626;
-    --highligh-links: #8ba78d;
-    --border: #dbdbdb;
-    --border-focus: #262626;
+  --background-bright: #ffffff;
+  --background-dark: #fafafa;
+  --background-input: #efefef;
+  --text-input: #8e8e8e;
+  --main-text: #262626;
+  --highligh-links: #8ba78d;
+  --border: #dbdbdb;
+  --border-focus: #262626;
+  font-size: 15px;
 }
 
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto",sans-serif;
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
 /* TODO Add site wide styles */
@@ -41,7 +42,7 @@ body {
 .btn-text {
   border: 0;
   background: 0;
-  color: var(--highlight-links);
+  color: var(--highligh-links);
 }
 .btn-text:hover {
   filter: brightness(90%);
@@ -51,7 +52,13 @@ input:focus {
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  filter: contrast(30%);
 }
 
 .background-overlay {

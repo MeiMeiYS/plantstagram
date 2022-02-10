@@ -10,9 +10,9 @@ router = Blueprint('posts', __name__)
 
 @router.route("/feed", methods=["GET"])
 def get_posts():
-    posts = Post.query.all()
-    postsArr = [p.to_dict() for p in posts]
-    return {"posts": postsArr}
+    posts = Post.query.order_by(Post.updated_at).all()
+    postsDict = {p.id: p.to_dict() for p in posts}
+    return {"posts": postsDict}
 
 
 @router.route("/<int:postid>", methods=["GET"])
@@ -68,7 +68,7 @@ def del_post(id):
     post = Post.query.get(id)
     user = current_user.to_dict()
     if(post.userid == user["id"]):
-        db.session.query(Comment).filter(Comment.postId == id).delete()
+        db.session.query(Comment).filter(Comment.postid == id).delete()
         db.session.delete(post)
         db.session.commit()
         return "success", 200

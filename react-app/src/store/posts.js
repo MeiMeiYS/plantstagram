@@ -1,4 +1,5 @@
 const ADD_POST = "posts/ADD_POST";
+const ADD_POSTS = "posts/ADD_POSTS";
 const REMOVE_POST = "posts/REMOVE_POST";
 
 // const ADD_COMMENT = "comments/ADD_COMMENT";
@@ -64,7 +65,10 @@ const addPost = (post) => ({
   type: ADD_POST,
   post,
 });
-
+const addPosts = (posts) => ({
+  type: ADD_POSTS,
+  posts,
+});
 const removePostById = (id) => ({
   type: REMOVE_POST,
   id: id,
@@ -74,9 +78,7 @@ export const loadFeed = () => async (dispatch) => {
   const response = await fetch("/api/posts/feed");
   if (response.ok) {
     const data = await response.json();
-    for (const p of data.posts) {
-      await dispatch(addPost(p));
-    }
+    await dispatch(addPosts(data.posts));
   }
 };
 
@@ -114,12 +116,16 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
   }
 };
 
-const initialState = { posts: {} };
+const initialState = { posts: [] };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_POST:
       return {
         posts: { ...state.posts, [action.post.id]: action.post },
+      };
+    case ADD_POSTS:
+      return {
+        posts: { ...state.posts, ...action.posts },
       };
     case REMOVE_POST:
       const newPosts = { ...state.posts };
