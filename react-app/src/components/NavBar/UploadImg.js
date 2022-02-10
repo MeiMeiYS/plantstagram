@@ -7,7 +7,7 @@ import anonymous_user from '../../images/anonymous_user.jpeg';
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
-const UploadImg = ({ showUploadImage, setShowUploadImage }) => {
+const UploadImg = ({ overlayed, setOverlayed }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -47,7 +47,7 @@ const UploadImg = ({ showUploadImage, setShowUploadImage }) => {
                         if (res) {
                             setErrors(res);
                         } else {
-                            setShowUploadImage(false);
+                            setOverlayed(false);
                             history.push(`/${sessionUser.username}`);
                         }
                     });
@@ -61,21 +61,6 @@ const UploadImg = ({ showUploadImage, setShowUploadImage }) => {
         if (preview && preview.startsWith('data:image/') && desc.length > 10) setSubmitDisabled(false)
         else setSubmitDisabled(true)
     }, [preview, desc])
-
-    useEffect(() => {
-        //vvv if menu is closed, return
-        if (!showUploadImage) return ;
-        //vvv if menu is opened, attached event listener
-        const closeMenu = e => {
-            // if click outside of the UI menu, the menu will close
-            if (uploadImgUI.current && !uploadImgUI.current.contains(e.target)) {
-                setShowUploadImage(false);
-            }
-        };
-        document.addEventListener('click', closeMenu);
-        //vvv clean up function to remove event listener
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showUploadImage])
 
     useEffect(() => {
         if (localUrl) {
@@ -112,8 +97,8 @@ const UploadImg = ({ showUploadImage, setShowUploadImage }) => {
     }
 
     return (
-        <div className="background-overlay">
-            <div className="upload-img-UI-container" ref={uploadImgUI}>
+        <div className="background-overlay" onClick={e => setOverlayed(false)}>
+            <div className="upload-img-UI-container" ref={uploadImgUI} onClick={(e) => e.stopPropagation()}>
                 <div className="header">
                     <h2>Create new post</h2>
                 </div>
