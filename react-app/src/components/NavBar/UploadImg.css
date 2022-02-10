@@ -4,7 +4,7 @@
     width: 500px;
     max-height: 565px;
     border-radius: 10px;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .upload-img-UI-container div.header {
@@ -22,6 +22,14 @@
     line-height: 24px;
     text-align: center;
 }
+
+.upload-img-UI-container .main-content {
+    /* background-color: tomato; */
+    height: calc(75vh - 42px);
+    width: 100%;
+    overflow: scroll;
+}
+
 
 /* --------------middle upload img----------------------- */
 
