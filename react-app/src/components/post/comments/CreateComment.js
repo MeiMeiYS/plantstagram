@@ -37,7 +37,10 @@ export default function CreateComment({ postid }) {
         value={content}
         onChange={updateContent}
       />
-      <button className="btn-text" type="submit">
+      <button
+        className={`btn-text bold ${content.length ? "" : "disabled"}`}
+        type="submit"
+      >
         Post
       </button>
     </form>

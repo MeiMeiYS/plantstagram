@@ -1,3 +1,4 @@
+from flask_login import current_user
 from sqlalchemy import DateTime
 from .db import db
 from sqlalchemy.sql import func
@@ -19,6 +20,11 @@ class Post(db.Model):
 
     def to_dict(self):
         commentsArr = [v.to_dict() for v in self.comments]
+        has_liked = False
+        for like in self.likes.all():
+            if like.userid == current_user.id:
+                has_liked = True
+
         return {
             'id': self.id,
             'userid': self.userid,
@@ -27,5 +33,6 @@ class Post(db.Model):
             'image_url': self.image_url,
             'description': self.description,
             'updated_at': self.updated_at,
-            'likes': self.likes.count()
+            'likes': self.likes.count(),
+            'user_liked': has_liked
         }

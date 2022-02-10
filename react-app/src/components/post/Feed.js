@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export default function Feed() {
   const posts = useSelector((state) => state.posts.posts);
   const toArray = [...Object.values(posts)].sort(
-    (a, b) => a.updated_at - b.updated_at
+    (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
   );
   const dispatch = useDispatch();
   const [items, updateItems] = useState([]);

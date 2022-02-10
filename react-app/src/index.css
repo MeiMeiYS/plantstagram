@@ -7,6 +7,7 @@
   --highligh-links: #8ba78d;
   --border: #dbdbdb;
   --border-focus: #262626;
+  font-size: 15px;
 }
 
 * {
@@ -41,7 +42,7 @@ body {
 .btn-text {
   border: 0;
   background: 0;
-  color: var(--highlight-links);
+  color: var(--highligh-links);
 }
 .btn-text:hover {
   filter: brightness(90%);
@@ -52,4 +53,10 @@ input:focus {
 
 .hidden {
   display: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  filter: contrast(30%);
 }
