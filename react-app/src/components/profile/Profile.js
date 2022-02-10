@@ -9,27 +9,15 @@ import FollowModal from './FollowModal';
 const Profile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user);
-    // const followers = useSelector(state => state.followers);
-    // console.log(followers, "@@@@@@@@@@@@@@@@");
+
     const { userId } = useParams();
-    const [showFollowers, setShowFollowers] = useState(false);
-    const [followers, setFollowers] = useState({})
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
-
-    console.log(followers, "AAAAAAAAAAAAAA");
+    const [overlay, setOverlay] = useState(false)
     const handleOpenFollowers = (e) => {
-        setShowFollowers(prestate => !prestate);
-
+        setOverlay(true)
     }
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const followerResponse = await fetch(`/api/users/${userId}/followers`);
-    //         const followerList = await followerResponse.json()
-    //         setFollowers(followerList);
-    //     })()
-    // }, [userId])
 
     useEffect(() => {
         if (!userId) {
@@ -59,10 +47,8 @@ const Profile = () => {
 
     return (
         <>
-            { showFollowers &&
-                <div className="background-overlay">
-                    <FollowModal userId={userId} followers={followers} showFollowers={showFollowers} setShowFollowers={setShowFollowers}/>
-                </div>
+            { overlay &&
+                    <FollowModal userId={userId} overlay={overlay} setOverlay={setOverlay}/>
             }
 
             <div className="profile_container">
