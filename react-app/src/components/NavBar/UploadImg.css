@@ -76,7 +76,6 @@
 .preview-image {
     height: 80%;
     width: 90%;
-    background-color: tomato;
     overflow: hidden;
 }
 
@@ -156,11 +155,15 @@
     display: block;
 }
 
-.upload-img-UI-container .write-post-caption .submit-new-post button{
+.upload-img-UI-container .write-post-caption .submit-new-post button.create-new-post-btn{
     border-radius: 0;
     width: 40px;
     color: var(--highligh-links);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+}
+
+.upload-img-UI-container .write-post-caption .submit-new-post button.create-new-post-btn:disabled {
+    opacity: 0.3;
 }
