@@ -22,7 +22,7 @@ def new_comment(postid):
         user = current_user.to_dict()
         comment = {
             "userid": user["id"],
-            "postId": postid,
+            "postid": postid,
             "content": form.data["content"]
         }
         commentForDb = Comment(**comment)
