@@ -12,6 +12,7 @@ import CreatePost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
 import SettingsForm from "./components/SettingsForm/";
+import Profile from './components/profile/Profile';
 import Footer from "./components/Footer";
 import DirectInbox from "./components/DirectInbox";
 
@@ -48,7 +49,11 @@ function App() {
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+        {/* profile page */}
+
+          {/* <User /> */}
           <NavBar />
+            <Profile />
           {/* profile page */}
           <Footer />
         </ProtectedRoute>
