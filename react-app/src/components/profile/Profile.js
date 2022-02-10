@@ -14,8 +14,17 @@ const Profile = () => {
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
     const [overlay, setOverlay] = useState(false)
+    const [showFollowing, setShowFollowing]= useState(false)
+    const [showFollowers, setShowFollowers] =useState(false)
+
     const handleOpenFollowers = (e) => {
         setOverlay(true)
+        setShowFollowers(true)
+    }
+    
+    const handleOpenFollowings = (e) => {
+        setOverlay(true)
+        setShowFollowing(true)
     }
 
 
@@ -48,7 +57,7 @@ const Profile = () => {
     return (
         <>
             { overlay &&
-                    <FollowModal userId={userId} overlay={overlay} setOverlay={setOverlay}/>
+                    <FollowModal userId={userId} setShowFollowers={setShowFollowers} setShowFollowing={setShowFollowing} showFollowers={showFollowers} showFollowing={showFollowing} overlay={overlay} setOverlay={setOverlay}/>
             }
 
             <div className="profile_container">
@@ -68,7 +77,7 @@ const Profile = () => {
                     <div className='count_info'>
                         <span>{postCount} posts</span>
                         <button onClick={handleOpenFollowers}>{followerCount} followers</button>
-                        <button>{followingCount} following</button>
+                        <button onClick={handleOpenFollowings}>{followingCount} following</button>
                     </div>
                     <h2>{name}</h2>
                     <div className='bio'>
