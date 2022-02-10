@@ -12,7 +12,7 @@
   /* padding: 1rem 1rem; */
   border: 1px solid var(--border);
   border-bottom: 0;
-  margin: 10px 10px;
+  margin: 8px 8px;
   width: 614px;
   /* width: 100%; */
   /* height: 30rem; */
@@ -20,16 +20,26 @@
 }
 .post-img {
   /* padding: 100px 0; */
-  /* width: auto; */
-  object-fit: contain;
+
+  object-fit: cotain;
   border-top: 1px solid var(--border);
   /* border-bottom: 1px solid var(--border); */
   background-color: var(--border);
 }
+.post-img-overlay {
+  /* padding: 100px 0; */
+
+  object-fit: contain;
+  height: 40vh;
+  /* max-width: 80vh; */
+  /* border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background-color: var(--border); */
+}
 .post-topbar {
   display: flex;
   justify-content: space-between;
-  padding: 10px 16px;
+  padding: 16px 16px;
   background-color: var(--background-bright);
 }
 
@@ -43,13 +53,26 @@
   height: 40px;
   background-color: var(--background-bright);
 }
+.post-comments {
+  flex-grow: 1;
+  /* max-width: 100%; */
+  width: 380px;
+  height: 20vh;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-y: auto;
+}
 .comment-input {
   border: 0;
   -webkit-text-size-adjust: 100%;
   flex-grow: 1;
 }
+.comment-content {
+  /* display: inline; */
+  display: contents;
+}
 .date-txt {
-  margin-top: 16px;
+  margin-top: 8px;
   filter: contrast(1%);
 }
 .post-user {
@@ -62,8 +85,18 @@
   padding: 0px 10px;
 }
 .post-bottom {
-  padding: 18px 16px;
+  padding: 8px 16px;
   background-color: var(--background-bright);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.post-overlay-side {
+  width: 400px;
+  height: 40vh;
+  border-left: 1px solid var(--border);
 }
 .bold {
   font-weight: bold;
@@ -74,7 +107,7 @@
 .like-div {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
 }
 .disabled {
   filter: brightness(150%);
@@ -87,7 +120,7 @@
 }
 
 .instagram-heart:focus {
-  animation-duration: 1000ms;
+  animation-duration: 1500ms;
   animation-name: like-heart-animation;
   animation-timing-function: ease-in-out;
 }
@@ -99,10 +132,10 @@
   }
   15% {
     opacity: 0.9;
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   30% {
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   45%,
   80% {
@@ -113,4 +146,24 @@
 .center-text {
   display: flex;
   align-items: center;
+}
+.overlay-container {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 25vh;
+}
+.icon,
+.text {
+  vertical-align: middle;
+  display: inline-block;
 }

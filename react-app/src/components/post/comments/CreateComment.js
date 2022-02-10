@@ -19,7 +19,10 @@ export default function CreateComment({ postid }) {
     setContent(e.target.value);
   };
   return (
-    <form className="comment-box" onSubmit={onSubmit}>
+    <form
+      className="comment-box"
+      onSubmit={!content.length ? undefined : onSubmit}
+    >
       {errors.length > 0 && (
         <div>
           {errors.map((error, ind) => (
@@ -37,12 +40,15 @@ export default function CreateComment({ postid }) {
         value={content}
         onChange={updateContent}
       />
-      <button
-        className={`btn-text bold ${content.length ? "" : "disabled"}`}
-        type="submit"
-      >
-        Post
-      </button>
+      {!content.length ? (
+        <div className={`btn-text bold disabled`} type="submit">
+          Post
+        </div>
+      ) : (
+        <button className={`btn-text bold pointer`} type="submit">
+          Post
+        </button>
+      )}
     </form>
   );
 }

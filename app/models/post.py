@@ -16,12 +16,12 @@ class Post(db.Model):
     created_at = db.Column(DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(DateTime(timezone=True),
                            onupdate=func.now(), server_default=func.now())
-    likes = db.relationship('PostLike', backref='post', lazy='dynamic')
+    likes = db.relationship('PostLike', backref='post', lazy='select')
 
     def to_dict(self):
         commentsArr = [v.to_dict() for v in self.comments]
         has_liked = False
-        for like in self.likes.all():
+        for like in self.likes:
             if like.userid == current_user.id:
                 has_liked = True
 
@@ -33,6 +33,6 @@ class Post(db.Model):
             'image_url': self.image_url,
             'description': self.description,
             'updated_at': self.updated_at,
-            'likes': self.likes.count(),
+            'likes': len(self.likes),
             'user_liked': has_liked
         }
