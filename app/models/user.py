@@ -1,3 +1,4 @@
+from time import clock_getres
 from app.models.postlike import PostLike
 from app.models.follow import Follow
 from .db import db
@@ -19,20 +20,20 @@ class User(db.Model, UserMixin):
     comments = db.relationship("Comment",  back_populates="user")
     liked = db.relationship(
         'PostLike',
-        foreign_keys='PostLike.userid',
-        backref='user', lazy='dynamic')
+        foreign_keys="PostLike.userid",
+        backref='user', lazy='select')
 
-    followed = db.relationship(
+    following = db.relationship(
         "Follow",
         foreign_keys="Follow.userid",
-        backref="user", lazy="dynamic"
+        backref="follower", lazy="select"
     )
 
-    # following = db.relationship(
-    #     "Follow",
-    #     foreign_keys="Follow.followid",
-    #     backref="following", lazy="dynamic"
-    # )
+    followers = db.relationship(
+        "Follow",
+        foreign_keys="Follow.followid",
+        backref="following", lazy="select"
+    )
 
     def like_post(self, post):
         if not self.has_liked_post(post):
@@ -41,14 +42,18 @@ class User(db.Model, UserMixin):
 
     def unlike_post(self, post):
         if self.has_liked_post(post):
-            PostLike.query.filter_by(
-                userid=self.id,
-                postid=post.id).delete()
+            for like in self.liked:
+                if post.id == like.postid:
+                    return db.session.delete(like)
 
     def has_liked_post(self, post):
-        return PostLike.query.filter(
-            PostLike.userid == self.id,
-            PostLike.postid == post.id).count() > 0
+        for like in self.liked:
+            if post.id == like.postid:
+                return True
+        return False
+        # return PostLike.query.filter(
+        #     PostLike.userid == self.id,
+        #     PostLike.postid == post.id).count() > 0
 
     def follow_user(self, user):
         if not self.has_followed_user(user):
@@ -58,8 +63,8 @@ class User(db.Model, UserMixin):
     def unfollow_user(self, user):
         if self.has_followed_user(user):
             Follow.query.filter_by(
-                userid==self.id,
-                followid==user.id).delete()
+                userid == self.id,
+                followid == user.id).delete()
 
     def has_followed_user(self, user):
         return Follow.query.filter(
@@ -97,23 +102,14 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-
-        following = Follow.query.filter(
-            Follow.userid == self.id
-        ).all()
-
-        followers = Follow.query.filter(
-            Follow.followid == self.id
-        ).all()
-
         return {
             'id': self.id,
             'name': self.name,
             'username': self.username,
             'email': self.email,
-            'following_count': len(following),
-            'followers_count': len(followers),
-            # 'followers_list': {u.user.to_dict() for u in followers},
-            # 'following_list': {u.user.to_dict() for u in following}
+            'following_count': len(self.following),
+            'followers_count': len(self.followers),
+            # 'followers_list': [f.user.username for f in self.followers],
+            # 'following_list': [f.followedUser.username for f in self.following],
             'bio': self.bio
         }

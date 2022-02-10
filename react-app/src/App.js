@@ -14,6 +14,7 @@ import Feed from "./components/post/Feed";
 import SettingsForm from "./components/SettingsForm/";
 import Profile from './components/profile/Profile';
 import Footer from "./components/Footer";
+import DirectInbox from "./components/DirectInbox";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,7 +62,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/direct/inbox" exact={true}>
           <NavBar />
-          {/* direct message */}
+          <DirectInbox />
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/explore" exact={true}>
