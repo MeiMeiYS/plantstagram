@@ -110,14 +110,16 @@
     width: 38px;
     overflow: hidden;
     margin-left: auto;
+    background-color: var(--background-input);
+    border-radius: 50%;
 }
 
-.edit-profile-form .setting-profile-img-container img,
+/* .edit-profile-form .setting-profile-img-container img,
 .change-password-form .setting-profile-img-container img {
     height: 100%;
     width: 100%;
 
-}
+} */
 
 .edit-profile-form input,
 .edit-profile-form textarea,

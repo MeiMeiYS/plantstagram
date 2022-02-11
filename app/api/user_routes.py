@@ -27,8 +27,6 @@ def editUser(id):
     try:
         user = User.query.get(id)
         data = request.get_json()
-        print('@@@@@@@@@@@@@@@@@@@@',data)
-
 
         if data['avatar_url']:
             user.avatar_url = data['avatar_url'];

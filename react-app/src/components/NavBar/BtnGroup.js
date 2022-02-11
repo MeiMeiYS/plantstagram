@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import "./BtnGroup.css";
 import UserMenu from "./UserMenu";
 import UploadImg from './UploadImg';
-import anonymous_user from "../../images/anonymous_user.jpeg";
 
 import { useState } from "react";
 import { Avatar } from "@material-ui/core";
