@@ -17,7 +17,6 @@ export default function Feed({ followedFeed }) {
   }, [followedFeed]);
 
   useEffect(() => {
-    console.log(posts);
     toArray = [...Object.values(posts)].sort(
       (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
     );

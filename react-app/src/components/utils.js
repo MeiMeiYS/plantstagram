@@ -28,7 +28,6 @@ export const getTimeString = (timestamp) => {
     today.setHours(0, 0, 0, 0);
     timestamp.setHours(0, 0, 0, 0);
     diff = (+today - +timestamp) / msInDay;
-    console.log(diff);
   }
   return hoursAgo >= 0 && hoursAgo < 1 && diff < 1
     ? "less than an hour ago"
