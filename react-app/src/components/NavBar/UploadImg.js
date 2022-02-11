@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPost } from "../../store/posts";
+import { Avatar } from "@material-ui/core";
 import './UploadImg.css';
-import anonymous_user from '../../images/anonymous_user.jpeg';
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
@@ -21,7 +21,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
     const [preview, setPreview] = useState('');
     const [submitDisabled, setSubmitDisabled] = useState(true);
 
-    const uploadImgUI = useRef();
     const file = useRef();
     // if click share post and it went successfully, the menu will close
 
@@ -98,7 +97,7 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
 
     return (
         <div className="background-overlay" onClick={e => setOverlayed(false)}>
-            <div className="upload-img-UI-container" ref={uploadImgUI} onClick={(e) => e.stopPropagation()}>
+            <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                 <div className="header">
                     <h2>Create new post</h2>
                 </div>
@@ -127,7 +126,10 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
                     <div className="write-post-caption">
                         <div className='upload-img-user-row'>
                             <div className='upload-img-profile-img-container'>
-                                <img alt='anonymous user' src={anonymous_user}></img>
+                                <Avatar
+                                    style={{ height: "100%", width: "auto", objectFit: "contain" }}
+                                    src={sessionUser.avatar_url}
+                                />
                             </div>
                             <span className='upload-img-username-display'>{sessionUser.username}</span>
                         </div>

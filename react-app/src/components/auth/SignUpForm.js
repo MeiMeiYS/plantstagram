@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import logo from "../../images/logo6.png";
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -101,7 +101,7 @@ const SignUpForm = () => {
           <button type="submit" className="signup_btn">Sign Up</button>
       <div className='addition'>
         Already have a account?
-        <Link className='link' to="/accounts/login">Log in</Link>
+        <NavLink className='link' to="/accounts/login">Log in</NavLink>
       </div>
     </form>
     </div>

@@ -1,0 +1,123 @@
+.profile_container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1000px;
+    height: 250px;
+
+}
+
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 500px;
+    height: 170px;
+
+}
+
+.username_and_link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+}
+
+.count_info {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+}
+
+.profile_pic {
+    width: 100%;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile_container .count_info button {
+    color: var(--main-text);
+    display: block;
+    outline: none;
+    order: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.profile_container .count_info span {
+    color: var(--main-text);
+    display: block;
+    order: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.prof-line {
+    display: flex;
+    justify-content: center;
+    color: #262626;
+    height: 1px;
+    width: 110px
+}
+
+.pro_info{
+    border-bottom: .5px solid #dbdbdb;
+}
+
+.prof-posts-img{
+    margin-top:10px;
+    align-items: center;
+    font-size: 12px;
+    height: 30px;
+    grid-gap: 3px;
+    gap: 3px;
+    font-weight: 500;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items:center
+}
+
+.prof_posts{
+    width: 293px;
+    height: 293px
+}
+
+.prof-bot{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto 40px;
+    width: 935px;
+    grid-row-gap: 28px;
+    grid-column-gap: 28px;
+}
+
+.prof-edit{
+    height: 60px;
+    width: 120px;
+    color: #262626;
+    background-color: #fafafa;
+    border: 0.5px solid #dbdbdb;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}

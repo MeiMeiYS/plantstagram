@@ -90,7 +90,6 @@ export const emptyHeartSvg = () => (
 export const commentSvg = () => (
   <svg
     aria-label="Comment"
-    class="_8-yf5 "
     color="#262626"
     fill="#262626"
     height="24"
@@ -102,8 +101,8 @@ export const commentSvg = () => (
       d="M20.656 17.008a9.993 9.993 0 10-3.59 3.615L22 22z"
       fill="none"
       stroke="currentColor"
-      stroke-linejoin="round"
-      stroke-width="2"
+      strokeLinejoin="round"
+      strokeWidth="2"
     ></path>
   </svg>
 );
