@@ -86,4 +86,7 @@ def get_followers(userid):
 
     return {"user_follower_dict": followers_list}
 
-@user_route.route('/')
+@user_routes.route('/<username>')
+def get_user_by_username(username):
+    user = User.query.filter_by(username=username).first()
+    return user.to_dict()

@@ -48,7 +48,7 @@ function App() {
           {/* follower following list */}
           <Footer />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
+        <ProtectedRoute path="/:username" exact={true}>
         {/* profile page */}
 
           {/* <User /> */}

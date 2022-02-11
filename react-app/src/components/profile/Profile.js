@@ -10,7 +10,8 @@ const Profile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user);
 
-    const { userId } = useParams();
+    const { username } = useParams();
+    console.log(username);
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
     const [overlay, setOverlay] = useState(false);
@@ -29,23 +30,27 @@ const Profile = () => {
 
 
     useEffect(() => {
-        if (!userId) {
-          return;
-        }
+        // if (!username) {
+        //   return;
+        // }
         (async () => {
-          const userResponse = await fetch(`/api/users/${userId}`);
+          const userResponse = await fetch(`/api/users/${username}`);
           const user = await userResponse.json();
-          dispatch(addUserObj(userId))
+          dispatch(addUserObj(user.id))
           setProfileUser(user);
         })();
-      }, [userId]);
+      }, [username]);
 
       if (!profileUser) {
-        return null;
+        return (
+            <div>
+                <h1>This User Doesn't Exist</h1>
+            </div>
+        );
       }
     // const profileUser1 = useSelector(state => state.users.userId)
     const name = profileUser.name;
-    const username = profileUser.username;
+    // const username = profileUser.username;
     const bio = profileUser.bio;
     const followerCount = profileUser.followers_count;
     const followingCount = profileUser.following_count;
@@ -57,7 +62,7 @@ const Profile = () => {
     return (
         <>
             { overlay &&
-                    <FollowModal userId={userId} setShowFollowing={setShowFollowing} showFollowing={showFollowing} setShowFollowers={setShowFollowers} showFollowers={showFollowers} overlay={overlay} setOverlay={setOverlay}/>
+                    <FollowModal userId={profileUser.id} setShowFollowing={setShowFollowing} showFollowing={showFollowing} setShowFollowers={setShowFollowers} showFollowers={showFollowers} overlay={overlay} setOverlay={setOverlay}/>
             }
 
             <div className="profile_container">
