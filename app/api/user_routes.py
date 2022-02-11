@@ -85,3 +85,5 @@ def get_followers(userid):
     followers_list = user.get_follow_list(followers_id_list)
 
     return {"user_follower_dict": followers_list}
+
+@user_route.route('/')
