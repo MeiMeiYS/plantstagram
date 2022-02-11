@@ -10,6 +10,7 @@ import Comment from "./comments/Comment";
 import { useEffect } from "react";
 import { Avatar } from "@material-ui/core";
 import {
+  commentSvg,
   emptyHeartSvg,
   getLikesString,
   getTimeString,
@@ -97,25 +98,39 @@ export default function Post({ post }) {
             <MenuItem onClick={handleDelete}>Delete</MenuItem>
           </Menu>
         </div>
-        <img className="post-img" src={displayedPost.image_url} />
+        <img
+          onMouseDown={() => setOverlayed(true)}
+          className="post-img"
+          style={{ cursor: "pointer" }}
+          src={displayedPost.image_url}
+        />
 
         <div className="post-bottom">
-          {displayedPost.user_liked ? (
-            <button
-              className="btn-text instagram-heart"
-              onMouseDown={handleLike}
+          <div style={{ display: "flex" }} className="padded">
+            {displayedPost.user_liked ? (
+              <button
+                className="btn-text instagram-heart"
+                onMouseDown={handleLike}
+              >
+                {redHeartSvg()}
+              </button>
+            ) : (
+              <button className="btn-text pointer" onMouseDown={handleLike}>
+                {emptyHeartSvg()}
+              </button>
+            )}
+            <span
+              onMouseDown={() => setOverlayed(true)}
+              className="pointer"
+              style={{ paddingLeft: "8px" }}
             >
-              {redHeartSvg()}
-            </button>
-          ) : (
-            <button className="btn-text pointer" onMouseDown={handleLike}>
-              {emptyHeartSvg()}
-            </button>
-          )}
-          <div className="like-div">
+              {commentSvg()}
+            </span>
+          </div>
+          <div className="like-div padded">
             {getLikesString(displayedPost, handleLike)}
           </div>
-          <div className="desc">
+          <div className="padded">
             <span className="bold">{displayedPost.user.username} </span>
             {displayedPost.description}
           </div>
@@ -124,7 +139,13 @@ export default function Post({ post }) {
             onMouseDown={() => setOverlayed(true)}
           >
             {displayedPost.comments.length > 0 ? (
-              <div>view {displayedPost.comments.length} comments</div>
+              displayedPost.comments.length == 1 ? (
+                <div className="padded">View 1 comment</div>
+              ) : (
+                <div className="padded">
+                  View all {displayedPost.comments.length} comments
+                </div>
+              )
             ) : (
               <></>
             )}
@@ -136,7 +157,7 @@ export default function Post({ post }) {
                 return <Comment key={c.id} comment={c} />;
               })}
             </div> */}
-            <div className="date-txt">{timeString}</div>
+            <div className="date-txt padded">{timeString}</div>
           </div>
         </div>
         <CreateComment postid={displayedPost.id} />

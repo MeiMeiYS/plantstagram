@@ -8,6 +8,7 @@
   --border: #dbdbdb;
   --border-focus: #262626;
   font-size: 15px;
+  width: 100vw;
 }
 
 * {
@@ -15,7 +16,9 @@
   margin: 0;
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
+  /* outline: 1px solid #f00 !important; */
 }
+
 /* TODO Add site wide styles */
 
 /* nav bar- ffffff search bar- efefef button- 3ba2f7 dark background- fafafa text- 262626 */
@@ -28,17 +31,24 @@
 button {
   color: var(--highlight-links);
 }
+svg {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
 
 #root {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  /* overflow: hidden; */
 }
 
 body {
   background-color: var(--background-dark);
 }
+
 .btn-text {
   border: 0;
   background: 0;
@@ -69,7 +79,7 @@ input:focus {
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: rgba(0,0,0,.85);
+  background-color: rgba(0, 0, 0, 0.85);
   width: 100vw;
   height: 100vh;
   z-index: 100;

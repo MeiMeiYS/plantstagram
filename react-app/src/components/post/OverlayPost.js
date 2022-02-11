@@ -104,11 +104,11 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
             </div>
             <div className="post-bottom">
               <div>
-                <div className="desc">
+                <div className="desc padded">
                   <span className="bold">{displayedPost.user.username} </span>
                   {displayedPost.description}
                 </div>
-                <div className="post-comments">
+                <div className="post-comments padded">
                   {displayedPost.comments.map((c) => {
                     return <Comment key={c.id} comment={c} />;
                   })}
@@ -117,20 +117,23 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
               <div>
                 {displayedPost.user_liked ? (
                   <button
-                    className="btn-text instagram-heart"
+                    className="btn-text instagram-heart padded"
                     onMouseDown={handleLike}
                   >
                     {redHeartSvg()}
                   </button>
                 ) : (
-                  <button className="btn-text pointer" onMouseDown={handleLike}>
+                  <button
+                    className="btn-text pointer padded"
+                    onMouseDown={handleLike}
+                  >
                     {emptyHeartSvg()}
                   </button>
                 )}
-                <div className="like-div">
+                <div className="like-div padded">
                   {getLikesString(displayedPost, handleLike)}
                 </div>
-                <div className="date-txt">{timeString}</div>
+                <div className="date-txt padded">{timeString}</div>
               </div>
             </div>
             <CreateComment postid={displayedPost.id} />
