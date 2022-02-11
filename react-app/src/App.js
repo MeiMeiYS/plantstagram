@@ -48,6 +48,11 @@ function App() {
           {/* follower following list */}
           <Footer />
         </ProtectedRoute>
+        <ProtectedRoute path="/explore" exact={true}>
+          <NavBar />
+          {/* explore */}
+          <Footer />
+        </ProtectedRoute>
         <ProtectedRoute path="/:username" exact={true}>
         {/* profile page */}
 
@@ -65,11 +70,7 @@ function App() {
           <DirectInbox />
           <Footer />
         </ProtectedRoute>
-        <ProtectedRoute path="/explore" exact={true}>
-          <NavBar />
-          {/* explore */}
-          <Footer />
-        </ProtectedRoute>
+
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <Feed />
