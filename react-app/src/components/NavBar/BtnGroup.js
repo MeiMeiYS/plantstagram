@@ -2,8 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./BtnGroup.css";
 import UserMenu from "./UserMenu";
-import UploadImg from "./UploadImg";
-import anonymous_user from "../../images/anonymous_user.jpeg";
+import UploadImg from './UploadImg';
 
 import { useState } from "react";
 import { Avatar } from "@material-ui/core";

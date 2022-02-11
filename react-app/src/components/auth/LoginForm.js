@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import "./auth.css";
 import logo from "../../images/logo6.png";
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 const LoginForm = () => {
@@ -81,7 +81,7 @@ const LoginForm = () => {
         }
          <div className='addition'>
             Don't have a account?
-            <Link className='link' to="/accounts/sign-up">Sign Up</Link>
+            <NavLink className='link' to="/accounts/sign-up">Sign Up</NavLink>
           </div>
       </form>
     </div>

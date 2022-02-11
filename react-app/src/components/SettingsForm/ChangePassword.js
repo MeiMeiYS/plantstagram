@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updatePassword } from "../../store/session";
-import anonymous_user from '../../images/anonymous_user.jpeg';
+import { Avatar } from "@material-ui/core";
 
 const ChangePassword = () => {
     const dispatch = useDispatch();
@@ -57,7 +57,10 @@ const ChangePassword = () => {
             <div className='setting-user-row'>
                 <div className='setting-set-left'>
                     <div className='setting-profile-img-container'>
-                        <img alt='anonymous user' src={anonymous_user}></img>
+                        <Avatar
+                            style={{ height: "100%", width: "auto", objectFit: "contain" }}
+                            src={sessionUser.avatar_url}
+                        />
                     </div>
                 </div>
                 <div className='setting-set-right'>
