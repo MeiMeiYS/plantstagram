@@ -55,10 +55,8 @@ def edit_comment(commentid):
     user = current_user.to_dict()
     comment = Comment.query.get(commentid)
     if(comment.userid == user["id"]):
-        print("@@@@@@@@@@@@@@@@@1", form.data["content"])
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            print("@@@@@@@@@@@@@@@@@2")
             user = current_user.to_dict()
             comment.content = form.data["content"]
             db.session.commit()
