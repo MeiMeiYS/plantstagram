@@ -39,8 +39,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
-                    // setImgUrl(url)
-                    // console.log('url:', url)
                     console.log('imgUrl from firebase:',url)
                     dispatch(createPost(url, desc)).then(res => {
                         if (res) {
@@ -56,7 +54,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
     }
 
     useEffect(() => {
-        console.log('please make sure this returns true so we can upload image =>', preview.startsWith('data:image/'))
         if (preview && preview.startsWith('data:image/') && desc.length > 10) setSubmitDisabled(false)
         else setSubmitDisabled(true)
     }, [preview, desc])

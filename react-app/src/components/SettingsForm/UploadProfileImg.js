@@ -44,13 +44,9 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
-                    // setImgUrl(url)
-                    // console.log('url:', url)
-                    console.log('imgUrl from firebase:',url)
                     const data = {
                         avatar_url: url
                     }
-                    // console.log(data)
                     return dispatch(updateProfile(sessionUser.id, data)).then(res => {
                         if (res.errors){
                             setErrorMessages([...res.errors]);

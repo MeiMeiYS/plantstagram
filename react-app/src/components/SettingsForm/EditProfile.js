@@ -48,7 +48,6 @@ const EditProfile = () => {
             username,
             bio
         }
-        //console.log() to do: update beow
         return dispatch(updateProfile(sessionUser.id, data)).then(res => {
             if (res.errors){
                 setErrorMessages([...res.errors]);
