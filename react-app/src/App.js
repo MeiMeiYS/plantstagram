@@ -14,6 +14,7 @@ import Feed from "./components/post/Feed";
 import SettingsForm from "./components/SettingsForm/";
 import Footer from "./components/Footer";
 import DirectInbox from "./components/DirectInbox";
+import FeedSideBar from "./components/FeedSideBar/FeedSideBar";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -67,7 +68,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
-          <Feed />
+          <div style={{ display: "flex" }}>
+            <Feed />
+            <FeedSideBar />
+          </div>
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/accounts/edit" exact={true}>

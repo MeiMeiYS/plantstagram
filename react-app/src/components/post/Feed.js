@@ -26,6 +26,7 @@ export default function Feed() {
   };
   return (
     <InfiniteScroll
+      className="feed-container"
       dataLength={items.length}
       next={fetchMoreData}
       style={{ display: "flex", flexDirection: "column" }} //To put endMessage and loader to the top.
