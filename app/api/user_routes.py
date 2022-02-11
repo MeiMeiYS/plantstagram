@@ -1,8 +1,7 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from sqlalchemy import exc
-from app.models import db, User
-
+from app.models import db, User, Follow, Post
 
 user_routes = Blueprint('users', __name__)
 
@@ -44,6 +43,8 @@ def editUser(id):
                 return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
             if check_user:
                 return {'errors': ['* Username is already taken.']}, 400
+            if data['username'] == "explore":
+                return {'errors': ['*Can not use username "explore".']}, 400
             user.username = data['username']
             user.bio = data['bio']
 
@@ -73,14 +74,15 @@ def changePassword(id):
 
 @user_routes.route('/<int:followid>/follow', methods=["POST"])
 def follow_user(followid):
-    following = Follow.query.get(followid)
+    # following = Follow.query.get(followid)
     user = current_user
-    if user.has_followed_user(following):
-        user.unfollow_user(following)
+    updated_user = User.query.get(followid)
+    if user.has_followed_user(updated_user):
+        user.unfollow_user(updated_user)
     else:
-        user.follow_user(following)
+        user.follow_user(updated_user)
     db.session.commit()
-    return user.to_dict()
+    return updated_user.to_dict()
 
 @user_routes.route('/<int:userid>/following')
 def get_following(userid):
@@ -96,3 +98,28 @@ def get_followers(userid):
     followers_list = user.get_follow_list(followers_id_list)
 
     return {"user_follower_dict": followers_list}
+
+@user_routes.route('/<username>')
+def get_user_by_username(username):
+    user = User.query.filter_by(username=username).first()
+    return user.to_dict()
+
+@user_routes.route('/<int:followid>/follow_status')
+def follow_status(followid):
+    result = {}
+    profile_user = User.query.filter_by(id=followid).first()
+    if current_user.has_followed_user(profile_user):
+        result["status"] = True
+    else:
+        result["status"] = False
+    return result
+
+@user_routes.route('/<int:userid>/posts')
+def get_all_posts(userid):
+    user = User.query.get(userid)
+    # print(user,"aaaaaaa")
+    all_posts = Post.query.filter_by(userid=user.id)
+    # print(all_posts, "pppppp")
+    posts_url_list = [entry.image_url for entry in all_posts]
+    print(posts_url_list,"uuuuuuuuuuu")
+    return {"posts_url_list":posts_url_list}

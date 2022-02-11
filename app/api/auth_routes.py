@@ -63,6 +63,12 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        if len(form.data['username']) < 4:
+                return {'errors': ['Bad data:', '* Username is too short.']}, 400
+        if form.data['username'] == 'explore':
+            return {'errors': ['* Can not use username "explore".']}, 400
+        if form.data['username'].find(' ') != -1:
+                return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
         user = User(
             username=form.data['username'],
             name=form.data['name'],

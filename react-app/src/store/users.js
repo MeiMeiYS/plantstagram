@@ -38,6 +38,17 @@ export const updateProfile = (userId, data) => async (dispatch) => {
     }
 }
 
+export const getAllPosts = (userId) => async() => {
+    const response = await fetch(`/api/users/${userId}/posts`);
+    if (response.ok){
+        const allPosts = await response.json();
+        console.log(allPosts,"ffffffff")
+        return allPosts
+    } else {
+        return "Error"
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
