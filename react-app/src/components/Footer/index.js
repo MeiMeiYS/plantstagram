@@ -95,7 +95,7 @@ const Footer = () => {
                     </button>
                 </div>
             </div>
-            <p>© 2022 | Built with React Express PostgreSQL</p>
+            <p>© 2022 | Built with React Flask SQLAlchemy</p>
         </footer>
     )
 }
