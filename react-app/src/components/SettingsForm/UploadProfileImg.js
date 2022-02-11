@@ -44,13 +44,9 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
-                    // setImgUrl(url)
-                    // console.log('url:', url)
-                    console.log('imgUrl from firebase:',url)
                     const data = {
                         avatar_url: url
                     }
-                    // console.log(data)
                     return dispatch(updateProfile(sessionUser.id, data)).then(res => {
                         if (res.errors){
                             setErrorMessages([...res.errors]);
@@ -82,8 +78,13 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
         return uploadImg(localImage)
     };
 
+    const handleCloseModal = e => {
+        document.body.classList.remove('modal-open');
+        setOverlayed(false);
+    }
+
     return (
-        <div className="Change-profile-photo background-overlay" onClick={e => setOverlayed(false)}>
+        <div className="Change-profile-photo background-overlay" onClick={handleCloseModal}>
             <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                  <div className="header">
                     <h2>Change profile photo</h2>

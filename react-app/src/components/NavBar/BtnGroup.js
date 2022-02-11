@@ -9,14 +9,13 @@ import { Avatar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 const BtnGroup = () => {
   const [showUserMenu, setShowUserMenu] = useState(false);
-  // const [showUploadImage, setShowUploadImage] = useState(false);
   const [overlayed, setOverlayed] = useState(false);
   const user = useSelector((state) => state.session.user);
   const handleDropDownmenu = () => {
     setShowUserMenu((preState) => !preState);
   };
   const handleUploadImagemenu = () => {
-    // setShowUploadImage(preState => !preState);
+    document.body.classList.add('modal-open');
     setOverlayed(true);
   };
 

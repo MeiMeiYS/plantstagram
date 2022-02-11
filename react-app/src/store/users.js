@@ -28,14 +28,11 @@ export const updateProfile = (userId, data) => async (dispatch) => {
     })
 
     if (response.ok) {
-        console.log('yesssssss')
         const user = await response.json();
-        console.log('~~~~~~~~~~~~~~~~~~')
-        console.log(user)
         dispatch(editCurrentUser(user))
     }
     else {
-        console.log('noooooooo')
+        console.log('There is an error')
     }
 }
 
