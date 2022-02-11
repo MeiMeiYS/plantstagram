@@ -10,16 +10,18 @@ const SearchBar = () => {
 
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false)
   const [result, setResult] = useState([]);
   console.log(result)
 
   useEffect(() => {
     if (searchTerm !== ''){
+      setMenuOpen(true)
       // fetch data
       dispatch(searchUsers(searchTerm)).then(res => {
         setResult(Object.values(res))
       });
-    }
+    } else setMenuOpen(false)
   }, [searchTerm]);
 
 
@@ -31,16 +33,21 @@ const SearchBar = () => {
             placeholder='Search'
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
+            onFocus={e => {
+              if (e.target.value) setMenuOpen(true);
+            }}
+            className={!menuOpen && 'grey-text'}
           ></input>
-          { searchTerm !== '' &&
+          { menuOpen &&
           <>
+            <div className='background-overlay-transparent' onClick={e => setMenuOpen(false)}></div>
             <div id="search-result-arrow"></div>
             <div className='background-container'>
               <div className='search-result-container'>
                 { result.length ?
                   result.map(user => {
                     return (
-                      <NavLink key={`result-${user.username}`} className='search-result-user-container' to={`/${user.username}`}>
+                      <NavLink key={`result-${user.username}`} className='search-result-user-container' to={`/${user.username}`} onClick={e => setMenuOpen(false)}>
                         <div className='avatar'>
                           <Avatar src={user.avatar_url} />
                         </div>

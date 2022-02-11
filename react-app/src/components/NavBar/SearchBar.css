@@ -8,6 +8,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .search-bar-container svg {
@@ -22,6 +23,12 @@
     font-size: 14px;
     border: none;
     background-color: transparent;
+    position: relative;
+    z-index: 11;
+}
+
+.search-bar-container input.grey-text {
+    color: var(--text-input);
 }
 
 .search-bar-container input::placeholder {
@@ -44,6 +51,7 @@
     top: 51px;
     border-radius: 6px;
     padding: 12px 0;
+    z-index: 12;
 }
 
 .search-result-container {

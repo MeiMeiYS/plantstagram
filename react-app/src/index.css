@@ -90,15 +90,10 @@ input:focus {
 }
 
 .background-overlay-transparent {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  /* position: fixed; */
-  /* top: 0px;
-  left: 0px; */
-  /* background-color: rgba(0, 0, 0, 0.85);
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100vw;
   height: 100vh;
-  z-index: 100; */
+  z-index: 10;
 }
