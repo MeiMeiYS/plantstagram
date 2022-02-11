@@ -13,18 +13,18 @@ const Profile = () => {
     const { userId } = useParams();
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
-    const [overlay, setOverlay] = useState(false)
-    const [showFollowing, setShowFollowing]= useState(false)
-    const [showFollowers, setShowFollowers] =useState(false)
+    const [overlay, setOverlay] = useState(false);
+    const [showFollowers, setShowFollowers] = useState(false)
+    const [showFollowing, setShowFollowing] = useState(false)
 
-    const handleOpenFollowers = (e) => {
-        setOverlay(true)
+    const handleOpenFollow = (e) => {
         setShowFollowers(true)
-    }
-    
-    const handleOpenFollowings = (e) => {
         setOverlay(true)
+    }
+
+    const handleOpenFollowing = (e) => {
         setShowFollowing(true)
+        setOverlay(true)
     }
 
 
@@ -57,7 +57,7 @@ const Profile = () => {
     return (
         <>
             { overlay &&
-                    <FollowModal userId={userId} setShowFollowers={setShowFollowers} setShowFollowing={setShowFollowing} showFollowers={showFollowers} showFollowing={showFollowing} overlay={overlay} setOverlay={setOverlay}/>
+                    <FollowModal userId={userId} setShowFollowing={setShowFollowing} showFollowing={showFollowing} setShowFollowers={setShowFollowers} showFollowers={showFollowers} overlay={overlay} setOverlay={setOverlay}/>
             }
 
             <div className="profile_container">
@@ -76,8 +76,8 @@ const Profile = () => {
                     </div>
                     <div className='count_info'>
                         <span>{postCount} posts</span>
-                        <button onClick={handleOpenFollowers}>{followerCount} followers</button>
-                        <button onClick={handleOpenFollowings}>{followingCount} following</button>
+                        <button onClick={handleOpenFollow}>{followerCount} followers</button>
+                        <button onClick={handleOpenFollowing}>{followingCount} following</button>
                     </div>
                     <h2>{name}</h2>
                     <div className='bio'>
