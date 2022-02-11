@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from operator import contains, or_
+=======
+import random
+>>>>>>> master
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from sqlalchemy import exc, or_
@@ -14,15 +18,28 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
-@user_routes.route('/<int:id>')
-@login_required
+@user_routes.route('/suggestions')
+def suggestions():
+    users = User.query.all()
+    suggestions = []
+    rand = random.sample(range(0, len(users)),
+                         5 if len(users) > 5 else len(users))
+    for r in rand:
+        suggestedUser = users[r]
+        if(suggestedUser.id != current_user.id):
+            suggestions.append(users[r])
+    return {'users': [user.to_dict() for user in suggestions]}
+
+
+@ user_routes.route('/<int:id>')
+@ login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
-@login_required
+@ user_routes.route('/<int:id>/edit', methods=['GET', 'PUT'])
+@ login_required
 def editUser(id):
     try:
         user = User.query.get(id)
@@ -37,7 +54,8 @@ def editUser(id):
                 return user.to_dict()
             user.name = data['name']
             # check if this username is taken
-            check_user = User.query.filter(User.username == data['username']).first()
+            check_user = User.query.filter(
+                User.username == data['username']).first()
             if len(data['username']) < 4:
                 return {'errors': ['Bad data:', '* Username is too short.']}, 400
             if data['username'].find(' ') != -1:
@@ -55,8 +73,8 @@ def editUser(id):
         return {'errors': ['Bad data:', '* Your input data is too long.']}, 400
 
 
-@user_routes.route('/<int:id>/changePassword', methods=['GET', 'PUT'])
-@login_required
+@ user_routes.route('/<int:id>/changePassword', methods=['GET', 'PUT'])
+@ login_required
 def changePassword(id):
     user = User.query.get(id)
     data = request.get_json()
@@ -73,7 +91,8 @@ def changePassword(id):
     else:
         return {'errors': ['* Password incorrect.']}, 401
 
-@user_routes.route('/<int:followid>/follow', methods=["POST"])
+
+@ user_routes.route('/<int:followid>/follow', methods=["POST"])
 def follow_user(followid):
     # following = Follow.query.get(followid)
     user = current_user
@@ -85,14 +104,16 @@ def follow_user(followid):
     db.session.commit()
     return updated_user.to_dict()
 
-@user_routes.route('/<int:userid>/following')
+
+@ user_routes.route('/<int:userid>/following')
 def get_following(userid):
     user = User.query.get(userid)
     following_id_list = [entry.followid for entry in user.get_following()]
     following_list = user.get_follow_list(following_id_list)
     return {"user_following_dict": following_list}
 
-@user_routes.route('/<int:userid>/followers')
+
+@ user_routes.route('/<int:userid>/followers')
 def get_followers(userid):
     user = User.query.get(userid)
     followers_id_list = [entry.userid for entry in user.get_followers()]
@@ -100,12 +121,14 @@ def get_followers(userid):
 
     return {"user_follower_dict": followers_list}
 
-@user_routes.route('/<username>')
+
+@ user_routes.route('/<username>')
 def get_user_by_username(username):
     user = User.query.filter_by(username=username).first()
     return user.to_dict()
 
-@user_routes.route('/<int:followid>/follow_status')
+
+@ user_routes.route('/<int:followid>/follow_status')
 def follow_status(followid):
     result = {}
     profile_user = User.query.filter_by(id=followid).first()
@@ -115,7 +138,8 @@ def follow_status(followid):
         result["status"] = False
     return result
 
-@user_routes.route('/<int:userid>/posts')
+
+@ user_routes.route('/<int:userid>/posts')
 def get_all_posts(userid):
     user = User.query.get(userid)
     all_posts = Post.query.filter_by(userid=user.id)
