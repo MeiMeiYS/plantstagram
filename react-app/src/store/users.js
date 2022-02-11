@@ -49,6 +49,16 @@ export const getAllPosts = (userId) => async() => {
     }
 }
 
+export const searchUsers = (subString) => async() => {
+    const response = await fetch(`/api/users/search/${subString}`);
+    if (response.ok){
+        const allusers = await response.json();
+        return allusers
+    } else {
+        return {}
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {

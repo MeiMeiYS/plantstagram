@@ -1,6 +1,7 @@
+from operator import contains, or_
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from sqlalchemy import exc
+from sqlalchemy import exc, or_
 from app.models import db, User, Follow, Post
 
 user_routes = Blueprint('users', __name__)
@@ -117,9 +118,13 @@ def follow_status(followid):
 @user_routes.route('/<int:userid>/posts')
 def get_all_posts(userid):
     user = User.query.get(userid)
-    # print(user,"aaaaaaa")
     all_posts = Post.query.filter_by(userid=user.id)
-    # print(all_posts, "pppppp")
     posts_url_list = [entry.image_url for entry in all_posts]
     print(posts_url_list,"uuuuuuuuuuu")
     return {"posts_url_list":posts_url_list}
+
+@user_routes.route('/search/<substring>')
+def get_user_by_substring(substring):
+    users = User.query.filter(or_(User.username.contains(substring),User.name.contains(substring), User.email.contains(substring))).all()
+    all_users = { user.id: user.to_dict() for user in users}
+    return all_users

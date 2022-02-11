@@ -31,3 +31,93 @@
 .search-bar-container input:focus {
     outline: none;
 }
+
+/* ------------------search result------------------ */
+
+.background-container {
+    overflow: hidden;
+    height: 450px;
+    width: 375px;
+    background-color: var(--background-bright);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);
+    position: absolute;
+    top: 51px;
+    border-radius: 6px;
+    padding: 12px 0;
+}
+
+.search-result-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    z-index: 3;
+}
+
+#search-result-arrow {
+    content: '';
+    position: absolute;
+    top: 51px;
+    height: 0;
+    width: 0;
+    border: 8px solid black;
+    border-color: var(--background-bright) var(--background-bright) transparent transparent;
+    transform-origin: 0 0;
+    transform: rotate(-45deg);
+    box-shadow: -3px 3px 0px 3px var(--background-bright), 0 0 5px 1px rgba(0, 0, 0, .0975);
+    z-index: 4;
+}
+
+.search-result-container .no-result-found {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-input);
+}
+
+.search-result-container .search-result-user-container {
+    height: 60px;
+    width: 100%;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: var(--main-text)
+}
+
+.search-result-container .search-result-user-container:hover {
+    background-color: var(--background-dark);
+}
+
+.search-result-container .search-result-user-container .avatar {
+    height: 44px;
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.search-result-container .search-result-user-container .avatar svg {
+    margin: auto;
+}
+
+.search-result-container .search-result-user-container .userinfo p {
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.search-result-container .search-result-user-container .userinfo span {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 10px;
+    color: var(--text-input);
+}
