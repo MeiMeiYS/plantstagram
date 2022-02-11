@@ -33,6 +33,7 @@
     width: 822px;
     background-color: var(--background-bright);
     padding: 32px 0;
+    overflow: scroll;
 }
 
 .edit-profile-form > div {

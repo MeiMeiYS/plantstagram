@@ -1,5 +1,4 @@
 footer {
-    /* background-color: thistle; */
     width: 100vw;
     height: 120px;
     display: flex;
@@ -7,7 +6,6 @@ footer {
     justify-content: center;
     align-items: center;
     padding: 20px 0;
-    /* background-color: thistle; */
 }
 
 footer > div {
