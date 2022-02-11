@@ -6,10 +6,15 @@ const FollowersModal = ({userId, overlay, setOverlay}) => {
     const dispatch = useDispatch();
     const [allFollowers, setAllFollowers] = useState({});
     const [allFollowings, setAllFollowings] = useState({});
-    const [list, setList] = useState([])
+    const [listFollowers, setListFollowers] = useState([])
     useEffect(()=> {
         if (overlay) dispatch(getFollowers(userId)).then(res => setAllFollowers(res));
     }, [overlay])
+
+    useEffect(() => {
+        if (overlay) dispatch(getFollowinggits(userId)).then(res => setAllFollowers(res));
+    }, [overlay])
+
 
     useEffect(() => {
         if (allFollowers) {
@@ -19,12 +24,21 @@ const FollowersModal = ({userId, overlay, setOverlay}) => {
             setList(tempList)
         }
     }, [allFollowers])
-
+     
+    useEffect(() => {
+        if (allFollowings) {
+            const values = Object.values(allFollowings);
+            const tempList = []
+            values.forEach(follower => tempList.push(follower));
+            setList(tempList)
+        }
+    }, [allFollowings])
+    console.log(list,"Before the return ")
      
     return (
         <div className="background-overlay" onClick={e => setOverlay(false)}>
                 <div className="follow-modal">
-                    <div className="header">
+                    <div className="header"> FOLLOWERS
                     </div>
                     <div className="main-content">
                         {list.length && list.map(userObj => (

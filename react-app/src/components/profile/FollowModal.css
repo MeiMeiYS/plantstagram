@@ -20,8 +20,8 @@
     flex-direction: column;
 }
 
-.follower-info-container {
+.follow-info-container {
     display: flex;
     flex-direction: row;
-    color: red;
+    justify-content: space-around;
 }
