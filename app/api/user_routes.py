@@ -43,6 +43,8 @@ def editUser(id):
                 return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
             if check_user:
                 return {'errors': ['* Username is already taken.']}, 400
+            if data['username'] == "explore":
+                return {'errors': ['*Can not use username "explore".']}, 400
             user.username = data['username']
             user.bio = data['bio']
 
