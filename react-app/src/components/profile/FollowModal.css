@@ -20,8 +20,35 @@
     flex-direction: column;
 }
 
-.follower-info-container {
+.follow-info-container {
     display: flex;
     flex-direction: row;
-    color: red;
+    justify-content: space-around;
+    width: 100%;
+    padding: 8px 16px
+}
+
+
+.follower_profile_pic {
+    width:80px;
+    height:50px;
+}
+
+.username_name {
+    height: 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around
+
+}
+
+.remove_followers {
+    height: 20px;
+    
+}
+
+.rv_btn_container {
+    display:flex;
+    justify-content: center;
+    align-items: center
 }
