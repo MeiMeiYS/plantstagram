@@ -30,7 +30,9 @@
 .user-settings .setting-main-form {
     border: 1px solid var(--border);
     border-left: none;
-    width: 822px;
+    width: 50vw;
+    max-width: 822px;
+    min-width: 630px;
     background-color: var(--background-bright);
     padding: 32px 0;
     overflow: scroll;
@@ -204,4 +206,43 @@
     color: var(--highligh-links);
     position: relative;
     left: 205px;
+}
+
+
+/* ------------------media query------------------ */
+
+@media (max-width: 870px) {
+
+    .user-settings {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-settings .setting-sidebar {
+        /* display: none; */
+        border-bottom: none;
+        width: 50vw;
+        max-width: 822px;
+        min-width: 630px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .active-user-setting-navbar{
+        border-top: 2px solid var(--main-text);
+        border-left: none;
+    }
+
+    .user-settings .setting-sidebar > div  {
+        width: 50%;
+    }
+
+    .user-settings .setting-sidebar > div:not(:first-child)  {
+        border-left: 1px solid var(--border);
+    }
+
+    .user-settings .setting-main-form {
+        border-left: 1px solid var(--border);
+    }
 }

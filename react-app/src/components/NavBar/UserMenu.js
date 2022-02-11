@@ -7,36 +7,6 @@ import LogoutButton from "../auth/LogoutButton";
 const UserMenu = ({ showUserMenu, setShowUserMenu }) => {
   const username = useSelector((state) => state.session?.user?.username);
 
-  // const dropDownMenu = useRef(null);
-  // const profileBtn = useRef(null);
-  // const settingBtn = useRef(null);
-
-  // useEffect(() => {
-  //   //vvv if menu is closed, return
-  //   if (!showUserMenu) return;
-
-  //   //vvv if menu is opened, attached event listener
-  //   const closeMenu = (e) => {
-  //     // console.log("e.target", e.target);
-  //     // console.log("dropDownMenu", dropDownMenu);
-  //     // console.log("profileBtn", profileBtn);
-  //     // console.log("settingBtn", settingBtn);
-  //     // if click outside of the dropdown menu, the menu will close
-  //     // if click outside of the dropdown menu, the menu will close
-  //     // if click outside of the dropdown menu, the menu will close
-  //     // if (!dropDownMenu?.current.contains(e.target)) {
-  //     //   // setShowUserMenu(false);
-  //     // }
-  //     // if click on button in downdown menu, the menu will close
-  //     if (profileBtn?.current == e.target || settingBtn?.current == e.target) {
-  //       setShowUserMenu(false);
-  //     }
-  //   };
-  //   document.addEventListener("click", closeMenu);
-
-  //   //vvv clean up function to remove event listener
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showUserMenu]);
   const handleMDown = (e) => {
     e.preventDefault();
   };

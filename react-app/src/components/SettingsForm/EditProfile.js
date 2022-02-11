@@ -48,7 +48,6 @@ const EditProfile = () => {
             username,
             bio
         }
-        //console.log() to do: update beow
         return dispatch(updateProfile(sessionUser.id, data)).then(res => {
             if (res.errors){
                 setErrorMessages([...res.errors]);
@@ -59,6 +58,11 @@ const EditProfile = () => {
                 setShowSuccess('');
             }
         })
+    }
+
+    const handleOpenModal = e => {
+        document.body.classList.add('modal-open');
+        setOverlayed(true);
     }
 
     return (
@@ -76,7 +80,7 @@ const EditProfile = () => {
                     </div>
                     <div className='setting-set-right'>
                         <span className='setting-username-display'>{sessionUser.username}</span>
-                        <button id='chnage-profile-picture' type='button' onClick={e => setOverlayed(true)}>Change Profile Photo</button>
+                        <button id='chnage-profile-picture' type='button' onClick={handleOpenModal}>Change Profile Photo</button>
                     </div>
                 </div>
                 <div >
