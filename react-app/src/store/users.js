@@ -48,7 +48,7 @@ export const getAllPosts = (userId) => async() => {
         console.log(allPosts,"ffffffff")
         return allPosts
     } else {
-        return "Error"
+        return 
     }
 }
 

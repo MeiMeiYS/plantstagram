@@ -99,4 +99,4 @@ def get_all_posts(userid):
     # print(all_posts, "pppppp")
     posts_url_list = [entry.image_url for entry in all_posts]
     print(posts_url_list,"uuuuuuuuuuu")
-    return {"posts_url_list":posts_url_list}
+    return {str(len(posts_url_list)):posts_url_list}

@@ -56,7 +56,6 @@ const Profile = () => {
     const followingCount = profileUser.following_count;
     // const url = profileUser.avatar_url
     //to-do grab postCount info !!
-    const postCount = 3
     let count = 0;
 
     return (
@@ -81,7 +80,7 @@ const Profile = () => {
                             </button> */}
                         </div>
                         <div className='count_info'>
-                            <span>{postCount} posts</span>
+                            <span>{allPosts && Object.keys(allPosts)} posts</span>
                             <button onClick={handleOpenFollow}>{followerCount} followers</button>
                             <button onClick={handleOpenFollowing}>{followingCount} following</button>
                         </div>
