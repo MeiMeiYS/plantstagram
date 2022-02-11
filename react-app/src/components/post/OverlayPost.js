@@ -16,6 +16,7 @@ import {
   redHeartSvg,
   threeDotSvg,
 } from "../utils";
+import { NavLink } from "react-router-dom";
 
 export default function OverlayPost({ post, setOverlayed, overlayed }) {
   const posts = useSelector((state) => state.posts.posts);
@@ -78,12 +79,16 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
             style={{ display: "flex", flexDirection: "column" }}
           >
             <div className="post-topbar">
-              <div className="post-user">
+              <NavLink
+                to={`/${displayedPost.user.username}`}
+                className="post-user"
+                style={{ textDecoration: "none" }}
+              >
                 <Avatar src={displayedPost.user.avatar_url} />
-                <span className="post-username">
+                <span style={{ color: "black" }} className="post-username">
                   {displayedPost.user.username}
                 </span>
-              </div>
+              </NavLink>
               <span
                 className="pointer center-text"
                 aria-controls="simple-menu"

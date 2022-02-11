@@ -10,8 +10,6 @@ const editCurrentUser = (user) => ({
     payload: user
 })
 
-
-
 export const addUserObj = (userid) => async(dispatch) => {
     const response = await fetch(`/api/users/${userid}`);
     if (response.ok) {

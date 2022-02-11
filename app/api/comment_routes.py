@@ -46,3 +46,23 @@ def del_comment(commentid):
         return post.to_dict(), 200
     else:
         return "fail", 401
+
+
+@router.route("/comments/<int:commentid>", methods=["PUT"])
+@login_required
+def edit_comment(commentid):
+    form = CommentForm()
+    user = current_user.to_dict()
+    comment = Comment.query.get(commentid)
+    if(comment.userid == user["id"]):
+        print("@@@@@@@@@@@@@@@@@1", form.data["content"])
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            print("@@@@@@@@@@@@@@@@@2")
+            user = current_user.to_dict()
+            comment.content = form.data["content"]
+            db.session.commit()
+            post = Post.query.get(comment.postid)
+            return post.to_dict()
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401

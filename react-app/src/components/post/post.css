@@ -64,6 +64,7 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
+  overflow-x: hidden;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
@@ -73,7 +74,10 @@
 }
 .comment-content {
   /* display: inline; */
-  display: contents;
+  display: inline-block;
+  max-width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .date-txt {
   /* margin-top: 8px; */
@@ -174,4 +178,10 @@
 }
 .padded {
   padding: 8px 16px;
+}
+.edit-textarea {
+  border: 1px solid var(--border);
+}
+.edit-textarea:focus {
+  outline: 1px solid var(--border-focus);
 }

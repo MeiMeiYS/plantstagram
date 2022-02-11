@@ -12,7 +12,7 @@ import CreatePost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
 import SettingsForm from "./components/SettingsForm/";
-import Profile from './components/profile/Profile';
+import Profile from "./components/profile/Profile";
 import Footer from "./components/Footer";
 import DirectInbox from "./components/DirectInbox";
 import FeedSideBar from "./components/FeedSideBar/FeedSideBar";
@@ -51,15 +51,18 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/explore" exact={true}>
           <NavBar />
-          {/* explore */}
+          <div style={{ display: "flex" }}>
+            <Feed followedFeed={false} />
+            <FeedSideBar />
+          </div>
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/:username" exact={true}>
-        {/* profile page */}
+          {/* profile page */}
 
           {/* <User /> */}
           <NavBar />
-            <Profile />
+          <Profile />
           {/* profile page */}
           <Footer />
         </ProtectedRoute>
@@ -75,7 +78,7 @@ function App() {
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
           <div style={{ display: "flex" }}>
-            <Feed />
+            <Feed followedFeed={true} />
             <FeedSideBar />
           </div>
           <Footer />
