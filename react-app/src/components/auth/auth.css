@@ -2,13 +2,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 420px;
+    /* height: 420px; */
     width: 350px;
     background-color: #fff;
-    border: 0.5px solid #dbdbdb;
-    align-items: center;
+    border: 1px solid var(--border);
     margin: 0 0 10px;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
+    margin-top: 30px;
+}
+
+.login_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 
@@ -27,17 +34,13 @@
 form.login_form{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    height: 350px;
 }
 
 form.signup_form{
      display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    height: 350px;
 }
 
 .signup_form input {
@@ -49,7 +52,7 @@ form.signup_form{
     margin:10px;
     color:rgb(80, 79, 79);
     line-height: 30px;
-    border: 0.8px solid rgb(197, 197, 197);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding-left: 15px;
     padding-right: 15px;
@@ -64,7 +67,7 @@ form.signup_form{
     margin:10px;
     color:rgb(80, 79, 79);
     line-height: 40px;
-    border: 0.8px solid rgb(197, 197, 197);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding-left: 15px;
     padding-right: 15px;
@@ -103,9 +106,8 @@ form.signup_form{
   font-size: 16px;
   line-height: 40px;
   width: 350px;
-  border: 0.5px solid #dbdbdb;
-  margin-top: 30px;
-
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
 }
 
 .link{
@@ -120,8 +122,9 @@ form.signup_form{
     font-size: 16px;
     margin-top:10px;
     margin-bottom: 10px;
-    line-height: 48px;
+    line-height: 40px;
     border:none;
+    border-radius: 8px;
     color: #3ba2f7
 }
 

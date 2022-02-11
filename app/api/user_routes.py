@@ -27,14 +27,25 @@ def editUser(id):
         user = User.query.get(id)
         data = request.get_json()
 
-        if id == 1:
+        if 'avatar_url' in data:
+            user.avatar_url = data['avatar_url']
+        else:
+            if id == 1:
+                user.bio = data['bio']
+                db.session.commit()
+                return user.to_dict()
+            user.name = data['name']
+            # check if this username is taken
+            check_user = User.query.filter(User.username == data['username']).first()
+            if len(data['username']) < 4:
+                return {'errors': ['Bad data:', '* Username is too short.']}, 400
+            if data['username'].find(' ') != -1:
+                return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
+            if check_user:
+                return {'errors': ['* Username is already taken.']}, 400
+            user.username = data['username']
             user.bio = data['bio']
-            db.session.commit()
-            return user.to_dict()
 
-        user.name = data['name']
-        user.username = data['username']
-        user.bio = data['bio']
         db.session.commit()
         return user.to_dict()
     except exc.SQLAlchemyError as e:

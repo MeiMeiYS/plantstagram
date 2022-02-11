@@ -115,5 +115,6 @@ class User(db.Model, UserMixin):
             'followers_count': len(self.followers),
             # 'followers_list': [f.user.username for f in self.followers],
             # 'following_list': [f.followedUser.username for f in self.following],
-            'bio': self.bio
+            'bio': self.bio,
+            'avatar_url': self.avatar_url
         }
