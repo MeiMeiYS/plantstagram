@@ -27,13 +27,14 @@ export const getFollowings = (userId) => async() => {
   const response = await fetch(`/api/users/${userId}/following`);
   if (response.ok) {
     const followings = await response.json();
-    return followings.user_follower_dict
+    console.log(followings);
+    return followings.user_following_dict
   } else {
     return "ERROR"
   }
 }
 
-const initialState = {};
+// const initialState = {};
 
 // export default function reducer(state = initialState, action) {
 //     const newState = Object.assign({}, state);
