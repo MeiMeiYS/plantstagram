@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import  { addUserObj } from '../../store/users';
+import { editFollower, isFollowing } from '../../store/followers';
 import './profile.css'
 import FollowModal from './FollowModal';
 // import { getFollowers } from '../../store/followers';
@@ -17,7 +18,8 @@ const Profile = () => {
     const [overlay, setOverlay] = useState(false);
     const [showFollowers, setShowFollowers] = useState(false)
     const [showFollowing, setShowFollowing] = useState(false)
-
+    const [updateFollow, setUpdateFollow] = useState(false)
+    // const [isFollowed, setIsFollowed] = useState("Follow")
     const handleOpenFollow = (e) => {
         setShowFollowers(true)
         setOverlay(true)
@@ -27,27 +29,35 @@ const Profile = () => {
         setShowFollowing(true)
         setOverlay(true)
     }
+    // useEffect(() => {
+    //     dispatch(isFollowing(profileUser.id)).then(res => setIsFollowed(res.status))
+    //     console.log(isFollowed);
+    // }, [isFollowed, profileUser])
 
+    useEffect(() => {
+        if (updateFollow) {
+            dispatch(editFollower(profileUser.id)).then(res => setProfileUser(res))
+            setUpdateFollow(false)
+        }
+    }, [updateFollow, profileUser])
 
     useEffect(() => {
         // if (!username) {
         //   return;
         // }
+
         (async () => {
           const userResponse = await fetch(`/api/users/${username}`);
           const user = await userResponse.json();
           dispatch(addUserObj(user.id))
           setProfileUser(user);
-        })();
-      }, [username]);
+        }
+        )();
 
-      if (!profileUser) {
-        return (
-            <div>
-                <h1>This User Doesn't Exist</h1>
-            </div>
-        );
-      }
+      }, [username, updateFollow]);
+
+
+
     // const profileUser1 = useSelector(state => state.users.userId)
     const name = profileUser.name;
     // const username = profileUser.username;
@@ -58,7 +68,9 @@ const Profile = () => {
     //to-do grab postCount info !!
     const postCount = 3
 
-
+    const handleFollow = (e) => {
+        setUpdateFollow(true)
+    }
     return (
         <>
             { overlay &&
@@ -87,6 +99,7 @@ const Profile = () => {
                     <h2>{name}</h2>
                     <div className='bio'>
                         <div>{bio}</div>
+                        {profileUser.id !== sessionUser.id ? <button onClick={handleFollow}>Follow</button> : null}
                     </div>
                 </div>
             </div>

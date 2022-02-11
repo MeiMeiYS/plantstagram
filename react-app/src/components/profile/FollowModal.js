@@ -1,7 +1,7 @@
 import './FollowModal.css'
 import { getFollowers } from '../../store/followers';
 import { getFollowings } from '../../store/followers';
-
+import { NavLink } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowers, showFollowers, overlay, setOverlay}) => {
@@ -59,8 +59,12 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
                                 <img className="follower_profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg" alt="Profile Image" />
                                 {/* <div className='follow-pic'>{userObj.avatar_url}</div> */}
                                 <div className="username_name">
-                                <div className='follow-username'>{userObj.username}</div>
-                                <div className='follow-name'>{userObj.name}</div>
+                                    <NavLink className='follow-username' exact to={`/${userObj.username}`}>
+                                        <div >{userObj.username}</div>
+                                    </NavLink>
+                                    <NavLink className='follow-name' exact to={`/${userObj.username}`}>
+                                        <div >{userObj.name}</div>
+                                    </NavLink>
                                 </div>
                                 <div className="rv_btn_container">
                                     <button className="remove_followers">Remove</button>

@@ -62,14 +62,18 @@ class User(db.Model, UserMixin):
 
     def unfollow_user(self, user):
         if self.has_followed_user(user):
-            Follow.query.filter_by(
-                userid == self.id,
-                followid == user.id).delete()
+            entry = Follow.query.filter(
+                Follow.userid == self.id,
+                Follow.followid == user.id).first()
+            db.session.delete(entry)
 
     def has_followed_user(self, user):
-        return Follow.query.filter(
+        hasFollowed = Follow.query.filter(
             Follow.userid == self.id,
-            Follow.followid == user.id).count() > 0
+            Follow.followid == user.id).all()
+        if len(hasFollowed):
+            return True
+        return False
 
     def get_followers(self):
         followers = Follow.query.filter(

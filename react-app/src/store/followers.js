@@ -1,6 +1,8 @@
 // const GET_ALL_FOLLOWERS = "users/GET_ALL_FOLLOWERS";
 // const GET_ALL_FOLLOWINGS = "users/GET_ALL_FOLLOWINGS";
 
+import { async } from "@firebase/util";
+
 // const getFollowerList = (userId, followerList) => ({
 //     type: GET_ALL_FOLLOWERS,
 //     userId,
@@ -27,11 +29,31 @@ export const getFollowings = (userId) => async() => {
   const response = await fetch(`/api/users/${userId}/following`);
   if (response.ok) {
     const followings = await response.json();
-    console.log(followings);
     return followings.user_following_dict
   } else {
     return "ERROR"
   }
+}
+
+export const editFollower = (followId) => async() => {
+  const response = await fetch(`api/users/${followId}/follow`, {
+    method: "POST",
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+}
+
+export const isFollowing = (followId) => async() => {
+  const response = await fetch(`/api/users/${followId}/follow_status`);
+  if (response.ok) {
+    const status = await response.json()
+    console.log("@@@@@@@@@@@@", status, "@@@@@@");
+    return status
+  }
+
 }
 
 // const initialState = {};
