@@ -60,6 +60,11 @@ const EditProfile = () => {
         })
     }
 
+    const handleOpenModal = e => {
+        document.body.classList.add('modal-open');
+        setOverlayed(true);
+    }
+
     return (
         <>
             {overlayed && <UploadProfileImg overlayed={overlayed} setOverlayed={setOverlayed}/>}
@@ -75,7 +80,7 @@ const EditProfile = () => {
                     </div>
                     <div className='setting-set-right'>
                         <span className='setting-username-display'>{sessionUser.username}</span>
-                        <button id='chnage-profile-picture' type='button' onClick={e => setOverlayed(true)}>Change Profile Photo</button>
+                        <button id='chnage-profile-picture' type='button' onClick={handleOpenModal}>Change Profile Photo</button>
                     </div>
                 </div>
                 <div >

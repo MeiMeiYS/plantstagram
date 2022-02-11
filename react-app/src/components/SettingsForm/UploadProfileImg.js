@@ -78,8 +78,13 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
         return uploadImg(localImage)
     };
 
+    const handleCloseModal = e => {
+        document.body.classList.remove('modal-open');
+        setOverlayed(false);
+    }
+
     return (
-        <div className="Change-profile-photo background-overlay" onClick={e => setOverlayed(false)}>
+        <div className="Change-profile-photo background-overlay" onClick={handleCloseModal}>
             <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                  <div className="header">
                     <h2>Change profile photo</h2>

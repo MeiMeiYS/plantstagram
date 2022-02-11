@@ -92,8 +92,13 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
         }
     }
 
+    const closeOverlay = e => {
+        document.body.classList.remove('modal-open');
+        setOverlayed(false)
+    }
+
     return (
-        <div className="background-overlay" onClick={e => setOverlayed(false)}>
+        <div className="background-overlay" onClick={closeOverlay}>
             <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                 <div className="header">
                     <h2>Create new post</h2>

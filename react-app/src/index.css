@@ -84,3 +84,7 @@ input:focus {
   height: 100vh;
   z-index: 100;
 }
+
+.modal-open {
+  overflow: hidden;
+}
