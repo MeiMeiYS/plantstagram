@@ -11,7 +11,7 @@ const EditProfile = () => {
 
     const [ name, setName ] = useState(sessionUser.name);
     const [ username, setUserName ] = useState(sessionUser.username);
-    const [ bio, setBio ] = useState(sessionUser.bio);
+    const [ bio, setBio ] = useState(sessionUser.bio || "");
     const [ buttonDisabled, setButtonDisabled ] = useState(true);
     const [ errorMessages, setErrorMessages ] = useState([]);
     const [ showSuccess, setShowSuccess ] = useState('hidden');
