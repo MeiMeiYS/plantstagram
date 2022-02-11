@@ -50,7 +50,7 @@ const Profile = () => {
     const followerCount = profileUser.followers_count;
     const followingCount = profileUser.following_count;
     // const url = profileUser.avatar_url
-    //to-do grab postCount info
+    //to-do grab postCount info !!
     const postCount = 3
 
 
