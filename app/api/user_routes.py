@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from sqlalchemy import exc
-from app.models import db, User
+from app.models import db, User, Post
 
 
 user_routes = Blueprint('users', __name__)
@@ -90,3 +90,13 @@ def get_followers(userid):
 def get_user_by_username(username):
     user = User.query.filter_by(username=username).first()
     return user.to_dict()
+
+@user_routes.route('/<int:userid>/posts')
+def get_all_posts(userid):
+    user = User.query.get(userid)
+    # print(user,"aaaaaaa")
+    all_posts = Post.query.filter_by(userid=user.id)
+    # print(all_posts, "pppppp")
+    posts_url_list = [entry.image_url for entry in all_posts]
+    print(posts_url_list,"uuuuuuuuuuu")
+    return {"posts_url_list":posts_url_list}

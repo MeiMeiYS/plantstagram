@@ -65,3 +65,59 @@
     font-size: 16px;
     line-height: 24px;
 }
+
+.prof-line {
+    display: flex;
+    justify-content: center;
+    color: #262626;
+    height: 1px;
+    width: 110px
+}
+
+.pro_info{
+    border-bottom: .5px solid #dbdbdb;
+}
+
+.prof-posts-img{
+    margin-top:10px;
+    align-items: center;
+    font-size: 12px;
+    height: 30px;
+    grid-gap: 3px;
+    gap: 3px;
+    font-weight: 500;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items:center
+}
+
+.prof_posts{
+    width: 293px;
+    height: 293px
+}
+
+.prof-bot{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto 40px;
+    width: 935px;
+    grid-row-gap: 28px;
+    grid-column-gap: 28px;
+}
+
+.prof-edit{
+    height: 60px;
+    width: 120px;
+    color: #262626;
+    background-color: #fafafa;
+    border: 0.5px solid #dbdbdb;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
