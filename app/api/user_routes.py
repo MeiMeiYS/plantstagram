@@ -27,15 +27,22 @@ def editUser(id):
     try:
         user = User.query.get(id)
         data = request.get_json()
+        print('@@@@@@@@@@@@@@@@@@@@',data)
 
-        if id == 1:
+
+        if data['avatar_url']:
+            user.avatar_url = data['avatar_url'];
+        else:
+            if id == 1:
+                user.bio = data['bio']
+                db.session.commit()
+                return user.to_dict()
+            user.name = data['name']
+            user.username = data['username']
+            if data['username'].find(' ') != -1:
+                return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
             user.bio = data['bio']
-            db.session.commit()
-            return user.to_dict()
 
-        user.name = data['name']
-        user.username = data['username']
-        user.bio = data['bio']
         db.session.commit()
         return user.to_dict()
     except exc.SQLAlchemyError as e:

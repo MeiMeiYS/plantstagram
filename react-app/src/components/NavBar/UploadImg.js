@@ -21,7 +21,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
     const [preview, setPreview] = useState('');
     const [submitDisabled, setSubmitDisabled] = useState(true);
 
-    const uploadImgUI = useRef();
     const file = useRef();
     // if click share post and it went successfully, the menu will close
 
@@ -98,7 +97,7 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
 
     return (
         <div className="background-overlay" onClick={e => setOverlayed(false)}>
-            <div className="upload-img-UI-container" ref={uploadImgUI} onClick={(e) => e.stopPropagation()}>
+            <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                 <div className="header">
                     <h2>Create new post</h2>
                 </div>
