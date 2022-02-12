@@ -65,18 +65,28 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
+            alignItems: "center",
             // width: "70vw",
-            maxHeight: "500px",
+            // maxHeight: "80vh",
           }}
+          className="dark-background"
           onClick={(e) => {
             // e.preventDefault();
             e.stopPropagation();
           }}
         >
-          <img className="post-img-overlay" src={displayedPost.image_url} />
+          <img
+            // style={{ height: "100%" }}
+            className="post-img-overlay"
+            src={displayedPost.image_url}
+          />
           <div
             className="post-overlay-side"
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
           >
             <div className="post-topbar">
               <NavLink
@@ -108,17 +118,16 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
               </Menu>
             </div>
             <div className="post-bottom">
-              <div>
-                <div className="desc padded">
-                  <span className="bold">{displayedPost.user.username} </span>
-                  {displayedPost.description}
-                </div>
-                <div className="post-comments padded">
-                  {displayedPost.comments.map((c) => {
-                    return <Comment key={c.id} comment={c} />;
-                  })}
-                </div>
+              <div className="desc padded">
+                <span className="bold">{displayedPost.user.username} </span>
+                <span className="desc">{displayedPost.description}</span>
               </div>
+              <div className="post-comments padded">
+                {displayedPost.comments.map((c) => {
+                  return <Comment key={c.id} comment={c} />;
+                })}
+              </div>
+
               <div>
                 {displayedPost.user_liked ? (
                   <button

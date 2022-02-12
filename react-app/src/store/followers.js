@@ -36,7 +36,7 @@ export const getFollowings = (userId) => async () => {
 };
 
 export const editFollower = (followId) => async () => {
-  const response = await fetch(`api/users/${followId}/follow`, {
+  const response = await fetch(`/api/users/${followId}/follow`, {
     method: "POST",
   });
 

@@ -143,9 +143,9 @@ export default function Post({ post }) {
           <div className="like-div padded">
             {getLikesString(displayedPost, handleLike)}
           </div>
-          <div className="padded">
+          <div style={{ maxWidth: "100%" }} className="padded">
             <span className="bold">{displayedPost.user.username} </span>
-            {displayedPost.description}
+            <span className="desc">{displayedPost.description}</span>
           </div>
           <div
             className="date-txt pointer"

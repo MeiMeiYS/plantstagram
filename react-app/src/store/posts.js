@@ -103,7 +103,10 @@ export const loadFeed = (followedFeed) => async (dispatch) => {
   const response = await fetch(`/api/posts/${urlEnd}`);
   if (response.ok) {
     const data = await response.json();
+    //return false if returned posts == 0
+    if (Object.keys(data.posts) == 0) return false;
     await dispatch(addPosts(data.posts));
+    return true;
   }
 };
 

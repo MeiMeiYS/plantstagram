@@ -19,8 +19,9 @@
 }
 .post-img {
   /* padding: 100px 0; */
-  min-height: 40vh;
-  object-fit: cotain;
+  /* min-height: 40vh; */
+
+  object-fit: contain;
   /* border-top: 1px solid var(--border); */
   /* border-bottom: 1px solid var(--border); */
   /* background-color: var(--border); */
@@ -29,7 +30,10 @@
   /* padding: 100px 0; */
 
   object-fit: contain;
-  height: 40vh;
+  /* height: 40vh; */
+  max-width: 60vw;
+  height: 60vh;
+  background-color: var(--background-dark);
   /* max-width: 80vh; */
   /* border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -44,7 +48,11 @@
   border-bottom: 1px solid var(--border);
 }
 .desc {
-  margin-top: 8px;
+  /* margin-top: 8px; */
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .comment-box {
   border-top: 1px solid var(--border);
@@ -103,7 +111,7 @@
 }
 .post-overlay-side {
   width: 400px;
-  height: 40vh;
+  height: 60vh;
   border-left: 1px solid var(--border);
 }
 .bold {
@@ -168,8 +176,9 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 25vh;
+  align-items: center;
+  /* align-items: center; */
+  /* padding-top: 20vh; */
 }
 .icon,
 .text {
@@ -184,4 +193,7 @@
 }
 .edit-textarea:focus {
   outline: 1px solid var(--border-focus);
+}
+.dark-background {
+  background-color: var(--background-dark);
 }
