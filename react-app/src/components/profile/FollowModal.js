@@ -1,22 +1,34 @@
 import './FollowModal.css'
 import { getFollowers } from '../../store/followers';
 import { getFollowings } from '../../store/followers';
-import { NavLink } from 'react-router-dom';
+
 import { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { editFollower, isFollowing } from '../../store/followers';
+import { Avatar } from "@material-ui/core";
+
+
 const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowers, showFollowers, overlay, setOverlay}) => {
     const dispatch = useDispatch();
     const [allFollowers, setAllFollowers] = useState({});
     const [allFollowings, setAllFollowings] = useState({});
     const [list, setList] = useState([])
     const [header, setHeader] = useState("")
+    const [people, setPeople] = useState("")
+    const [unfollow, setUnfollow] = useState(false);
+    const [status, setStatus] = useState("");
     useEffect(()=> {
-        if (showFollowers && overlay) dispatch(getFollowers(userId)).then(res => setAllFollowers(res));
+        if (showFollowers && overlay) {
+            dispatch(getFollowers(userId)).then(res => setAllFollowers(res));
+        }
     }, [overlay])
 
     useEffect(() => {
         if (overlay && showFollowing) dispatch(getFollowings(userId)).then(res => setAllFollowings(res));
     }, [overlay])
+
+
 
     useEffect(() => {
         if (allFollowers) {
@@ -26,6 +38,7 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
             console.log(allFollowers)
             setList(tempList)
             setHeader("Follower")
+            setPeople("People")
         }
 
     }, [allFollowers])
@@ -37,6 +50,7 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
             values.forEach(following => tempList1.push(following));
             console.log(allFollowings)
             setList(tempList1)
+            setPeople("People")
             setHeader("Following")
         }
     }, [allFollowings])
@@ -53,24 +67,40 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
                 <div className="follow-modal">
                     <div className="header">{header}
                     </div>
+                    <div className='header'>{people}</div>
                     <div className="main-content">
-                        {list.length && list.map(userObj => (
-                            <div className='follow-info-container' key={userObj.username}>
-                                <img className="follower_profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg" alt="Profile Image" />
-                                {/* <div className='follow-pic'>{userObj.avatar_url}</div> */}
-                                <div className="username_name">
-                                    <NavLink className='follow-username' exact to={`/${userObj.username}`}>
-                                        <div >{userObj.username}</div>
-                                    </NavLink>
-                                    <NavLink className='follow-name' exact to={`/${userObj.username}`}>
-                                        <div >{userObj.name}</div>
-                                    </NavLink>
-                                </div>
-                                <div className="rv_btn_container">
-                                    <button className="remove_followers">Remove</button>
-                                </div>
-                            </div>
-                        ))}
+                        <div className='follow-nonbutton'>
+                            {list.length && list.map(userObj => (
+                            <ul>
+                                <li className='follower-list'>
+                                        <div className='follow-info-container' key={userObj.username}>
+                                            <div className='image-container'>
+                                                <NavLink className='follow-photo-navlink' exact to={`/${userObj.username}`}>
+                                                <Avatar
+                                                    style={{ height: "50px", width: "50px", objectFit: "contain" }}
+                                                     src={userObj.avatar_url}
+                                                 />
+                                                </NavLink>
+                                            </div>
+                                            {/* <div className='follow-pic'>{userObj.avatar_url}</div> */}
+                                            <div className="username_name">
+                                                <NavLink className='follow-name-navlink' exact to={`/${userObj.username}`}>
+                                                    <div className='follow-username'>{userObj.username}</div>
+                                                </NavLink>
+
+                                                <div className='follow-name'>{userObj.name}</div>
+                                            </div>
+                                            <div className='follower-follow-button' key={userObj.username}>
+                                                <button className='follow-button2'><span>{userObj.follow_status}</span></button>
+                                            </div>
+                                        </div>
+                                </li>
+                            </ul>
+                            ))}
+                        </div>
+                        {/* <div className='rv_btn_container'>
+                            {status.length && status.map(followStat => <button>{followStat}</button>)}
+                        </div> */}
                     </div>
                 </div>
             </div>

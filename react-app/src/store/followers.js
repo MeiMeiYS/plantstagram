@@ -49,11 +49,12 @@ export const editFollower = (followId) => async () => {
 export const isFollowing = (followId) => async () => {
   const response = await fetch(`/api/users/${followId}/follow_status`);
   if (response.ok) {
-    const status = await response.json();
-    console.log("@@@@@@@@@@@@", status, "@@@@@@");
-    return status;
-  } else return false;
-};
+    const status = await response.json()
+    //note
+    return status
+  }
+
+}
 
 // const initialState = {};
 

@@ -23,32 +23,102 @@
 .follow-info-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-content: stretch;
     width: 100%;
     padding: 8px 16px
 }
 
 
-.follower_profile_pic {
-    width:80px;
-    height:50px;
-}
+/* .follower_profile_pic {
+    height: 50px;
+    width: 70px;
+} */
 
 .username_name {
+    display: flex;
     height: 50px;
-    display:flex;
+    width: 300px;
     flex-direction: column;
-    justify-content:space-around
-
+    justify-content:space-around;
+    padding-left: 20px;
 }
 
 .remove_followers {
     height: 20px;
-    
+
 }
 
 .rv_btn_container {
     display:flex;
     justify-content: center;
     align-items: center
+}
+
+/* .image-container {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 40px;
+    height: 40px;
+} */
+
+.follow-name-navlink {
+    text-decoration: none;
+}
+
+.follow-username {
+    color: rgba(var(--i1d,38,38,38),1);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+}
+
+.follow-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgba(var(--f52,142,142,142),1);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin: -3px 0 -4px;
+}
+
+.follower-follow-button {
+   width: 100px;
+   height: 40px;
+}
+
+.follow-button2 {
+    color: var(--background-bright);
+    background-color: var(--highligh-links);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 5px 9px;
+    width: 80px;
+    height: 30px;
+
+}
+
+.follow-button2:hover span {
+    display: none;
+}
+.follow-button2:hover:before {
+    /* background: red; */
+    font-weight: bold;
+    content: "Unfollow"
+}
+
+.follow-button2:hover{
+    background: red;
+}
+
+li::marker {
+    color: transparent;
 }

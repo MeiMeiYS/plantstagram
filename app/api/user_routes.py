@@ -130,9 +130,9 @@ def follow_status(followid):
     result = {}
     profile_user = User.query.filter_by(id=followid).first()
     if current_user.has_followed_user(profile_user):
-        result["status"] = True
+        result["status"] = "Following"
     else:
-        result["status"] = False
+        result["status"] = "Follow"
     return result
 
 
