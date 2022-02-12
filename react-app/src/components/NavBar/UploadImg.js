@@ -44,6 +44,7 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
                         if (res) {
                             setErrors(res);
                         } else {
+                            document.body.classList.remove('modal-open');
                             setOverlayed(false);
                             history.push(`/${sessionUser.username}`);
                         }

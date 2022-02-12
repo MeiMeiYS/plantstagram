@@ -65,7 +65,8 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
                                     // Uh-oh, an error occurred!
                                     console.log('Uh-oh, an error occurred!')
                                 });
-                                setOverlayed(false)
+                                document.body.classList.remove('modal-open');
+                                setOverlayed(false);
                             }
                         }
                     })
