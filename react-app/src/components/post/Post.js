@@ -18,6 +18,7 @@ import {
   threeDotSvg,
 } from "../utils";
 import OverlayPost from "./OverlayPost";
+import { NavLink } from "react-router-dom";
 
 export default function Post({ post }) {
   const posts = useSelector((state) => state.posts.posts);
@@ -50,8 +51,14 @@ export default function Post({ post }) {
     handleClose();
   };
   const handleDelete = (event) => {
-    dispatch(deletePostById(post.id));
-    handleClose();
+    if (
+      window.confirm(
+        `Are you sure you'd like to delete your post "${post.description}"?`
+      )
+    ) {
+      dispatch(deletePostById(post.id));
+      handleClose();
+    }
   };
   const handleLike = (e) => {
     dispatch(likePostById(post.id));
@@ -76,10 +83,16 @@ export default function Post({ post }) {
           <></>
         )}
         <div className="post-topbar">
-          <div className="post-user">
+          <NavLink
+            to={`/${displayedPost.user.username}`}
+            className="post-user"
+            style={{ textDecoration: "none" }}
+          >
             <Avatar src={displayedPost.user.avatar_url} />
-            <span className="post-username">{displayedPost.user.username}</span>
-          </div>
+            <span style={{ color: "black" }} className="post-username">
+              {displayedPost.user.username}
+            </span>
+          </NavLink>
           <span
             className="pointer center-text"
             aria-controls="simple-menu"

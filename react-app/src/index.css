@@ -84,3 +84,16 @@ input:focus {
   height: 100vh;
   z-index: 100;
 }
+
+.modal-open {
+  overflow: hidden;
+}
+
+.background-overlay-transparent {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}

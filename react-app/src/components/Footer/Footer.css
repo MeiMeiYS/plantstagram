@@ -18,6 +18,7 @@ footer > div > div {
     display: flex;
     flex-direction: row;
     margin: 0 20px;
+    justify-content: center;
 }
 
 footer p {
@@ -42,3 +43,20 @@ footer button {
 footer i:hover {
     color: var(--main-text);
 }
+
+/* ------------------media query------------------ */
+
+@media (max-width: 710px) {
+    footer > div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer > div > div {
+        width: 33%;
+    }
+  }
+
+  @media (max-width: 640px) {
+
+  }

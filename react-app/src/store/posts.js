@@ -29,7 +29,31 @@ export const createComment = (postid, content) => async (dispatch) => {
     },
     body: JSON.stringify(comment),
   });
+  if (response.ok) {
+    // data is returned updated post
+    const data = await response.json();
+    // I imagine addPost should overwrite the previous in the reducer
+    dispatch(addPost(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
 
+export const updateCommentById = (commentid, content) => async (dispatch) => {
+  const comment = { content: content };
+  const response = await fetch(`/api/comments/${commentid}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(comment),
+  });
   if (response.ok) {
     // data is returned updated post
     const data = await response.json();
@@ -74,8 +98,9 @@ const removePostById = (id) => ({
   id: id,
 });
 
-export const loadFeed = () => async (dispatch) => {
-  const response = await fetch("/api/posts/feed");
+export const loadFeed = (followedFeed) => async (dispatch) => {
+  const urlEnd = followedFeed ? "feed/followed" : "feed";
+  const response = await fetch(`/api/posts/${urlEnd}`);
   if (response.ok) {
     const data = await response.json();
     await dispatch(addPosts(data.posts));
@@ -125,7 +150,7 @@ export default function reducer(state = initialState, action) {
       };
     case ADD_POSTS:
       return {
-        posts: { ...state.posts, ...action.posts },
+        posts: { ...action.posts },
       };
     case REMOVE_POST:
       const newPosts = { ...state.posts };

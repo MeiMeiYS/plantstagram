@@ -8,6 +8,16 @@ from app.models.comment import Comment
 router = Blueprint('posts', __name__)
 
 
+@router.route("/feed/followed", methods=["GET"])
+def get_followed_posts():
+    posts = []
+    for f in current_user.following:
+        for p in f.following.posts.all():
+            posts.append(p)
+    # postsDict = {p.id: p.to_dict() for p in posts}
+    return {"posts": {p.id: p.to_dict() for p in posts}}
+
+
 @router.route("/feed", methods=["GET"])
 def get_posts():
     posts = Post.query.order_by(Post.updated_at).all()

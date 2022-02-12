@@ -1,7 +1,5 @@
 .feed-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-top: 16px;
 }
 
 .post-container {
@@ -12,19 +10,20 @@
   /* padding: 1rem 1rem; */
   border: 1px solid var(--border);
   border-bottom: 0;
-  margin: 8px 8px;
+  margin: 16px 16px;
   width: 614px;
+
   /* width: 100%; */
   /* height: 30rem; */
   justify-content: space-between;
 }
 .post-img {
   /* padding: 100px 0; */
-
+  min-height: 40vh;
   object-fit: cotain;
   /* border-top: 1px solid var(--border); */
   /* border-bottom: 1px solid var(--border); */
-  background-color: var(--border);
+  /* background-color: var(--border); */
 }
 .post-img-overlay {
   /* padding: 100px 0; */
@@ -65,6 +64,7 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
+  overflow-x: hidden;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
@@ -74,7 +74,10 @@
 }
 .comment-content {
   /* display: inline; */
-  display: contents;
+  display: inline-block;
+  max-width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .date-txt {
   /* margin-top: 8px; */
@@ -175,4 +178,10 @@
 }
 .padded {
   padding: 8px 16px;
+}
+.edit-textarea {
+  border: 1px solid var(--border);
+}
+.edit-textarea:focus {
+  outline: 1px solid var(--border-focus);
 }

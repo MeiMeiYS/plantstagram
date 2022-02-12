@@ -15,27 +15,27 @@ import { async } from "@firebase/util";
 //   payload: followingList
 // })
 
-export const getFollowers = (userId) => async() => {
-    const response = await fetch(`/api/users/${userId}/followers`);
-    if (response.ok) {
-        const followers = await response.json();
-        return followers.user_follower_dict
-    } else {
-      return "ERROR"
-    }
-}
+export const getFollowers = (userId) => async () => {
+  const response = await fetch(`/api/users/${userId}/followers`);
+  if (response.ok) {
+    const followers = await response.json();
+    return followers.user_follower_dict;
+  } else {
+    return "ERROR";
+  }
+};
 
-export const getFollowings = (userId) => async() => {
+export const getFollowings = (userId) => async () => {
   const response = await fetch(`/api/users/${userId}/following`);
   if (response.ok) {
     const followings = await response.json();
-    return followings.user_following_dict
+    return followings.user_following_dict;
   } else {
-    return "ERROR"
+    return "ERROR";
   }
-}
+};
 
-export const editFollower = (followId) => async() => {
+export const editFollower = (followId) => async () => {
   const response = await fetch(`api/users/${followId}/follow`, {
     method: "POST",
   });
@@ -44,9 +44,9 @@ export const editFollower = (followId) => async() => {
     const data = await response.json();
     return data;
   }
-}
+};
 
-export const isFollowing = (followId) => async() => {
+export const isFollowing = (followId) => async () => {
   const response = await fetch(`/api/users/${followId}/follow_status`);
   if (response.ok) {
     const status = await response.json()

@@ -10,8 +10,6 @@ const editCurrentUser = (user) => ({
     payload: user
 })
 
-
-
 export const addUserObj = (userid) => async(dispatch) => {
     const response = await fetch(`/api/users/${userid}`);
     if (response.ok) {
@@ -30,14 +28,11 @@ export const updateProfile = (userId, data) => async (dispatch) => {
     })
 
     if (response.ok) {
-        console.log('yesssssss')
         const user = await response.json();
-        console.log('~~~~~~~~~~~~~~~~~~')
-        console.log(user)
         dispatch(editCurrentUser(user))
     }
     else {
-        console.log('noooooooo')
+        console.log('There is an error')
     }
 }
 
@@ -49,6 +44,16 @@ export const getAllPosts = (userId) => async() => {
         return allPosts
     } else {
         return "Error"
+    }
+}
+
+export const searchUsers = (subString) => async() => {
+    const response = await fetch(`/api/users/search/${subString}`);
+    if (response.ok){
+        const allusers = await response.json();
+        return allusers
+    } else {
+        return {}
     }
 }
 

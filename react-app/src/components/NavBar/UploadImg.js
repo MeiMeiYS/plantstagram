@@ -39,8 +39,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
-                    // setImgUrl(url)
-                    // console.log('url:', url)
                     console.log('imgUrl from firebase:',url)
                     dispatch(createPost(url, desc)).then(res => {
                         if (res) {
@@ -56,7 +54,6 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
     }
 
     useEffect(() => {
-        console.log('please make sure this returns true so we can upload image =>', preview.startsWith('data:image/'))
         if (preview && preview.startsWith('data:image/') && desc.length > 10) setSubmitDisabled(false)
         else setSubmitDisabled(true)
     }, [preview, desc])
@@ -95,8 +92,13 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
         }
     }
 
+    const closeOverlay = e => {
+        document.body.classList.remove('modal-open');
+        setOverlayed(false)
+    }
+
     return (
-        <div className="background-overlay" onClick={e => setOverlayed(false)}>
+        <div className="background-overlay" onClick={closeOverlay}>
             <div className="upload-img-UI-container" onClick={(e) => e.stopPropagation()}>
                 <div className="header">
                     <h2>Create new post</h2>
