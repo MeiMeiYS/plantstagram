@@ -1,3 +1,4 @@
+
 .profile_container {
     display: flex;
     justify-content: space-evenly;
@@ -27,18 +28,19 @@
 .profile_info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: flex-start;
-    width: 500px;
+    width: 400px;
     height: 170px;
 
 }
 
 .username_and_link {
-    display: flex;
+    width:300px;
+    height:40px;
+    display:flex;
     justify-content: space-between;
     align-items: center;
-    width: 300px;
 }
 
 .count_info {
@@ -54,11 +56,6 @@
     width: 300px;
 }
 
-.profile_pic {
-    width: 100%;
-    height: 100px;
-    border-radius: 50%;
-}
 
 .profile_container .count_info button {
     color: var(--main-text);
@@ -93,6 +90,7 @@
 
 .pro_info{
     border-bottom: .5px solid #dbdbdb;
+    color: rgba(var(--i1d,38,38,38),1);
 }
 
 .prof-posts-img{
@@ -125,16 +123,88 @@
     grid-column-gap: 28px;
 }
 
-.prof-edit{
-    height: 60px;
-    width: 120px;
+span.prof-edit{
+    height: 30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
     color: #262626;
-    background-color: #fafafa;
     border: 0.5px solid #dbdbdb;
-    font-weight: 500;
-    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align:center;
+    border: 1px solid rgba(var(--ca6,219,219,219),1);
+}
+
+.prof_setting {
+    width: 24px;
+    height: 24px;
+    display: block;
+    color: rgb(38, 38, 38);
+    fill: rgb(38, 38, 38);
+    cursor: pointer;
+
+
+}
+
+.profile_pic {
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.profile_img{
+    width: 150px;
+    height:150px;
+    border-radius: 50%;
+    overflow:hidden;
+    border: solid 1px var(--border);
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.post_count .follower_count .following_count{
+    font-weight: 400;
+
+}
+
+.prof_name{
+    width: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    /* margin-left: 55px; */
+
+
+}
+
+.prof_setting{
+    background-color: transparent;
+    border:none;
+}
+
+.profile_edit_link{
     text-decoration: none;
     outline: none;
     border: none;
+}
+
+
+.prof_username {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 28px;
+    line-height: 32px;
+    margin: -5px 0 -6px;
+    font-weight: 300;
+    color: rgba(var(--i1d,38,38,38),1);
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

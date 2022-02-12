@@ -142,7 +142,7 @@ def get_all_posts(userid):
     all_posts = Post.query.filter_by(userid=user.id)
     posts_url_list = [entry.image_url for entry in all_posts]
     print(posts_url_list,"uuuuuuuuuuu")
-    return {"posts_url_list":posts_url_list}
+    return {str(len(posts_url_list)):posts_url_list
 
 @user_routes.route('/search/<substring>')
 def get_user_by_substring(substring):
