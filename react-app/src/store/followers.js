@@ -50,7 +50,6 @@ export const isFollowing = (followId) => async() => {
   const response = await fetch(`/api/users/${followId}/follow_status`);
   if (response.ok) {
     const status = await response.json()
-    console.log("@@@@@@@@@@@@", status, "@@@@@@");
     return status
   }
 

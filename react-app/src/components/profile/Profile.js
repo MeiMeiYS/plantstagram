@@ -18,7 +18,7 @@ const Profile = () => {
     const [showFollowers, setShowFollowers] = useState(false)
     const [showFollowing, setShowFollowing] = useState(false)
     const [updateFollow, setUpdateFollow] = useState(false)
-    // const [isFollowed, setIsFollowed] = useState("Follow")
+    const [isFollowed, setIsFollowed] = useState("")
 
     const [allPosts, setAllPosts] = useState();
 
@@ -31,10 +31,6 @@ const Profile = () => {
         setShowFollowing(true)
         setOverlay(true)
     }
-    // useEffect(() => {
-    //     dispatch(isFollowing(profileUser.id)).then(res => setIsFollowed(res.status))
-    //     console.log(isFollowed);
-    // }, [isFollowed, profileUser])
 
     useEffect(() => {
         if (updateFollow) {
@@ -46,15 +42,12 @@ const Profile = () => {
 
 
     useEffect(() => {
-        // if (!username) {
-        //   return;
-        // }
-
         (async () => {
           const userResponse = await fetch(`/api/users/${username}`);
           const user = await userResponse.json();
           dispatch(addUserObj(user.id))
           setProfileUser(user);
+          dispatch(isFollowing(user.id)).then(res => setIsFollowed(res.status))
         }
         )();
 
@@ -111,7 +104,7 @@ const Profile = () => {
                         <h2>{name}</h2>
                         <div className='bio'>
                             <div>{bio}</div>
-                            {profileUser.id !== sessionUser.id ? <button onClick={handleFollow}>Follow</button> : null}
+                            {profileUser.id !== sessionUser.id ? <button className="follow-button" onClick={handleFollow}>{isFollowed}</button> : null}
                         </div>
                     </div>
                 </div>

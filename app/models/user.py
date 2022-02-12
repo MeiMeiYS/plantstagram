@@ -91,7 +91,11 @@ class User(db.Model, UserMixin):
         follow_list = {}
         for id in id_list:
             user = User.query.get(id)
-            follow_list[id] = {"id": user.id, "username": user.username, "name": user.name, "avatar_url": user.avatar_url}
+            if self.has_followed_user(user):
+                status = "Following"
+            else:
+                status = "Follow"
+            follow_list[id] = {"id": user.id, "username": user.username, "name": user.name, "avatar_url": user.avatar_url, "follow_status": status}
         return follow_list
 
     @property
