@@ -7,6 +7,23 @@
 
 }
 
+
+
+.follow-button {
+    color: var(--background-bright);
+    background-color: var(--highligh-links);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 5px 9px;
+    width: 80px;
+    height: 30px;
+
+}
+
 .profile_info {
     display: flex;
     flex-direction: column;
