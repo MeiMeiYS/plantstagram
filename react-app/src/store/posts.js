@@ -143,6 +143,29 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
     return ["An error occurred. Please try again."];
   }
 };
+export const editPost = (postid, desc) => async (dispatch) => {
+  const post = { description: desc };
+  const response = await fetch(`/api/posts/${postid}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(post),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    await dispatch(addPost(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
 
 const initialState = { posts: [] };
 export default function reducer(state = initialState, action) {

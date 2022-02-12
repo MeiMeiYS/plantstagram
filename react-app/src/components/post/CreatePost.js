@@ -7,7 +7,7 @@ const CreatePost = () => {
   const [errors, setErrors] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
   const [desc, setDesc] = useState("");
-  const user = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch();
 
   const onSubmit = async (e) => {

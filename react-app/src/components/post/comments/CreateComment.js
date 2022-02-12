@@ -12,9 +12,14 @@ export default function CreateComment({ postid }) {
     const data = await dispatch(createComment(postid, content));
     if (data) {
       setErrors(data);
+    } else {
+      setContent("");
     }
   };
-
+  const handleKeyDown = (e) => {
+    e.target.style.height = "inherit";
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  };
   const updateContent = (e) => {
     setContent(e.target.value);
   };
@@ -31,10 +36,11 @@ export default function CreateComment({ postid }) {
         </div>
       )}
 
-      <input
+      <textarea
         required
-        className="comment-input"
-        name="content"
+        className="bare-textarea"
+        onFocus={handleKeyDown}
+        onKeyDown={handleKeyDown}
         type="content"
         placeholder="Add a comment..."
         value={content}

@@ -71,7 +71,7 @@ export default function Comment({ comment }) {
               )}
               <textarea
                 required
-                autoFocus
+                // autoFocus
                 className="edit-textarea"
                 onFocus={handleKeyDown}
                 onKeyDown={handleKeyDown}

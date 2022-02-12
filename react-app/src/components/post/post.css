@@ -32,7 +32,7 @@
   object-fit: contain;
   /* height: 40vh; */
   max-width: 60vw;
-  height: 60vh;
+  max-height: 55vh;
   background-color: var(--background-dark);
   /* max-width: 80vh; */
   /* border-top: 1px solid var(--border);
@@ -49,8 +49,8 @@
 }
 .desc {
   /* margin-top: 8px; */
-  display: inline-block;
-  max-width: 100%;
+  /* display: inline-block; */
+  width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -60,21 +60,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 16px;
-  height: 40px;
+  width: 100%;
+  padding: 8px 16px;
+  /* height: 64px; */
   background-color: var(--background-bright);
 }
 .post-comments {
-  flex-grow: 1;
+  flex-grow: 2;
   /* max-width: 100%; */
-  width: 399px;
-  height: 20vh;
+  width: 380px;
+  /* max-height: 20em; */
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
-  overflow-x: hidden;
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  /* overflow-x: hidden; */
+  /* margin-bottom: 8px; */
+  /* border-bottom: 1px solid var(--border); */
 }
 .comment-input {
   border: 0;
@@ -98,12 +99,13 @@
   font-size: 14px;
 }
 .post-username {
-  padding: 0px 10px;
+  padding: 0px 16px;
 }
 .post-bottom {
   /* padding: 8px 16px; */
   background-color: var(--background-bright);
-  flex-grow: 1;
+
+  /* flex: 1 1 auto; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -111,8 +113,13 @@
 }
 .post-overlay-side {
   width: 400px;
-  height: 60vh;
+  height: 80vh;
   border-left: 1px solid var(--border);
+  background-color: var(--background-bright);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: auto;
 }
 .bold {
   font-weight: bold;
@@ -177,6 +184,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* align-items: center; */
   /* padding-top: 20vh; */
 }
@@ -187,13 +195,36 @@
 }
 .padded {
   padding: 8px 16px;
+  /* background-color: var(--background-bright); */
 }
 .edit-textarea {
   border: 1px solid var(--border);
 }
+
 .edit-textarea:focus {
   outline: 1px solid var(--border-focus);
 }
+.bare-textarea {
+  /* padding: 15px 0px; */
+  height: 32px;
+  padding-top: 5px;
+  resize: none;
+  border: 0;
+  flex-grow: 1;
+  /* line-height: 40px; */
+}
+.bare-textarea:focus {
+  outline: 0;
+}
 .dark-background {
   background-color: var(--background-dark);
+  height: 80vh;
+  /* overflow: auto; */
 }
+.MuiPaper-root {
+  border-radius: 0 !important;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.0975);
+}
+/* ::placeholder {
+  line-height: 3rem;
+} */
