@@ -29,6 +29,14 @@
     line-height: 24px;
 }
 
+.direct-inbox .direct-inbox-sidebar .no-conversation {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--text-input);
+}
+
 .direct-inbox .direct-inbox-sidebar .chat-user {
     display: flex;
     flex-direction: row;
