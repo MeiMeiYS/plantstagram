@@ -114,6 +114,9 @@ export const deletePostById = (id) => async (dispatch) => {
 
   if (response.ok) {
     await dispatch(removePostById(id));
+    return null;
+  } else {
+    return ["An error occurred. Please try again."];
   }
 };
 

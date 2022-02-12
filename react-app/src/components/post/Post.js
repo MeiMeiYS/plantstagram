@@ -9,6 +9,8 @@ import CreateComment from "./comments/CreateComment";
 import Comment from "./comments/Comment";
 import { useEffect } from "react";
 import { Avatar } from "@material-ui/core";
+import { storage } from "../../firebase";
+import { deleteObject } from "firebase/storage";
 import {
   commentSvg,
   emptyHeartSvg,
@@ -22,6 +24,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Post({ post }) {
   const posts = useSelector((state) => state.posts.posts);
+  const sessionUser = useSelector((state) => state.session?.user)
   const [anchorEl, setAnchorEl] = useState(false);
   const [displayedPost, updateDisplayedPost] = useState(post);
   const dispatch = useDispatch();
@@ -56,7 +59,24 @@ export default function Post({ post }) {
         `Are you sure you'd like to delete your post "${post.description}"?`
       )
     ) {
-      dispatch(deletePostById(post.id));
+      dispatch(deletePostById(post.id)).then(res => {
+        if (!res) {
+          // delete the old image from firebase
+          // Create a reference to the file to delete
+          const oldImg = storage._makeStorageReference(sessionUser.avatar_url);
+          // Delete the file
+          if (oldImg) {
+              deleteObject(oldImg).then(() => {
+                  // File deleted successfully
+                  console.log('File deleted successfully')
+              }).catch((error) => {
+                  // Uh-oh, an error occurred!
+                  console.log('Uh-oh, an error occurred!')
+              });
+              setOverlayed(false)
+          }
+        }
+      });
       handleClose();
     }
   };

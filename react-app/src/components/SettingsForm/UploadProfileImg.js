@@ -5,6 +5,7 @@ import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { updateProfile } from "../../store/session";
 import "./UploadProfileImg.css";
+import { deleteObject } from "firebase/storage";
 
 const UploadProfileImg = ({ overlayed, setOverlayed }) => {
     const dispatch = useDispatch();
@@ -52,7 +53,20 @@ const UploadProfileImg = ({ overlayed, setOverlayed }) => {
                             setErrorMessages([...res.errors]);
                         }
                         else {
-                            setOverlayed(false)
+                            // delete the old image from firebase
+                            // Create a reference to the file to delete
+                            const oldImg = storage._makeStorageReference(sessionUser.avatar_url);
+                            // Delete the file
+                            if (oldImg) {
+                                deleteObject(oldImg).then(() => {
+                                    // File deleted successfully
+                                    console.log('File deleted successfully')
+                                }).catch((error) => {
+                                    // Uh-oh, an error occurred!
+                                    console.log('Uh-oh, an error occurred!')
+                                });
+                                setOverlayed(false)
+                            }
                         }
                     })
                 })
