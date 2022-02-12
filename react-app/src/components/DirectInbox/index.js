@@ -2,12 +2,24 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './DirectInbox.css';
 import your_message from '../../images/your_messages.png';
+import { getFollowings } from '../../store/followers';
 
 
 const DirectInbox = () => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
     const [chatUser, setChatUser] = useState('');
+    const [conversation, setConversation] = useState({});
+
+    // useEffect(()=> {
+    //     dispatch(getFollowings(currentUser.id)).then(res => {
+    //         if (res) {
+    //             const users = Object.values(res);
+    //             setAllFollowings(users);
+    //         }
+    //     });
+    // }, [dispatch])
 
     return (
         <div className='direct-inbox'>
@@ -15,15 +27,19 @@ const DirectInbox = () => {
                <div className='header'>
                    <p>{currentUser.username}</p>
                </div>
-               {/* below chat user will be change to a mapping render */}
-               <div className='chat-user' onClick={e => setChatUser('demouser')}>
+               {conversation.length ?
+                <h1>replace me</h1>
+               :
+                <p className='no-conversation'>You have no conversation yet.</p>
+               }
+               {/* <div className='chat-user' onClick={e => setChatUser('demouser')}>
                     <div className='avatar'>
                         <img src='' alt='user avatar'></img>
                     </div>
                     <div className='username'>
                         <p>username here</p>
                     </div>
-               </div>
+               </div> */}
             </div>
             <div className='direct-inbox-main-content'>
                 {!chatUser ?
