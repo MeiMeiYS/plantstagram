@@ -103,7 +103,10 @@ export const loadFeed = (followedFeed) => async (dispatch) => {
   const response = await fetch(`/api/posts/${urlEnd}`);
   if (response.ok) {
     const data = await response.json();
+    //return false if returned posts == 0
+    if (Object.keys(data.posts) == 0) return false;
     await dispatch(addPosts(data.posts));
+    return true;
   }
 };
 
@@ -124,6 +127,29 @@ export const createPost = (imgUrl, desc) => async (dispatch) => {
   const post = { image_url: imgUrl, description: desc };
   const response = await fetch("/api/posts/new", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(post),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    await dispatch(addPost(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+export const editPost = (postid, desc) => async (dispatch) => {
+  const post = { description: desc };
+  const response = await fetch(`/api/posts/${postid}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },

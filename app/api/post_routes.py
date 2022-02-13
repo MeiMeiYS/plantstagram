@@ -3,6 +3,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from flask import Blueprint, jsonify, session, request
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms import PostForm
+from app.forms.edit_post_form import EditPostForm
 from app.models import Post, User, db
 from app.models.comment import Comment
 router = Blueprint('posts', __name__)
@@ -50,6 +51,21 @@ def like_post(postid):
 #     user.unlike_post(post)
 #     db.session.commit()
 #     return post.to_dict()
+@router.route("/<int:postid>", methods=["PUT"])
+@login_required
+def edit_post(postid):
+    form = EditPostForm()
+    post = Post.query.get(postid)
+    if current_user.id == post.userid:
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            post.description = form.data["description"]
+            db.session.commit()
+            return post.to_dict()
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    else:
+        return 401
 
 
 @router.route("/new", methods=["POST"])
