@@ -84,7 +84,7 @@ const FollowersModal = ({setProfileUser, profileUser, setFollowerCount, setFollo
                     <div className="main-content">
                         <div className='follow-nonbutton'>
                             {list.length && list.map(userObj => (
-                            <ul>
+                            <ul key={userObj.id}>
                                 <FollowBlock setProfileUser={setProfileUser} profileUser={profileUser} setFollowerCount={setFollowerCount} setFollowingCount={setFollowingCount} userObj={userObj} setFollow={setFollow}/>
                             </ul>
                             ))}

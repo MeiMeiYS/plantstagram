@@ -6,6 +6,7 @@ import { addUserObj, getAllPosts } from '../../store/users';
 import './Profile.css'
 import FollowModal from './FollowModal';
 import { Avatar } from '@material-ui/core';
+import ProfilePost from './ProfilePost';
 // import { getFollowers } from '../../store/followers';
 
 const Profile = () => {
@@ -105,7 +106,6 @@ const Profile = () => {
             }
         })
     }
-    let count = 0;
 
     return (
        <>
@@ -156,8 +156,11 @@ const Profile = () => {
                 POSTS
             </div>
             <div className="prof-bot">
-                {allPosts && Object.values(allPosts).map(url => (
-                    <img className="prof_posts" src={url} alt="posts" key={count++}/>
+            {console.log(allPosts, "ALLLL POSTSSS")}
+                {allPosts && Object.values(allPosts).map(posts => (
+                    posts.map(post => (
+                        <ProfilePost post={post}/>
+                    ))
                 ))}
             </div>
         </>

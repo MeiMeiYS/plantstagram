@@ -152,7 +152,8 @@ def follow_status(followid):
 def get_all_posts(userid):
     user = User.query.get(userid)
     all_posts = Post.query.filter_by(userid=user.id)
-    posts_url_list = [entry.image_url for entry in all_posts]
+
+    posts_url_list = [entry.to_dict() for entry in all_posts]
     return {str(len(posts_url_list)):posts_url_list}
 
 @user_routes.route('/search/<substring>')
