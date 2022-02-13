@@ -3,12 +3,12 @@ import OverlayPost from "../post/OverlayPost";
 import { getUserPosts } from "../../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProfilePost = ({ post }) => {
+const ProfilePost = ({post }) => {
     const [overlayed, setOverlayed] = useState(false);
     const dispatch = useDispatch();
     const postId = post.id;
     // const currentPost = useSelector(state => state.posts[postId])
-    const [currentPost, setCurrentPost] = useState(123);
+    const [currentPost, setCurrentPost] = useState({});
     // const testObj = {
     //     "comments": [
     //         {
@@ -75,11 +75,12 @@ const ProfilePost = ({ post }) => {
             }
         })
 
-    }, [dispatch])
+    }, [dispatch, post.id])
 
     return (
         <div className='postContainer'>
             <img onClick={handlePostOverlay} className="prof_posts" src={post.image_url} alt="posts" key={post.id}/>
+            {console.log(currentPost, "3333333333")}
             {overlayed && <OverlayPost post={currentPost} overlayed={overlayed} setOverlayed={setOverlayed}/>}
         </div>
     )

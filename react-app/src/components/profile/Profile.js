@@ -12,14 +12,14 @@ import ProfilePost from './ProfilePost';
 const Profile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user);
-
+    const posts = useSelector(state => state.posts)
     const { username } = useParams();
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
     const [overlay, setOverlay] = useState(false);
     const [showFollowers, setShowFollowers] = useState(false)
     const [showFollowing, setShowFollowing] = useState(false)
-    const [updateFollow, setUpdateFollow] = useState(false)
+    // const [updateFollow, setUpdateFollow] = useState(false)
     const [isFollowed, setIsFollowed] = useState("")
     const [followerCount, setFollowerCount] = useState(0)
     const [followingCount, setFollowingCount] = useState(0)
@@ -84,7 +84,7 @@ const Profile = () => {
                 }
             })
         }
-    },[profileUser])
+    },[profileUser, posts])
     // const profileUser1 = useSelector(state => state.users.userId)
     // const name = profileUser.name;
     // const username = profileUser.username;
@@ -159,7 +159,7 @@ const Profile = () => {
             {console.log(allPosts, "ALLLL POSTSSS")}
                 {allPosts && Object.values(allPosts).map(posts => (
                     posts.map(post => (
-                        <ProfilePost userid={profileUser.id} post={post}/>
+                        <ProfilePost post={post}/>
                     ))
                 ))}
             </div>
