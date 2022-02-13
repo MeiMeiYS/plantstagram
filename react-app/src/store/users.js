@@ -40,10 +40,9 @@ export const getAllPosts = (userId) => async() => {
     const response = await fetch(`/api/users/${userId}/posts`);
     if (response.ok){
         const allPosts = await response.json();
-        console.log(allPosts,"ffffffff")
         return allPosts
     } else {
-        return 
+        return
     }
 }
 
@@ -57,6 +56,18 @@ export const searchUsers = (subString) => async() => {
     }
 }
 
+export const editFollower = (followId) => async dispatch => {
+    const response = await fetch(`api/users/${followId}/follow`, {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addUser(data))
+      return data
+    }
+  };
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -64,10 +75,10 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
 
       case ADD_USER:
-        newState[action.payload.id] = action.payload;
+        newState[action.payload.username] = action.payload;
         return newState;
       case EDIT_CURRENT_USER:
-        newState[action.payload.id] = action.payload
+        newState[action.payload.username] = action.payload
         return newState;
 
       default:

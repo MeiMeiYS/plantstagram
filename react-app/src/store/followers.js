@@ -1,7 +1,6 @@
 // const GET_ALL_FOLLOWERS = "users/GET_ALL_FOLLOWERS";
 // const GET_ALL_FOLLOWINGS = "users/GET_ALL_FOLLOWINGS";
 
-import { async } from "@firebase/util";
 
 // const getFollowerList = (userId, followerList) => ({
 //     type: GET_ALL_FOLLOWERS,
@@ -46,6 +45,17 @@ export const editFollower = (followId) => async () => {
   }
 };
 
+export const editFollowerModal = (followId) => async () => {
+  const response = await fetch(`api/users/${followId}/follow_modal`, {
+    method: "POST",
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+};
+
 export const isFollowing = (followId) => async () => {
   const response = await fetch(`/api/users/${followId}/follow_status`);
   if (response.ok) {
@@ -53,7 +63,6 @@ export const isFollowing = (followId) => async () => {
     //note
     return status
   }
-
 }
 
 // const initialState = {};
