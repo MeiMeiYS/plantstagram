@@ -159,7 +159,7 @@ const Profile = () => {
             {console.log(allPosts, "ALLLL POSTSSS")}
                 {allPosts && Object.values(allPosts).map(posts => (
                     posts.map(post => (
-                        <ProfilePost post={post}/>
+                        <ProfilePost userid={profileUser.id} post={post}/>
                     ))
                 ))}
             </div>

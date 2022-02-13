@@ -29,6 +29,7 @@ def get_posts():
 @router.route("/<int:postid>", methods=["GET"])
 def get_single_post(postid):
     post = Post.query.get(postid)
+    print(post.to_dict())
     return post.to_dict()
 
 
