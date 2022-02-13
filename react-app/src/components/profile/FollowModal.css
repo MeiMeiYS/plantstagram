@@ -1,7 +1,7 @@
 .follow-modal {
     background-color: var(--background-bright);
     height: 75vh;
-    width: 500px;
+    width: 400px;
     max-height: 565px;
     border-radius: 10px;
 }
@@ -26,10 +26,12 @@
     justify-content: flex-start;
     align-content: stretch;
     width: 100%;
-    padding: 8px 16px
+    padding: 8px 16px;
 }
 
-
+.follow-info-container:hover {
+    background-color: var(--background-dark);
+}
 /* .follower_profile_pic {
     height: 50px;
     width: 70px;
@@ -106,19 +108,21 @@
 
 }
 
+
+/*
 .follow-button2:hover span {
     display: none;
 }
 .follow-button2:hover:before {
-    /* background: red; */
+    background: red;
     font-weight: bold;
     content: "Unfollow"
-}
-
+} */
+/*
 .follow-button2:hover{
     background: red;
 }
 
 li::marker {
     color: transparent;
-}
+} */

@@ -12,6 +12,7 @@ import CreatePost from "./components/post/CreatePost";
 import Post from "./components/post/Post";
 import Feed from "./components/post/Feed";
 import SettingsForm from "./components/SettingsForm/";
+// import UserProfile from "./components/profile/UserProfile";
 import Profile from "./components/profile/Profile";
 import Footer from "./components/Footer";
 import DirectInbox from "./components/DirectInbox";

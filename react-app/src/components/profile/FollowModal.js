@@ -5,19 +5,22 @@ import { getFollowings } from '../../store/followers';
 import { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { editFollower, isFollowing } from '../../store/followers';
+import { isFollowing } from '../../store/followers';
 import { Avatar } from "@material-ui/core";
+import FollowBlock from './FollowBlock';
+import { editFollowerModal } from '../../store/followers';
 
-
-const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowers, showFollowers, overlay, setOverlay}) => {
+const FollowersModal = ({setProfileUser, profileUser, setFollowerCount, setFollowingCount, userId, setShowFollowing, showFollowing, setShowFollowers, showFollowers, overlay, setOverlay}) => {
     const dispatch = useDispatch();
     const [allFollowers, setAllFollowers] = useState({});
     const [allFollowings, setAllFollowings] = useState({});
     const [list, setList] = useState([])
     const [header, setHeader] = useState("")
     const [people, setPeople] = useState("")
-    const [unfollow, setUnfollow] = useState(false);
+    const [updateFollow, setUpdateFollow] = useState(false);
+    const [follow, setFollow] = useState({});
     const [status, setStatus] = useState("");
+    console.log(follow)
     useEffect(()=> {
         if (showFollowers && overlay) {
             dispatch(getFollowers(userId)).then(res => setAllFollowers(res));
@@ -28,7 +31,16 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
         if (overlay && showFollowing) dispatch(getFollowings(userId)).then(res => setAllFollowings(res));
     }, [overlay])
 
+    // useEffect(() => {
+    //     if (follow) setUpdateFollow(true)
+    // })
 
+    // useEffect(() => {
+    //     if (follow) {
+    //         console.log(follow);
+    //         dispatch(editFollowerModal(follow))
+    //     }
+    // }, [follow])
 
     useEffect(() => {
         if (allFollowers) {
@@ -59,42 +71,21 @@ const FollowersModal = ({userId, setShowFollowing, showFollowing, setShowFollowe
         setShowFollowers(false)
         setShowFollowing(false)
         setOverlay(false)
-
     }
+
+
 
     return (
         <div className="background-overlay" onClick={handleOverlay}>
-                <div className="follow-modal">
+                <div className="follow-modal" onClick={e => e.stopPropagation()}>
                     <div className="header">{header}
                     </div>
                     <div className='header'>{people}</div>
                     <div className="main-content">
                         <div className='follow-nonbutton'>
                             {list.length && list.map(userObj => (
-                            <ul>
-                                <li className='follower-list'>
-                                        <div className='follow-info-container' key={userObj.username}>
-                                            <div className='image-container'>
-                                                <NavLink className='follow-photo-navlink' exact to={`/${userObj.username}`}>
-                                                <Avatar
-                                                    style={{ height: "50px", width: "50px", objectFit: "contain" }}
-                                                     src={userObj.avatar_url}
-                                                 />
-                                                </NavLink>
-                                            </div>
-                                            {/* <div className='follow-pic'>{userObj.avatar_url}</div> */}
-                                            <div className="username_name">
-                                                <NavLink className='follow-name-navlink' exact to={`/${userObj.username}`}>
-                                                    <div className='follow-username'>{userObj.username}</div>
-                                                </NavLink>
-
-                                                <div className='follow-name'>{userObj.name}</div>
-                                            </div>
-                                            <div className='follower-follow-button' key={userObj.username}>
-                                                <button className='follow-button2'><span>{userObj.follow_status}</span></button>
-                                            </div>
-                                        </div>
-                                </li>
+                            <ul key={userObj.id}>
+                                <FollowBlock setProfileUser={setProfileUser} profileUser={profileUser} setFollowerCount={setFollowerCount} setFollowingCount={setFollowingCount} userObj={userObj} setFollow={setFollow}/>
                             </ul>
                             ))}
                         </div>

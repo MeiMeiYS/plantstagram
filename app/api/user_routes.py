@@ -101,6 +101,18 @@ def follow_user(followid):
     db.session.commit()
     return updated_user.to_dict()
 
+@ user_routes.route('/<int:followid>/follow_modal', methods=["POST"])
+def follow_user_modal(followid):
+    # following = Follow.query.get(followid)
+    user = current_user
+    updated_user = User.query.get(followid)
+    if user.has_followed_user(updated_user):
+        user.unfollow_user(updated_user)
+    else:
+        user.follow_user(updated_user)
+    db.session.commit()
+    return user.to_dict()
+
 
 @ user_routes.route('/<int:userid>/following')
 def get_following(userid):
@@ -140,9 +152,9 @@ def follow_status(followid):
 def get_all_posts(userid):
     user = User.query.get(userid)
     all_posts = Post.query.filter_by(userid=user.id)
-    posts_url_list = [entry.image_url for entry in all_posts]
-    print(posts_url_list,"uuuuuuuuuuu")
-    return {"posts_url_list":posts_url_list}
+
+    posts_url_list = [entry.to_dict() for entry in all_posts]
+    return {str(len(posts_url_list)):posts_url_list}
 
 @user_routes.route('/search/<substring>')
 def get_user_by_substring(substring):

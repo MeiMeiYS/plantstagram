@@ -170,6 +170,17 @@ export const editPost = (postid, desc) => async (dispatch) => {
   }
 };
 
+export const getUserPosts = (postid) => async (dispatch) => {
+  const response = await fetch(`/api/posts/${postid}`)
+
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data, "########################")
+    await dispatch(addPost(data))
+    return data;
+  }
+}
+
 const initialState = { posts: [] };
 export default function reducer(state = initialState, action) {
   switch (action.type) {

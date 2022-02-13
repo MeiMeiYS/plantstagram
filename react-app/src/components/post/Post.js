@@ -97,6 +97,7 @@ export default function Post({ post }) {
   else
     return (
       <div className="post-container">
+      {console.log(displayedPost, "@@@@@@@@@@@@@@@@@@")}
         {overlayed ? (
           <OverlayPost
             setOverlayed={setOverlayed}
