@@ -19,7 +19,7 @@ const Profile = () => {
     const [overlay, setOverlay] = useState(false);
     const [showFollowers, setShowFollowers] = useState(false)
     const [showFollowing, setShowFollowing] = useState(false)
-    const [updateFollow, setUpdateFollow] = useState(false)
+    // const [updateFollow, setUpdateFollow] = useState(false)
     const [isFollowed, setIsFollowed] = useState("")
     const [followerCount, setFollowerCount] = useState(0)
     const [followingCount, setFollowingCount] = useState(0)
@@ -69,6 +69,7 @@ const Profile = () => {
                 }
               });
             dispatch(getAllPosts(profileUser.id)).then(res=>{
+                console.log(allPosts, "LOOK HERE")
                 if (res && res["0"]){
                     setAllPosts({})
                     setPostCount(0)
@@ -159,7 +160,7 @@ const Profile = () => {
             {console.log(allPosts, "ALLLL POSTSSS")}
                 {allPosts && Object.values(allPosts).map(posts => (
                     posts.map(post => (
-                        <ProfilePost userid={profileUser.id} post={post}/>
+                        <ProfilePost post={post}/>
                     ))
                 ))}
             </div>
