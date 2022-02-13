@@ -124,6 +124,24 @@
     background-color: #a7bfa8;
 }
 
+.direct-inbox .direct-inbox-main-content .default-display .hidden-message {
+    visibility: hidden;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display .under-construction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.direct-inbox .direct-inbox-main-content .default-display .under-construction span {
+    margin: 5px;
+    font-size: 20px;
+    color: var(--highligh-links);
+}
+
 /* ---------------main content--chat display--------------------- */
 
 .direct-inbox .direct-inbox-main-content .user-message-content .header {
