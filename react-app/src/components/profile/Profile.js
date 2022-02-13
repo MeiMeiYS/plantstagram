@@ -12,7 +12,7 @@ import ProfilePost from './ProfilePost';
 const Profile = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session?.user);
-
+    const posts = useSelector(state => state.posts)
     const { username } = useParams();
     const [profileUser, setProfileUser] = useState({})
     const settingBtn = useRef();
@@ -69,7 +69,6 @@ const Profile = () => {
                 }
               });
             dispatch(getAllPosts(profileUser.id)).then(res=>{
-                console.log(allPosts, "LOOK HERE")
                 if (res && res["0"]){
                     setAllPosts({})
                     setPostCount(0)
@@ -85,7 +84,7 @@ const Profile = () => {
                 }
             })
         }
-    },[profileUser])
+    },[profileUser, posts])
     // const profileUser1 = useSelector(state => state.users.userId)
     // const name = profileUser.name;
     // const username = profileUser.username;
