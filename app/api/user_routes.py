@@ -98,5 +98,13 @@ def get_all_posts(userid):
     all_posts = Post.query.filter_by(userid=user.id)
     # print(all_posts, "pppppp")
     posts_url_list = [entry.image_url for entry in all_posts]
-    print(posts_url_list,"uuuuuuuuuuu")
+    # print(posts_url_list,"uuuuuuuuuuu")
     return {str(len(posts_url_list)):posts_url_list}
+
+@user_routes.route('/<int:userid>/profileImg', methods=["DELETE"])
+def remove_profileImg(userid):
+    user = User.query.get(userid)
+    user.avatar_url = ""
+    return user.to_dict()
+
+

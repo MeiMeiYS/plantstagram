@@ -45,8 +45,18 @@ export const getAllPosts = (userId) => async() => {
     const response = await fetch(`/api/users/${userId}/posts`);
     if (response.ok){
         const allPosts = await response.json();
-        console.log(allPosts,"ffffffff")
+        // console.log(allPosts,"ffffffff")
         return allPosts
+    } else {
+        return 
+    }
+}
+
+export const removeProfileImg = (userId) => async() => {
+    const response = await fetch(`/api/users/${userId}/profileImg`);
+    if (response.ok){
+        const user = await response.json();
+        return user
     } else {
         return 
     }

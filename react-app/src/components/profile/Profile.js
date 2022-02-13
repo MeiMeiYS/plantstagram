@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addUserObj, getAllPosts } from '../../store/users';
 import './Profile.css'
 import FollowModal from './FollowModal';
+import ProfileImgModal from './ProfileImgModal';
 // import { getFollowers } from '../../store/followers';
 
 const Profile = () => {
@@ -16,6 +17,7 @@ const Profile = () => {
     const [overlay, setOverlay] = useState(false);
     const [showFollowers, setShowFollowers] = useState(false)
     const [showFollowing, setShowFollowing] = useState(false)
+    const [showProfileImgModal, setShowProfileImgModal] = useState(false)
 
     const [allPosts, setAllPosts] = useState();
 
@@ -29,7 +31,10 @@ const Profile = () => {
         setOverlay(true)
     }
     
-    
+    const handleShowProfileImgModal = e => {
+        setShowProfileImgModal(true)
+        setOverlay(true)
+    }
 
     useEffect(() => {
         // if (!username) {
@@ -48,6 +53,7 @@ const Profile = () => {
             dispatch(getAllPosts(profileUser.id)).then(res=>setAllPosts(res))
         }
     },[profileUser])
+
     // const profileUser1 = useSelector(state => state.users.userId)
     const name = profileUser.name;
     // const username = profileUser.username;
@@ -62,12 +68,19 @@ const Profile = () => {
        <>
             <div className="pro_info">
                 { overlay &&
-                        <FollowModal userId={profileUser.id} setShowFollowing={setShowFollowing} showFollowing={showFollowing} setShowFollowers={setShowFollowers} showFollowers={showFollowers} overlay={overlay} setOverlay={setOverlay}/>
+                    <FollowModal userId={profileUser.id} setShowFollowing={setShowFollowing} showFollowing={showFollowing} setShowFollowers={setShowFollowers} showFollowers={showFollowers} overlay={overlay} setOverlay={setOverlay}/>
+                } 
+                { overlay && 
+                    <ProfileImgModal profileUser={profileUser} setShowProfileImgModal={setShowProfileImgModal} showProfileImgModal={showProfileImgModal} setOverlay={setOverlay} overlay={overlay}/>
                 }
 
                 <div className="profile_container">
                     <div className="profile_img">
-                        <img className="profile_pic" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg" alt="Profile Image"/>
+                        <img className="profile_pic" 
+                        src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Question-mark-face.jpg" 
+                        alt="Profile Image"
+                        onClick={handleShowProfileImgModal}
+                        />
                     </div>
                     <div className="profile_info">
                         <div className='username_and_link'>
