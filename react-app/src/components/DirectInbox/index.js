@@ -11,6 +11,7 @@ const DirectInbox = () => {
 
     const [chatUser, setChatUser] = useState('');
     const [conversation, setConversation] = useState({});
+    const [hiddenMessage, setHiddenMessage] = useState(true)
 
     // useEffect(()=> {
     //     dispatch(getFollowings(currentUser.id)).then(res => {
@@ -20,6 +21,10 @@ const DirectInbox = () => {
     //         }
     //     });
     // }, [dispatch])
+
+    const handleSendMessage = e => {
+        setHiddenMessage(false);
+    }
 
     return (
         <div className='direct-inbox'>
@@ -47,7 +52,11 @@ const DirectInbox = () => {
                         <img src={your_message} alt='Messages icon'></img>
                         <p>Your Messages</p>
                         <span>Send private messages to a friend.</span>
-                        <button>Send Message</button>
+                        <button type='button' onClick={handleSendMessage}>Send Message</button>
+                        <div className={`under-construction ${hiddenMessage && 'hidden-message'}`}>
+                            <span>This feature is under construction</span>
+                            <span>Will be coming soon</span>
+                        </div>
                     </div>
                     :
                     <div className='user-message-content'>
