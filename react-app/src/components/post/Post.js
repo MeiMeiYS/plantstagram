@@ -21,6 +21,7 @@ import {
 } from "../utils";
 import OverlayPost from "./OverlayPost";
 import { NavLink } from "react-router-dom";
+import EditPost from "./EditPost";
 
 export default function Post({ post }) {
   const posts = useSelector((state) => state.posts.posts);
@@ -28,8 +29,10 @@ export default function Post({ post }) {
   const [anchorEl, setAnchorEl] = useState(false);
   const [displayedPost, updateDisplayedPost] = useState(post);
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.session.user);
   const [overlayed, setOverlayed] = useState(false);
+
+  const [editOverlay, setEditOverlay] = useState(false);
 
   const timestamp = new Date(displayedPost?.updated_at);
   const timeString = getTimeString(timestamp);
@@ -51,6 +54,7 @@ export default function Post({ post }) {
     setAnchorEl(event.currentTarget);
   };
   const handleEdit = (event) => {
+    setEditOverlay(true);
     handleClose();
   };
   const handleDelete = (event) => {
@@ -102,6 +106,15 @@ export default function Post({ post }) {
         ) : (
           <></>
         )}
+        {editOverlay ? (
+          <EditPost
+            setOverlayed={setEditOverlay}
+            overlayed={editOverlay}
+            post={displayedPost}
+          />
+        ) : (
+          <></>
+        )}
         <div className="post-topbar">
           <NavLink
             to={`/${displayedPost.user.username}`}
@@ -113,15 +126,18 @@ export default function Post({ post }) {
               {displayedPost.user.username}
             </span>
           </NavLink>
-          <span
-            className="pointer center-text"
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            onMouseDown={handleClick}
-          >
-            {threeDotSvg()}
-          </span>
+          {displayedPost.userid == user.id ? (
+            <span
+              className="pointer center-text"
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onMouseDown={handleClick}
+            >
+              {threeDotSvg()}
+            </span>
+          ) : null}
           <Menu
+            style={{ borderRadius: "0" }}
             keepMounted
             anchorEl={anchorEl}
             onClose={handleClose}
@@ -163,10 +179,19 @@ export default function Post({ post }) {
           <div className="like-div padded">
             {getLikesString(displayedPost, handleLike)}
           </div>
-          <div className="padded">
-            <span className="bold">{displayedPost.user.username} </span>
-            {displayedPost.description}
+          <div
+            style={{ width: "100%", wordBreak: "break-all" }}
+            className="padded"
+          >
+            <span className="bold"> </span>
+            <span style={{ paddingRight: "10px" }} className="desc">
+              <span style={{ fontWeight: "bold", display: "inline" }}>
+                {displayedPost.user.username}{" "}
+              </span>
+              {displayedPost.description}
+            </span>
           </div>
+
           <div
             className="date-txt pointer"
             onMouseDown={() => setOverlayed(true)}
@@ -192,8 +217,9 @@ export default function Post({ post }) {
             </div> */}
             <div className="date-txt padded">{timeString}</div>
           </div>
+
+          <CreateComment postid={displayedPost.id} />
         </div>
-        <CreateComment postid={displayedPost.id} />
       </div>
     );
 }
