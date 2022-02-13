@@ -55,13 +55,13 @@ function FeedSideBar() {
               </div>
             </div>
           </NavLink>
-          <div
+          {/* <div
             onMouseDown={onLogout}
             className="center-text"
             style={{ cursor: "pointer", color: "var(--highligh-links)" }}
           >
             Switch
-          </div>
+          </div> */}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div

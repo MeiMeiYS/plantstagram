@@ -31,6 +31,7 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
 
   const handleClose = () => {
     setAnchorEl(false);
+    setOverlayed(false)
   };
 
   const handleClick = (event) => {

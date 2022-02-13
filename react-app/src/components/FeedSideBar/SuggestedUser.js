@@ -47,12 +47,12 @@ function SuggestedUser({ user }) {
           </div>
         </NavLink>
       </div>
-      <div
+      {/* <div
         onMouseDown={handleFollow}
         style={{ cursor: "pointer", color: "var(--highligh-links)" }}
       >
         {isFollowing ? "Unfollow" : "Follow"}
-      </div>
+      </div> */}
     </div>
   );
 }
