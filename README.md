@@ -1,8 +1,8 @@
 # Plantstagram
 
-[Plantstagram](https://plantstagram.herokuapp.com/ "Live site hosted on Heroku") is website intended to clone the core functionality of [Instagram](https://instagram.com/, "Instagram"). It is a social networking platform that allows users to create secure accounts to then post pictures, view a feed of posts from users they're following, as well as comment & like picutres across the site.
+[Plantstagram](https://plantstagram-app.herokuapp.com/ "Live site hosted on Heroku") is website intended to clone the core functionality of [Instagram](https://instagram.com/, "Instagram"). It is a social networking platform that allows users to create secure accounts to then post pictures, view a feed of posts from users they're following, as well as comment & like picutres across the site.
 
-This project is hosted on Heroku and the live site with a demo is viewable at [Plantstagram](https://plantstagram.herokuapp.com/ "Live site hosted on Heroku").
+This project is hosted on Heroku and the live site with a demo is viewable at [Plantstagram](https://plantstagram-app.herokuapp.com/ "Live site hosted on Heroku").
 
 # Technologies Used
 - Node.js
@@ -11,7 +11,7 @@ This project is hosted on Heroku and the live site with a demo is viewable at [P
 - Flask
 - PostgreSQL
 - SQLAlchemy
-- Alembic 
+- Alembic
 
 # Screenshots
 TODO
