@@ -39,7 +39,7 @@ const UploadImg = ({ overlayed, setOverlayed }) => {
             () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then(url => {
-                    console.log('imgUrl from firebase:',url)
+                    // console.log('imgUrl from firebase:',url)
                     dispatch(createPost(url, desc)).then(res => {
                         if (res) {
                             setErrors(res);

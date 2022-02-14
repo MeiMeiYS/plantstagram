@@ -12,15 +12,15 @@ const ProfilePost = ({post }) => {
 
     const handlePostOverlay = () => {
         setOverlayed(true)
-        console.log(overlayed, "setoverlayed")
+        // console.log(overlayed, "setoverlayed")
     }
 
     useEffect(()=> {
         dispatch(getUserPosts(post.id)).then(res => {
             if (res) {
-                console.log(res, "SET CURRENT POST")
+                // console.log(res, "SET CURRENT POST")
                 setCurrentPost(res)
-                console.log(currentPost, "@@@@@@@@@@@@@@@")
+                // console.log(currentPost, "@@@@@@@@@@@@@@@")
             }
         })
 

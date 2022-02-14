@@ -20,7 +20,7 @@ const FollowersModal = ({setProfileUser, profileUser, setFollowerCount, setFollo
     const [updateFollow, setUpdateFollow] = useState(false);
     const [follow, setFollow] = useState({});
     const [status, setStatus] = useState("");
-    console.log(follow)
+    // console.log(follow)
     useEffect(()=> {
         if (showFollowers && overlay) {
             dispatch(getFollowers(userId)).then(res => setAllFollowers(res));
@@ -47,7 +47,7 @@ const FollowersModal = ({setProfileUser, profileUser, setFollowerCount, setFollo
             const values = Object.values(allFollowers);
             const tempList = []
             values.forEach(follower => tempList.push(follower));
-            console.log(allFollowers)
+            // console.log(allFollowers)
             setList(tempList)
             setHeader("Follower")
             setPeople("People")
@@ -60,7 +60,7 @@ const FollowersModal = ({setProfileUser, profileUser, setFollowerCount, setFollo
             const values = Object.values(allFollowings);
             const tempList1 = []
             values.forEach(following => tempList1.push(following));
-            console.log(allFollowings)
+            // console.log(allFollowings)
             setList(tempList1)
             setPeople("People")
             setHeader("Following")

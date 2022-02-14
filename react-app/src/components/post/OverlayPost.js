@@ -31,7 +31,7 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
 
   const handleClose = () => {
     setAnchorEl(false);
-    setOverlayed(false)
+    setOverlayed(false);
   };
 
   const handleClick = (event) => {
@@ -128,10 +128,22 @@ export default function OverlayPost({ post, setOverlayed, overlayed }) {
                   onClose={handleClose}
                   open={Boolean(anchorEl)}
                 >
-                  <MenuItem onMouseDown={() => setEditOverlay(true)}>
+                  <MenuItem
+                    onMouseDown={() => {
+                      setAnchorEl(false);
+                      setEditOverlay(true);
+                    }}
+                  >
                     Edit
                   </MenuItem>
-                  <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                  <MenuItem
+                    onMouseDown={() => {
+                      handleDelete();
+                      setAnchorEl(false);
+                    }}
+                  >
+                    Delete
+                  </MenuItem>
                 </Menu>
               </div>
               {/* <div className="post-bottom"> */}

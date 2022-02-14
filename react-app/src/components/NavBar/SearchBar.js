@@ -12,7 +12,7 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [menuOpen, setMenuOpen] = useState(false)
   const [result, setResult] = useState([]);
-  console.log(result)
+  // console.log(result)
 
   useEffect(() => {
     if (searchTerm !== ''){
