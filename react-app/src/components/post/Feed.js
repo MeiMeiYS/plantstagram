@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadFeed } from "../../store/posts";
+
+
 import Post from "./Post";
 import InfiniteScroll from "react-infinite-scroll-component";
 export default function Feed({ followedFeed }) {
