@@ -57,7 +57,7 @@ def editUser(id):
                 return {'errors': ['Bad data:', '* Username is too short.']}, 400
             if data['username'].find(' ') != -1:
                 return {'errors': ['Bad data:', '* Username cannot contain space.']}, 400
-            if check_user:
+            if data['username'] != user.username and check_user:
                 return {'errors': ['* Username is already taken.']}, 400
             if data['username'] == "explore":
                 return {'errors': ['*Can not use username "explore".']}, 400
