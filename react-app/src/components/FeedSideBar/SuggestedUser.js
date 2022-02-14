@@ -4,21 +4,18 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { editFollower } from "../../store/followers";
+import { editFollower, isFollowing } from "../../store/followers";
 import "../post/post.css";
 function SuggestedUser({ user }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowingUser, setIsFollowingUser] = useState(false);
   const dispatch = useDispatch();
   useEffect(async () => {
-    const response = await fetch(`/api/users/${user.id}/follow_status`);
-    if (response.ok) {
-      const data = await response.json();
-      setIsFollowing(data.status);
-    }
+    const resp = await dispatch(isFollowing(user.id));
+    setIsFollowingUser(resp.status == "Following");
   }, []);
   const handleFollow = async () => {
     await dispatch(editFollower(user.id));
-    setIsFollowing((prev) => !prev);
+    setIsFollowingUser((prev) => !prev);
   };
   return (
     <div
@@ -47,12 +44,12 @@ function SuggestedUser({ user }) {
           </div>
         </NavLink>
       </div>
-      {/* <div
+      <div
         onMouseDown={handleFollow}
         style={{ cursor: "pointer", color: "var(--highligh-links)" }}
       >
-        {isFollowing ? "Unfollow" : "Follow"}
-      </div> */}
+        {isFollowingUser ? "Unfollow" : "Follow"}
+      </div>
     </div>
   );
 }
