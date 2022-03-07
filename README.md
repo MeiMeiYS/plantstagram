@@ -14,7 +14,7 @@ This project is hosted on Heroku and the live site with a demo is viewable at [P
 - Alembic
 
 # Screenshots
-TODO
+![image](https://user-images.githubusercontent.com/22042885/156962076-1d1540bc-80ee-4b20-9ebf-44bf949c7515.png)
 
 # Setup Instructions To Run
 
