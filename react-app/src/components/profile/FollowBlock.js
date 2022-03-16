@@ -23,8 +23,8 @@ const FollowBlock = ({profileUser, setProfileUser, setFollowerCount, setFollowin
                     if (res) {
                         setProfileUser(res)
                         setFollowerCount(res.followers_count)
-                        console.log("CCCCCCCCCCC", res.followers_count)
-                        console.log("CCCCCCCCC", res.following_count)
+                        // console.log("CCCCCCCCCCC", res.followers_count)
+                        // console.log("CCCCCCCCC", res.following_count)
                         setFollowingCount(res.following_count)
                     }
                 })

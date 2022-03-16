@@ -113,7 +113,7 @@
 }
 .post-overlay-side {
   width: 400px;
-  height: 80vh;
+  height: 60vh;
   border-left: 1px solid var(--border);
   background-color: var(--background-bright);
   display: flex;
@@ -218,7 +218,7 @@
 }
 .dark-background {
   background-color: var(--background-dark);
-  height: 80vh;
+  height: 60vh;
   /* overflow: auto; */
 }
 .MuiPaper-root {

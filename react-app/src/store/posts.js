@@ -175,7 +175,7 @@ export const getUserPosts = (postid) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(data, "########################")
+    // console.log(data, "########################")
     await dispatch(addPost(data))
     return data;
   }

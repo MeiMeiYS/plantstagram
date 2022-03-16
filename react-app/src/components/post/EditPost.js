@@ -13,7 +13,7 @@ const EditPost = ({ post, overlayed, setOverlayed }) => {
 
   const [errors, setErrors] = useState([]);
   const [desc, setDesc] = useState("");
-  console.log(errors);
+  // console.log(errors);
   const onSubmit = async (e) => {
     e.preventDefault();
     dispatch(editPost(post.id, desc)).then((res) => {
